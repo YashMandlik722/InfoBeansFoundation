@@ -8,3 +8,5 @@ const registrationDoc = multer.diskStorage({
         const uniqueName = Date.now() + file.originalname
     }
 })
+
+export const uploadRegistration = multer({storage: registrationDoc});
