@@ -25,13 +25,13 @@ console.log(__dirname);
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/user",userRouter);
-app.use("/register",registerRouter);
-app.use("/result",resultRouter);
-app.use("/staff",staffRouter);
+app.use("/user", userRouter);
+app.use("/register", registerRouter);
+app.use("/result", resultRouter);
+app.use("/staff", staffRouter);
 
-app.listen(3001,()=>{
+app.listen(3001, () => {
     console.log("running on localhost:3001");
 })
