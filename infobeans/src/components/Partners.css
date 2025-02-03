@@ -1,0 +1,92 @@
+/* Basic container and structure */
+.container {
+    padding: 60px 0;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  
+  /* Partner Card Styling */
+  .partner-card {
+    margin: 3px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .partner-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .partner-logo {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .partner-logo img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .partner-info {
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .partner-info h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .partner-info p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .partner-info .btn {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .partner-info .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Animation */
+  .partner-container {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .partner-container.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 767px) {
+    .partner-card {
+      margin-bottom: 30px;
+    }
+  }
+  

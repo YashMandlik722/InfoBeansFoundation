@@ -1,0 +1,119 @@
+/* Styling for the overall container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.unique-container {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-content {
+  text-align: left;
+  padding: 30px;
+}
+
+.content-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+.content-description {
+  font-size: 18px;
+  color: #666;
+  margin: 40px 0;
+}
+
+.btn {
+  background-color: #f32d00;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Right side - Circle container */
+.circle-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.circle {
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+}
+
+.large {
+  width: 350px !important;
+  height: 300px !important;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+}
+
+.large:hover {
+  border: 15px solid rgb(250, 225, 0) !important;
+  z-index: 10 !important;
+  height: 350px !important;
+  width: 400px !important;
+}
+
+.small {
+  width: 200px !important;
+  height: 200px !important;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.small:hover {
+  border: 15px solid rgb(250, 0, 0) !important;
+  z-index: 10 !important;
+  height: 220px !important;
+  width: 220px !important;
+}
+
+.left {
+  left: 100px !important; /* Adjust positioning of smaller circles */
+  bottom: 80px !important; /* Adjust vertical position */
+}
+
+.right {
+  right: 100px !important; /* Adjust positioning of smaller circles */
+  bottom: 80px !important; /* Adjust vertical position */
+}
+
+.circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .circle-container {
+    flex-direction: column;
+  }
+}

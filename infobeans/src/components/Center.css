@@ -1,0 +1,88 @@
+/* General container styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .center-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+  }
+  
+  .center-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+  }
+  
+  .center-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .center-info {
+    padding-top: 15px;
+    width: 200px;
+  }
+  
+  .center-info h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ee2c69;
+  }
+  
+  .center-info p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .center-info .btn {
+    background-color: #ee2c69;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .center-info .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Animation for fade-in */
+  .fadeIn {
+    opacity: 1;
+    transform: translateY(0); /* Slide-in from bottom */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  /* Initially hidden */
+  .center-card {
+    opacity: 0;
+    transform: translateY(50px); /* Start from below */
+  }
+  
+  /* Responsive settings */
+  @media (max-width: 992px) {
+    .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  

@@ -1,0 +1,26 @@
+/* InfoAbout.css */
+.img-col {
+  position: relative;
+  height: 100%;
+}
+
+.content-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ensures content starts from the top */
+}
+
+.fadeIn {
+  opacity: 1;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
