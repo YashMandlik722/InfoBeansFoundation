@@ -1,0 +1,78 @@
+.subject-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  color: white;
+  height: 350px; /* You can adjust the height of the card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subject-card-content {
+  position: relative;
+  z-index: 2; /* To make sure the text stays on top of the overlay */
+  padding: 50px;
+  text-align: center;
+  
+}
+
+.subject-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(117, 107, 107, 0.603); /* Dark overlay with 50% opacity */
+  z-index: 1; /* Overlay layer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.btn {
+  margin-top: 10px;
+  background-color: #dc0033;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #b3001e;
+}
+
+/* Fade-in animation */
+.subject-card.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.subject-card {
+  opacity: 0;
+  transform: translateY(50px);
+}

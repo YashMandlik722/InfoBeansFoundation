@@ -1,0 +1,4 @@
+.nav-item.nav-link:hover {
+  color: red !important; /* Bootstrap's "danger" color */
+}
+

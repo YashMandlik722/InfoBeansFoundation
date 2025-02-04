@@ -1,0 +1,44 @@
+/* Container settings */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .count-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .count-box:hover {
+    transform: translateY(-10px);
+  }
+  
+  .count-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ff003c;
+    margin-bottom: 10px;
+  }
+  
+  .count-label {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #333;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Responsive settings */
+  @media (max-width: 992px) {
+    .count-box {
+      margin-bottom: 20px;
+    }
+  }
+  

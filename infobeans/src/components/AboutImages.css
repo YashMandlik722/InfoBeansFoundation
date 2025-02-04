@@ -1,0 +1,80 @@
+/* HomeCarousel.css */
+
+/* Basic styling for the carousel container */
+.carousel-container {
+  position: relative;
+  padding: 80px ;
+  background-color: #f9f9f9;
+}
+
+/* Center the images in the carousel */
+.carousel-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Image container styling */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Style for each carousel image */
+.carousel-image {
+  width: 1000px;
+  height: 400px; /* Set height to make the images consistent */
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  opacity: 0.8; /* Add slight transparency for a layered effect */
+  animation: riseUp 1s ease-out forwards;
+  transform: scale(1.1);
+}
+
+/* Keyframe for the 'rise-up' effect */
+@keyframes riseUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(1.1); /* Start below with a slight scale */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* End at normal position with no scaling */
+  }
+}
+
+/* Add animation delay for different images to create a staggered effect */
+.carousel-item:nth-child(1) .carousel-image {
+  animation-delay: 0.2s;
+}
+.carousel-item:nth-child(2) .carousel-image {
+  animation-delay: 0.4s;
+}
+.carousel-item:nth-child(3) .carousel-image {
+  animation-delay: 0.6s;
+}
+.carousel-item:nth-child(4) .carousel-image {
+  animation-delay: 0.8s;
+}
+
+/* Overlap effect for images */
+.slick-center .carousel-image {
+  transform: scale(1.05); /* Slightly scale the centered image */
+  opacity: 5;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 50px;
+}
+
+/* Make carousel responsive */
+@media (max-width: 768px) {
+  .carousel-image {
+    height: 300px;
+  }
+  .carousel-container {
+    padding: 20px 0;
+  }
+}
