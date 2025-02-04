@@ -2,14 +2,12 @@ import { staff } from "../model/staffModel.js"
 
 
 export const staffDetails = async (req, res) => {
-
     res.end("name: staff age: 40years ")
-
 }
 
 export const getStaffById = async (req, res) => {
     try {
-        const { Id } = req.params;
+        const { Id } = req.params.id;
         const staff_Data = await staff.find({ Id });
         if (staff_Data.length === 0) {
             return res.status(404).json({ message: "Staff  no found" });
@@ -68,3 +66,5 @@ export const getList = async (req, res) => {
         console.log(err);
     }
 }
+
+

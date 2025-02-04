@@ -66,31 +66,31 @@ const registrationSchema = new mongoose.Schema({
         require:true,
         enum: ["LinkedIn","Instagram","FaceBook","Print media", "Other"]
     },
-    photo_url:{
+    pic:{
         type: String,
         require:true,
     },
-    marksheet_12_url:{
+    marksheet12:{
         type: String,
         require:true
     },
-    marksheet_latest_url:{
+    marksheetLatest:{
         type: String,
         require:true
     },
-    aadhar_url:{
+    studentAadhar:{
         type: String,
         require:true
     },
-    fatherAadhar_url:{
+    fatherAadhar:{
         type: String,
         require:true
     },
-    samagraId_url:{
+    samagraId:{
         type: String,
         require:true
     },
-    incomeCertificate_url:{
+    incomeCertificate:{
         type: String,
         require:true
     },
@@ -103,6 +103,11 @@ const registrationSchema = new mongoose.Schema({
         type: String,
         require:true,
         enum:["ITEP", "BREP"]
+    },
+    isVerified:{
+        type: String,
+        enum:["Pending", "Verified","Rejected"],
+        default:"Pending"
     }
 })
 export const registration = mongoose.model("registration",registrationSchema) 

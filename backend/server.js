@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/user", userRouter);
-app.use("/register", registerRouter);
+app.use("/course", registerRouter);
 app.use("/result", resultRouter);
 app.use("/staff", staffRouter);
 

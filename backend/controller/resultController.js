@@ -1,3 +1,4 @@
+import { registration } from "../model/registrationModel.js";
 import { result } from "../model/resultModel.js";
 import convertExcelToJson from "convert-excel-to-json";
 
@@ -9,14 +10,22 @@ export const bulkResult = async(req,res)=>{
         header: { rows: 1 },
         columnToKey: {
             A: 'rollNo',
-            B: 'userID',
-            C: 'written_result',
-            D: 'interview_result',
-            E: 'houseVisit_result'
+            B: 'written_result',
+            C: 'interview_result',
+            D: 'houseVisit_result'
         }
     }).Sheet1;
+
     
-    result.insertMany(json)
+    const resultData = json.map((data)=>{
+        const reg = registration.findOne({rollno:data.rollNo});
+        data.userID = reg.userID;
+    })
+    
+    // console.log(json);
+    // return res.status(200).json({ Message: "OK"});
+    
+    result.insertMany(resultData)
     .then(() =>{
         return res.status(200).json({ Message: "Result Uploaded In DB"});
     })   
