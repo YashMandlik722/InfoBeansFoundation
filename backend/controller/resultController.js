@@ -32,6 +32,8 @@ export const bulkResult = async(req,res)=>{
     .catch(err => res.status(400).send('Error inserting data: ' + err));
 }
 
+
+
 export const getResultById = async (request, response) => {
     let id = request.params.id;
     result.findOne({ _id: id })

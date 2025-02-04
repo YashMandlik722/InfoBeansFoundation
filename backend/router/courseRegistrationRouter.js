@@ -1,5 +1,5 @@
 import express from "express"
-import { getRegByUserId, getRegList, markVerified, registerForExam } from "../controller/courseRegistrationController.js"
+import { getRegByUserId, getRegList, markVerified, registerForExam, rejectApplication } from "../controller/courseRegistrationController.js"
 import { uploadRegistrationDoc } from "../helper/multerConfig.js"
 
 const route = express.Router()
@@ -8,6 +8,7 @@ route.post("/register",uploadRegistrationDoc.fields([{name:"studentAadhar"},{nam
 route.get("/getRegList",getRegList);
 route.get("/getRegByUserId/:id",getRegByUserId);
 route.put("/markVerified/:id",markVerified);
+route.put("/rejectApplication/:id",rejectApplication);
 
 
 export default route

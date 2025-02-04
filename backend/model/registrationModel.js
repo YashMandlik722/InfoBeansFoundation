@@ -5,9 +5,14 @@ const registrationSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: user,
+        unique:true,
         require:true
     },
-    rollno: String,
+    rollNo: {
+        type: String,
+        require: true,
+        unique: true
+    },
     email:{
         type: String,
         require:true,
