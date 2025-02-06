@@ -1,10 +1,6 @@
 import { staff } from "../model/staffModel.js"
 
-
-export const staffDetails = async (req, res) => {
-    res.end("name: staff age: 40years ")
-}
-
+//Getting Staff By Id
 export const getStaffById = async (req, res) => {
     try {
         const { Id } = req.params.id;
@@ -15,11 +11,13 @@ export const getStaffById = async (req, res) => {
 
         return res.status(200).json({ message: "Staff successfully found", staff_Data });
     } catch (err) {
-        console.error(err);
-        return res.status(500).json({ error: "Internal server error" });
+        console.log("Error in staffController's getStaffById");
+        console.log(err);
+        return res.status(500).json({ error: "Internal server error in staffController's getStaffById" });
     }
 };
 
+//Getting Staff List
 export const listOfStaff = async (req, res) => {
     try {
         const list = await staff.find();
@@ -31,10 +29,13 @@ export const listOfStaff = async (req, res) => {
         }
     }
     catch (err) {
-        return res.status(500).json({ error: "Internal server error" });
+        console.log("Error in staffController's listOfStaff");
+        console.log(err);
+        return res.status(500).json({ error: "Internal server error in staffController's listOfStaff" });
     }
 }
 
+//Getting Staff By Name
 export const getStaffByName = async (req, res) => {
     try {
         const { name } = req.params;
@@ -47,24 +48,11 @@ export const getStaffByName = async (req, res) => {
 
         return res.status(200).json({ message: "Staff successfully found", staff: staff_name });
     } catch (err) {
-        console.error("Error fetching staff:", err);
-        return res.status(500).json({ error: "Internal server error" });
+        console.log("Error in staffController's getStaffByName");
+        console.log(err);
+        return res.status(500).json({ error: "Internal server error in staffController's getStaffByName" });
     }
 };
 
-export const getList = async (req, res) => {
-    try {
-        const list = await staff.find()
-        if (list) {
-            return res.status(200).json({ message: "staff list", list });
-        }
-        else {
-            return res.status(400).json({ error: "Bad request" })
-        }
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
 
 

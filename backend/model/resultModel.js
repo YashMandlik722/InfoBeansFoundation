@@ -12,6 +12,11 @@ const resultSchema = new mongoose.Schema({
         ref: user,
         require: true
     },
+    phase:{
+        type: String,
+        enum: ["Applied", "Written Done", "Interview Done", "House Visit Done"],
+        default : "Applied" 
+    },
     written_result: {
         type: String,
         enum: ["Pending", "Absent", "Passed", "Failed"],

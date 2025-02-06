@@ -1,9 +1,8 @@
+import sendMail from "../helper/sendMail.js";
 import { registration } from "../model/registrationModel.js"
 import { result } from "../model/resultModel.js";
 
-
-
-
+//For Generating Roll Number
 const generateRollNumber = async (courseType) => {
     const currentYear = new Date().getFullYear();
 
@@ -40,9 +39,7 @@ const generateRollNumber = async (courseType) => {
     return newRollNumber;
 };
 
-
-
-
+//Taking Registration
 export const registerForExam = async (request, response) => {
     try {
 
@@ -78,12 +75,13 @@ export const registerForExam = async (request, response) => {
 
         return response.status(201).json({ message: "Registration working", reg });
     } catch (err) {
-        console.log("Error In usercontroller's registerForExam");
+        console.log("Error In courseRegistrationController's registerForExam");
         console.log(err);
-        response.status(500).json({ error: "Internal Server Error In usercontroller's registerForExam" })
+        response.status(500).json({ error: "Internal Server Error In courseRegistrationController's registerForExam" })
     }
 };
 
+//Getting List of Total Registration
 export const getRegList = async (request, response) => {
     try {
         const list = await registration.find();
@@ -95,12 +93,13 @@ export const getRegList = async (request, response) => {
             return response.status(404).json({ error: "No user Found" });
         }
     } catch (err) {
-        console.log("Error In usercontroller's getUserList");
+        console.log("Error In courseRegistrationController's getUserList");
         console.log(err);
-        response.status(500).json({ error: "Internal Server Error In usercontroller's getUserList" })
+        response.status(500).json({ error: "Internal Server Error In courseRegistrationController's getUserList" })
     }
 }
 
+//Getting Registration By User Id
 export const getRegByUserId = async (request, response, next) => {
     let id = request.params.id;
     registration.findOne({ userID: id })
@@ -112,12 +111,13 @@ export const getRegByUserId = async (request, response, next) => {
             }
         })
         .catch(err => {
-            console.log("Error In usercontroller's getRegByUserId");
+            console.log("Error In courseRegistrationController's getRegByUserId");
             console.log(err);
-            response.status(500).json({ error: "Internal Server Error In usercontroller's getRegByUserId" })
+            response.status(500).json({ error: "Internal Server Error In courseRegistrationController's getRegByUserId" })
         });
 }
 
+//Marking Application Verified 
 export const markVerified = async (req, res) => {
     try {
         let id = req.params.id;
@@ -134,12 +134,13 @@ export const markVerified = async (req, res) => {
             return res.status(200).json({ Message: "Marked Verified" });
         }
     } catch (err) {
-        console.log("Error In usercontroller's markVerified");
+        console.log("Error In courseRegistrationController's markVerified");
         console.log(err);
-        response.status(500).json({ error: "Internal Server Error In usercontroller's markVerified" })
+        response.status(500).json({ error: "Internal Server Error In courseRegistrationController's markVerified" })
     }
 }
 
+//Rejecting Application
 export const rejectApplication = async (req, res) => {
     try {
         let { reason } = req.body;
@@ -156,23 +157,26 @@ export const rejectApplication = async (req, res) => {
             return res.status(200).json({ Message: "Application Rejected" });
         }
     } catch (err) {
-        console.log("Error In usercontroller's rejectApplication");
+        console.log("Error In courseRegistrationController's rejectApplication");
         console.log(err);
-        response.status(500).json({ error: "Internal Server Error In usercontroller's rejectApplication" })
+        response.status(500).json({ error: "Internal Server Error In courseRegistrationController's rejectApplication" })
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Finding List By Course Type (ITEP/BREP)
+export const regForPerticularCourse = async (req,res) => {
+    try {
+        let courseType  = req.params.courseType;
+        const list = await registration.find({ courseType });
+        if (!list) {
+            return response.status(404).json({ error: "Registration Detail not found" });
+        } else {
+            return res.status(200).json({ Message: "Registration List Found",list });
+        }
+    } catch (err) {
+        console.log("Error In courseRegistrationController's regForPerticularCourse");
+        console.log(err);
+        response.status(500).json({ error: "Internal Server Error In courseRegistrationController's regForPerticularCourse" })
+    }
+}
 
