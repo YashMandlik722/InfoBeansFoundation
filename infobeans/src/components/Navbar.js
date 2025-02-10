@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import  "../components/Navbar.css"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -54,43 +54,43 @@ function Navbar() {
       </button> */}
       <div className="navbar-collapse collapse" id="navbarCollapse">
         <div className="navbar-nav mx-auto">
-          <a href="/" className="nav-item nav-link " style={{fontSize:"20px"}}>
+          <Link href="/" className="nav-item nav-link " style={{fontSize:"20px"}}>
             Home
-          </a>
-          <a href="/about" className="nav-item nav-link" style={{fontSize:"20px"}}>
+          </Link>
+          <Link href="/about" className="nav-item nav-link" style={{fontSize:"20px"}}>
             About Us
-          </a>
-          <a href="/gallery" className="nav-item nav-link" style={{fontSize:"20px"}}>
+          </Link>
+          <Link href="/gallery" className="nav-item nav-link" style={{fontSize:"20px"}}>
             Gallery
-          </a>
+          </Link>
           <div className="nav-item dropdown">
-            <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{fontSize:"20px"}}>
+            <Link href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{fontSize:"20px"}}>
               Pages
-            </a>
+            </Link>
             <div className="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" >
-              <a href="/facility" className="dropdown-item">
+              <Link href="/facility" className="dropdown-item">
                 Foundation Facilities
-              </a>
-              <a href="/team" className="dropdown-item">
+              </Link>
+              <Link href="/team" className="dropdown-item">
                 Popular Teachers
-              </a>
-              <a href="/call-to-action" className="dropdown-item">
+              </Link>
+              <Link href="/call-to-action" className="dropdown-item">
                 Become A Teacher
-              </a>
-              <a href="/appointment" className="dropdown-item">
+              </Link>
+              <Link href="/appointment" className="dropdown-item">
                 Make Better
-              </a>
-              <a href="/testimonial" className="dropdown-item">
+              </Link>
+              <Link href="/testimonial" className="dropdown-item">
                 Testimonial
-              </a>
-              <a href="/404" className="dropdown-item">
+              </Link>
+              <Link href="/404" className="dropdown-item">
                 404 Error
-              </a>
+              </Link>
             </div>
           </div>
-          <a href="/contactUs" className="nav-item nav-link" style={{fontSize:"20px"}}>
+          <Link href="/contactUs" className="nav-item nav-link" style={{fontSize:"20px"}}>
             Contact Us
-          </a>
+          </Link>
         </div>
         <button onClick={()=>navigate("/signIn")} className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
           Sign In<i className="fa fa-arrow-right ms-3"></i>

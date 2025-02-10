@@ -59,7 +59,7 @@ export const signIn = async (request, response) => {
 
         }
         else
-            return response.status(401).json({ error: "Bad request | invalid email id" });
+            return response.status(401).json({ error: "User not found | invalid email id" });
     }
     catch (err) {
         console.log("Error In usercontroller's signIn");
