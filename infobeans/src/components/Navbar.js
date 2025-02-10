@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import  "../components/Navbar.css"
+import { useNavigate } from "react-router-dom";
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -15,6 +16,8 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -32,14 +35,14 @@ function Navbar() {
       }}
     >
       
-        <h1 className="m-0 text-danger">
+        <div className="m-0 text-danger">
           <img  src="../Images/logo.jpg" style={{height:"85px" , marginLeft:"70px"}}/>
           <h6 style={{color:"black",marginLeft:"80px"}}>InfoBeans</h6>
           <h6 style={{color:"black" , marginLeft:"73px"}}>Foundation</h6>
           {/* <img src="..Images/logo.jpg"/> */}
           {/* <i className="fa fa-book-reader me-3"></i> */}
           {/* <span style={{ color: "black" }}>InfoBeans Foundation</span> */}
-        </h1>
+        </div>
       
       {/* <button
         type="button"
@@ -89,8 +92,8 @@ function Navbar() {
             Contact Us
           </a>
         </div>
-        <button className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
-          Sign Up Here<i className="fa fa-arrow-right ms-3"></i>
+        <button onClick={()=>navigate("/signIn")} className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
+          Sign In<i className="fa fa-arrow-right ms-3"></i>
         </button>
       </div>
     </nav>

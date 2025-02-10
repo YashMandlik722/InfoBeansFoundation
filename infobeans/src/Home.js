@@ -15,7 +15,7 @@ import Partners from "./components/Partners";
 import Achivement from "./components/Achivement";
 import Demo from "./components/Demo";
 function Home(){
-    return <>
+    return <div className="div-home container-fluid">
   
     {/* <ContentSlider/> */}
     <Slide />
@@ -31,7 +31,7 @@ function Home(){
    <Count/>
    <Center />
     <Achivement />
-    </>
+    </div>
 }
 
 export default Home ;

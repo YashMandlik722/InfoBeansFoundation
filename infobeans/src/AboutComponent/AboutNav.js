@@ -2,7 +2,7 @@ import React from 'react';
 import '../AboutComponent/AboutNav.css'
 const AboutNav = () => {
   return (
-    <div className="row g-4">
+    <div className="row g-4 container-fluid">
       <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s" style={{ visibility: 'visible', animationDelay: '0.1s', animationName: 'fadeInUp' }}>
         <div className="facility-item">
           <div className="facility-icon bg-danger">

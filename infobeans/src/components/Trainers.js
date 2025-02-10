@@ -51,7 +51,7 @@ const TrainerCard = ({ trainer }) => {
   const hoverEffect = useSpring({
     transform: 'scale(1)',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-    from: { transform: 'scale(0.95)', boxShadow: 'none' },
+    from: { transform: 'scale(0.95)', boxShadow: '0px 0px 0px rgba(0, 0, 0, 0)' },
     config: { tension: 200, friction: 20 },
   });
 
