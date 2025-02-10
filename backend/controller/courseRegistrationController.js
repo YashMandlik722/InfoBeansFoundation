@@ -123,10 +123,10 @@ export const markVerified = async (req, res) => {
         let id = req.params.id;
         const regInfo = await registration.findOne({ userID: id });
         if (!regInfo) {
-            return response.status(404).json({ error: "Registration Detail not found" });
+            return res.status(404).json({ error: "Registration Detail not found" });
         } else {
             const update = await registration.findByIdAndUpdate(id, { isVerified: "Verified" });
-            const resultInitialised = await result.create({ userID: regInfo.userID, rollNo: regInfo.rollNo })
+            const resultInitialised = await result.create({ userID: regInfo.userID, rollNo: regInfo.rollNo ,courseType:regInfo.courseType })
             // sendMail(regInfo.email,
             //     "Profile Verified!",
             //     `Dear ${regInfo.name},\n\nYour Application For ITEP coarse has been verified!\nStay tuned for further updates. Together, we can make a positive impact!\n\nBest Regards\nInfoBeans Foundation`
@@ -136,7 +136,7 @@ export const markVerified = async (req, res) => {
     } catch (err) {
         console.log("Error In courseRegistrationController's markVerified");
         console.log(err);
-        response.status(500).json({ error: "Internal Server Error In courseRegistrationController's markVerified" })
+        res.status(500).json({ error: "Internal Server Error In courseRegistrationController's markVerified" })
     }
 }
 

@@ -10,6 +10,7 @@ import userRouter from "./router/userRouter.js";
 import registerRouter from "./router/courseRegistrationRouter.js";
 import resultRouter from "./router/resultRouter.js";
 import staffRouter from "./router/staffRouter.js";
+import slotRouter from "./router/slotRouter.js"
 
 //Db Connection
 import "./DBConfig/connection.js";
@@ -31,6 +32,7 @@ app.use("/user", userRouter);
 app.use("/course", registerRouter);
 app.use("/result", resultRouter);
 app.use("/staff", staffRouter);
+app.use("/slot", slotRouter);
 
 app.listen(3001, () => {
     console.log("running on localhost:3001");

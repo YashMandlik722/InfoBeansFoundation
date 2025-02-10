@@ -9,7 +9,7 @@ const upload = multer();
 router.get("/getResult/:id", getResultById);
 router.get("/getResultByUserId/:id", getResultByUserId);
 router.get("/getResultList", getResultList);
-router.post("/bulkResult", upload.single('file'), bulkResult);
+// router.post("/bulkResult", upload.single('file'), bulkResult);
 router.post("/writtenResult", upload.single('file'), resultMarking);
 
 export default router;

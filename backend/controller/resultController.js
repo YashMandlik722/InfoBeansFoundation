@@ -110,14 +110,14 @@ export const resultMarking = async (req, res) => {
         const {resultType} = obj;
         
         json.map(async(student)=>{
-            const updatedResult = await result.updateOne({rollNo:student.rollNo},{[resultType]:student.result});
+            const updatedResult = await result.updateOne({rollNo:student.rollNo},{[resultType]:student.result,phase:phase,isSlotAssigned:false});
             // const updatedResult = await result.updateOne({rollNo:student.rollNo},{$set: {[resultType]:student.result}});
             if(!updatedResult){
                 return res.status(400).send("Error in inserting data")
             }
         })
         
-        const phaseChanged = await result.updateMany({phase:"Applied"},{phase:phase});
+
         return res.status(200).json({Message:"Result Updated"})
 
     } catch (err) {

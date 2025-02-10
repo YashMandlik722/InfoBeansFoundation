@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { user } from "./userModel.js";
+import { slot } from "./slotModel.js";
 
 const resultSchema = new mongoose.Schema({
     rollNo: {
@@ -11,6 +12,20 @@ const resultSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref: user,
         require: true
+    },
+    courseType:{
+        type: String,
+        require:true,
+        enum:["ITEP", "BREP"]
+    },
+    isSlotAssigned:{
+        type : Boolean,
+        default : false
+    },
+    slotId:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : slot,
+        default : null
     },
     phase:{
         type: String,
