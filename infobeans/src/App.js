@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import About from "./About";
 import Gallery from "./Gallery";
 import ContactUs from "./ContactUs";
+import Nav from "./AdminComponent/Nav";
 
 function App(){
     return <>
@@ -17,9 +18,9 @@ function App(){
     <Route path="/ContactUs" element={<ContactUs/>}></Route>
    </Routes>
 
-
  
    <Footer />
+   <Nav/>
     </>
 }
 

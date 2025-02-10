@@ -2,20 +2,9 @@ import React, { useRef, useState } from 'react';
 import './Contactform.css';
 
 const Contactform = () => {
-  // Step 1: Basic Information
+  
   const [step, setStep] = useState(1);
-  // const [educationInfo, setEducationInfo] = useState({
     
-  //   aadhar_url:null,
-  //   fatherAadhar_url:null,
-  //   photo_url:null,
-  //   marksheet_12_url:null,
-  //   marksheet_latest_url:null,
-  //   samagraId_url:null,
-  //   incomeCertificate_url:null,
-  //   transactionId:null,
-
-  // });
 
    const  emailref=useRef();
    const  nameref=useRef();

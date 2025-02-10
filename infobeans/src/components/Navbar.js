@@ -33,22 +33,13 @@ function Navbar() {
     >
       
         <h1 className="m-0 text-danger">
-          <img  src="../Images/logo.jpg" style={{height:"85px" , marginLeft:"70px"}}/>
-          <h6 style={{color:"black",marginLeft:"80px"}}>InfoBeans</h6>
-          <h6 style={{color:"black" , marginLeft:"73px"}}>Foundation</h6>
+          <img  src="../Images/logo.jpg" style={{height:"75px" , marginLeft:"80px"}}/>
+          <h6 style={{color:"black",marginLeft:"80px", padding:"0%", textAlign:"center"}}>InfoBeans <br/>Foundation</h6>
+         
           {/* <img src="..Images/logo.jpg"/> */}
           {/* <i className="fa fa-book-reader me-3"></i> */}
           {/* <span style={{ color: "black" }}>InfoBeans Foundation</span> */}
         </h1>
-      
-      {/* <button
-        type="button"
-        className="navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button> */}
       <div className="navbar-collapse collapse" id="navbarCollapse">
         <div className="navbar-nav mx-auto">
           <a href="/" className="nav-item nav-link " style={{fontSize:"20px"}}>
