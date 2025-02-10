@@ -34,7 +34,7 @@ export const signUp = async (req, res) => {
     } catch (err) {
         console.log("Error In usercontroller's signUp");
         console.log(err);
-        res.status(500).json({ error: "Internal Server Error In usercontroller's signUp" })
+        res.status(500).json({ error: "Internal Server Error In usercontroller's signUp" , err:err })
     }
 }
 

@@ -1,8 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import { setUser } from "../reduxConfig/UserSlice";
+import { useDispatch } from "react-redux";
 import axios from "axios"
 import './Sign-in.css'
 import { useRef } from "react";
+
 function SignIn() {
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const email = useRef();
     const password = useRef();
@@ -13,6 +18,8 @@ function SignIn() {
             const response = await sendData();
             if (response.data.User) {
                 console.log(response.data);
+                dispatch(setUser(response.data.User))
+                window.alert(response.data.message);
                 navigate("/");
             }
         } catch (error) {

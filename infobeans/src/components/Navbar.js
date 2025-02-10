@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import  "../components/Navbar.css"
 import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "../reduxConfig/UserSlice";
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+
+  const {isLoggedIn } = useSelector((store)=>store.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,9 +97,12 @@ function Navbar() {
             Contact Us
           </Link>
         </div>
-        <button onClick={()=>navigate("/signIn")} className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
+        {!isLoggedIn && <button onClick={()=>navigate("/signIn")} className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
           Sign In<i className="fa fa-arrow-right ms-3"></i>
-        </button>
+        </button>}
+        {isLoggedIn && <button onClick={()=> {window.alert("Logging you out"); dispatch(signOut());}} to="/" className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
+          Sign Out<i className="fa fa-sign-out-alt ms-3"></i>
+        </button>}
       </div>
     </nav>
 
