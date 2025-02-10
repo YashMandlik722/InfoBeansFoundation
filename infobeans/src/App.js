@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import About from "./About";
 import Gallery from "./Gallery";
 import ContactUs from "./ContactUs";
+import SignIn from "./LoginComponent/Sign-in";
+import SignUp from "./LoginComponent/Sign-up";
 
 function App(){
     return <>
@@ -15,6 +17,8 @@ function App(){
     <Route path="/About" element={<About/>}></Route>
     <Route path="/Gallery" element={<Gallery/>}></Route>
     <Route path="/ContactUs" element={<ContactUs/>}></Route>
+    <Route path="/SignIn" element={<SignIn/>}> </Route>
+    <Route path="/sign-up" element={<SignUp/>}> </Route>
    </Routes>
 
 
