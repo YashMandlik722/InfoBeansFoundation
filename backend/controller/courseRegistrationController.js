@@ -48,7 +48,8 @@ export const registerForExam = async (request, response) => {
         const rollNo = await generateRollNumber(courseType);
 
         const baseURL = "http://localhost:3001/";
-
+        // console.log(request);
+        
         Object.values(request.files).forEach(fileArray => {
             fileArray.forEach(file => {
                 file.fullPath = `${baseURL}${file.destination}/${file.filename}`;
@@ -56,11 +57,11 @@ export const registerForExam = async (request, response) => {
         });
 
 
-        request.body.studentAadhar = request.files.studentAadhar[0].fullPath;
+        request.body.aadhar = request.files.aadhar[0].fullPath;
         request.body.fatherAadhar = request.files.fatherAadhar[0].fullPath;
         request.body.marksheet12 = request.files.marksheet12[0].fullPath;
-        request.body.marksheetLatest = request.files.marksheetLatest[0].fullPath;
-        request.body.pic = request.files.pic[0].fullPath;
+        request.body.latestMarksheet = request.files.latestMarksheet[0].fullPath;
+        request.body.passportPhoto = request.files.passportPhoto[0].fullPath;
         request.body.incomeCertificate = request.files.incomeCertificate[0].fullPath;
         request.body.samagraId = request.files.samagraId[0].fullPath;
         request.body.rollNo = rollNo;
@@ -81,7 +82,7 @@ export const registerForExam = async (request, response) => {
     }
 };
 
-//Getting List of Total Registration
+//Getting List of Total Registration (Admin)
 export const getRegList = async (request, response) => {
     try {
         const list = await registration.find();
@@ -99,7 +100,7 @@ export const getRegList = async (request, response) => {
     }
 }
 
-//Getting Registration By User Id
+//Getting Registration By User Id (Admin)
 export const getRegByUserId = async (request, response, next) => {
     let id = request.params.id;
     registration.findOne({ userID: id })
@@ -117,7 +118,7 @@ export const getRegByUserId = async (request, response, next) => {
         });
 }
 
-//Marking Application Verified 
+//Marking Application Verified (Admin)
 export const markVerified = async (req, res) => {
     try {
         let id = req.params.id;
@@ -140,7 +141,7 @@ export const markVerified = async (req, res) => {
     }
 }
 
-//Rejecting Application
+//Rejecting Application (Admin)
 export const rejectApplication = async (req, res) => {
     try {
         let { reason } = req.body;

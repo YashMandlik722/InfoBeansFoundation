@@ -49,6 +49,10 @@ const staffSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    isWorking: {
+        type: Boolean,
+        default:true
+    },
     role: {
         type: String,
         enum: ["Management","Trainer"]

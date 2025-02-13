@@ -29,7 +29,7 @@ export const bulkResult = async (req, res) => {
         .catch(err => res.status(400).send('Error inserting data: ' + err));
 }
 
-//Getting Result by Id
+//Getting Result by Id (User)
 export const getResultById = async (request, response) => {
     let id = request.params.id;
     result.findOne({ _id: id })
@@ -47,7 +47,7 @@ export const getResultById = async (request, response) => {
         });
 }
 
-//Getting All Results
+//Getting All Results (Admin)
 export const getResultList = async (request, response) => {
     try {
         const list = await result.find();
@@ -65,7 +65,7 @@ export const getResultList = async (request, response) => {
     }
 }
 
-//Marking Results
+//Marking Results (Admin)
 export const resultMarking = async (req, res) => {
     try {
 
@@ -127,7 +127,7 @@ export const resultMarking = async (req, res) => {
     }
 }
 
-//Getting Results By User Id
+//Getting Results By User Id (User)
 export const getResultByUserId = async (request, response, next) => {
     let id = request.params.id;
     result.findOne({ userID: id })

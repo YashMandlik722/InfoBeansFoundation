@@ -1,5 +1,5 @@
 import { staff } from "../model/staffModel.js"
-
+//(Only For Admin)
 //Getting Staff By Id
 export const getStaffById = async (req, res) => {
     try {
@@ -54,5 +54,7 @@ export const getStaffByName = async (req, res) => {
     }
 };
 
-
+// Add Staff Details
+// Update Staff Details
+// Delete Staff Details
 

@@ -14,14 +14,16 @@ import Trainers from "./components/Trainers";
 import Partners from "./components/Partners";
 import Achivement from "./components/Achivement";
 import Demo from "./components/Demo";
+import CourseSection from "./components/CourseDetail";
 function Home(){
     return <div className="div-home container-fluid">
   
     {/* <ContentSlider/> */}
     <Slide />
     {/* <Demo/> */}
+    <CourseSection/>
     <Vid />
-    <InfoAbout />
+    {/* <InfoAbout /> */}
     {/* <Placements/> */}
     <Founders />
     <Partners />

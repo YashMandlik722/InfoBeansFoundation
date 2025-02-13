@@ -17,7 +17,6 @@ function SignIn() {
         try {
             const response = await sendData();
             if (response.data.User) {
-                console.log(response.data);
                 dispatch(setUser(response.data.User))
                 window.alert(response.data.message);
                 navigate("/");

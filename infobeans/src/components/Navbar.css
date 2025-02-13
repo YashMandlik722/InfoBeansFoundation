@@ -2,3 +2,17 @@
   color: red !important; /* Bootstrap's "danger" color */
 }
 
+.nav-item.nav-link {
+  color: black; /* Default color */
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-item.nav-link:hover,
+.nav-item.nav-link:focus,
+.nav-item.nav-link:active {
+  color: red !important;
+}
+
+.nav-item:focus{
+  border: black;
+}
