@@ -1,31 +1,30 @@
-import { image } from "../model/galleryModel.js"
+import Image from "../model/galleryModel.js"; 
 
 
-
-export const imagepost =async (response , request, next )=>{
-    
-  try{
-    if(request.file){
-      const picture=`/upload/${request.file.filename}`;
-      const newimage=new image({picture}) ;
-      await newimage.save()
-      response.status(201).json({message:"Image insert..." , picture})
+export const imagepost = async (req, res, next) => {
+  try {
+    if (req.file) {
+      const picture = `/uploads/${req.file.filename}`; 
+      const newImage = new Image({ picture }); 
+      await newImage.save();
+      res.status(201).json({ message: "Image inserted successfully", picture });
+    } else {
+      res.status(400).json({ message: "Bad request: No file uploaded" });
     }
-    else{
-      response.status(401).json({message:"Bed request..."})
-    }
-    }
-    catch(err){
-        response.status(500).json({err:"Internal Error ..."})
-    }
-}
-
-export const getimage= async (request , response , next )=>{
-  try{
-    const images=await image.find()
-    response.status(201).json({message:"Get All Iamges...." , images})
+  } catch (err) {
+    console.error("Error inserting image:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-  catch(err){
-    response.status(500).json({err:"Internal Error..."})
+};
+
+
+
+export const getimage = async (req, res, next) => {
+  try {
+    const images = await Image.find();
+    res.status(200).json({ message: "Fetched all images successfully", images });
+  } catch (err) {
+    console.error("Error fetching images:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};

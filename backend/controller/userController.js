@@ -3,6 +3,7 @@ import { user } from "../model/userModel.js"
 import bcrypt from "bcryptjs";
 import sendMail from "../helper/sendMail.js";
 
+//For User Sign Up
 export const signUp = async (req, res) => {
     const { email, password, name } = req.body;
 
@@ -37,6 +38,7 @@ export const signUp = async (req, res) => {
     }
 }
 
+//For User Sign In
 export const signIn = async (request, response) => {
     try {
         let { email, password } = request.body;
@@ -57,7 +59,7 @@ export const signIn = async (request, response) => {
 
         }
         else
-            return response.status(401).json({ error: "Bad request | invalid email id" });
+            return response.status(401).json({ error: "User not found | invalid email id" });
     }
     catch (err) {
         console.log("Error In usercontroller's signIn");
@@ -66,6 +68,7 @@ export const signIn = async (request, response) => {
     }
 }
 
+//Getting User List
 export const getUserList = async (request, response, next) => {
     try{
         const list = await user.find();
@@ -83,6 +86,7 @@ export const getUserList = async (request, response, next) => {
     }
 }
 
+//Getting User By Id
 export const getUserById = async (request, response, next) => {
     let id = request.params.id;
     user.findOne({ _id: id })
