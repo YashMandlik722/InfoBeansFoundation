@@ -26,7 +26,7 @@ const registrationSchema = new mongoose.Schema({
         type: String,
         require:true
     },
-    DOB:{
+    dob:{
         type: String,
         require:true
     },
@@ -56,22 +56,22 @@ const registrationSchema = new mongoose.Schema({
         type: String,
         require:true
     },
-    AnnualIncome:{
-        type: Number,
+    annualIncome:{
+        type: String,
         require:true,
-        enum: [1,2,3]
+        enum: ["0-3L","3-6L","6-10L","10-15L","More Than 15 LPA"]
     },
     preferredCity:{
         type: String,
         require:true,
         enum: ["Indore","Pune"]
     },
-    referrence:{
+    reference:{
         type: String,
         require:true,
-        enum: ["LinkedIn","Instagram","FaceBook","Print media", "Other"]
+        enum: ["LinkedIn","Instagram","FaceBook","Print Media", "Other"]
     },
-    pic:{
+    passportPhoto:{
         type: String,
         require:true,
     },
@@ -79,11 +79,11 @@ const registrationSchema = new mongoose.Schema({
         type: String,
         require:true
     },
-    marksheetLatest:{
+    latestMarksheet:{
         type: String,
         require:true
     },
-    studentAadhar:{
+    aadhar:{
         type: String,
         require:true
     },

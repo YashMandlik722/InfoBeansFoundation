@@ -5,7 +5,7 @@ import Slide from "./components/Slide";
 import Vid from "./components/Vid";
 import Form from "./components/Form";
 // import Placements from "./components/Placements"; 
-import ContentSlider from "./components/Contentslide";
+// import ContentSlider from "./components/Contentslide";
 import Studentdata from "./components/Studentdata";
 import InfoAbout from "./components/InfoAbout";
 import Count from "./components/Count";
@@ -14,22 +14,24 @@ import Trainers from "./components/Trainers";
 import Partners from "./components/Partners";
 import Achivement from "./components/Achivement";
 import Demo from "./components/Demo";
+import CourseSection from "./components/CourseDetail";
 function Home(){
     return <div className="div-home container-fluid">
   
     {/* <ContentSlider/> */}
     <Slide />
     {/* <Demo/> */}
+    <CourseSection/>
     <Vid />
-    <InfoAbout />
+    {/* <InfoAbout /> */}
     {/* <Placements/> */}
     <Founders />
     <Partners />
     <Form />
     <Trainers />
     <Studentdata />
-   <Count/>
-   <Center />
+    <Count/>
+    <Center />
     <Achivement />
     </div>
 }

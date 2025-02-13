@@ -1,0 +1,75 @@
+/* General Styles */
+.trainers-container {
+    padding: 50px 0;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .trainer-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .trainer-card:hover {
+    transform: translateY(-10px); /* Hover effect */
+  }
+  
+  .trainer-image {
+    margin-bottom: 20px;
+  }
+  
+  .trainer-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .trainer-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .position {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  
+  .bio {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #ed3453;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #b3001b;
+    color: white;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .trainer-card {
+      margin-bottom: 30px;
+    }
+  }
+  
