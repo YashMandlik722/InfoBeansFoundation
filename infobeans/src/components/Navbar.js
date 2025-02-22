@@ -93,13 +93,13 @@ function Navbar() {
               </Link>
               <div className="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" >
                 <Link to="/addStaff" className="dropdown-item">
-                  Add Staff
+                  Staff Detail
                 </Link>
-                <Link to="/team" className="dropdown-item">
-                  Popular Teachers
+                <Link to="/itepReg" className="dropdown-item">
+                  ITEP Registrations
                 </Link>
-                <Link to="/call-to-action" className="dropdown-item">
-                  Become A Teacher
+                <Link to="/brepReg" className="dropdown-item">
+                  BREP Registrations
                 </Link>
                 <Link to="/appointment" className="dropdown-item">
                   Make Better
