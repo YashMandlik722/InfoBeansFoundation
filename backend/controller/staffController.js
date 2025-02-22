@@ -55,4 +55,18 @@ export const getStaffByName = async (req, res) => {
 };
 
 
+export const addStaff = async (req, res) => {
+    try {
+        req.body.photo_url = req.files.photo[0].filename
+        req.body.aadhar_url = req.files.aadhar[0].filename
+        
+        const result = await staff.create(req.body);
+
+        if(data) res.status(200).json({message: "Staff member added successfully!",operation: true});
+        else res.status(300).json({message: "Failed to enter data"});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Internal server error", error: err.message });
+    }
+};
 

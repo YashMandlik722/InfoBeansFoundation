@@ -1,4 +1,4 @@
-import {Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Home"
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -7,24 +7,27 @@ import Gallery from "./Gallery";
 import ContactUs from "./ContactUs";
 import SignIn from "./LoginComponent/Sign-in";
 import SignUp from "./LoginComponent/Sign-up";
+import AddStaff from "./Admin/AddStaff/AddStaff";
 
-function App(){
+function App() {
     return <>
-       <Navbar />
-       
-   <Routes>
-    <Route path="/" element={<Home/>}></Route>
-    <Route path="/About" element={<About/>}></Route>
-    <Route path="/Gallery" element={<Gallery/>}></Route>
-    <Route path="/ContactUs" element={<ContactUs/>}></Route>
-    <Route path="/SignIn" element={<SignIn/>}> </Route>
-    <Route path="/sign-up" element={<SignUp/>}> </Route>
-   </Routes>
+        <Navbar />
+
+        <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/About" element={<About />}></Route>
+            <Route path="/Gallery" element={<Gallery />}></Route>
+            <Route path="/ContactUs" element={<ContactUs />}></Route>
+            <Route path="/SignIn" element={<SignIn />}> </Route>
+            <Route path="/sign-up" element={<SignUp />}> </Route>
+
+            <Route path="/addStaff" element={<AddStaff/>}/>
+        </Routes>
 
 
- 
-   <Footer />
+
+        <Footer />
     </>
 }
 
-export default App ;
+export default App;

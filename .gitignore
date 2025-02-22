@@ -3,5 +3,6 @@
 /backend/public/
 
 /infobeans/node_modules
-
 /infobeans/package-lock.json
+/infobeans/package-lock.json
+infobeans/package-lock.json

@@ -54,42 +54,46 @@ function Navbar() {
       </button> */}
       <div className="navbar-collapse collapse" id="navbarCollapse">
         <div className="navbar-nav mx-auto">
-          <Link href="/" className="nav-item nav-link " style={{fontSize:"20px"}}>
+          <Link to="/" className="nav-item nav-link " style={{fontSize:"20px"}}>
             Home
           </Link>
-          <Link href="/about" className="nav-item nav-link" style={{fontSize:"20px"}}>
+          <Link to="/about" className="nav-item nav-link" style={{fontSize:"20px"}}>
             About Us
           </Link>
-          <Link href="/gallery" className="nav-item nav-link" style={{fontSize:"20px"}}>
+          <Link to="/gallery" className="nav-item nav-link" style={{fontSize:"20px"}}>
             Gallery
           </Link>
           <div className="nav-item dropdown">
-            <Link href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{fontSize:"20px"}}>
+            <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{fontSize:"20px"}}>
               Pages
             </Link>
             <div className="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" >
-              <Link href="/facility" className="dropdown-item">
+              <Link to="/facility" className="dropdown-item">
                 Foundation Facilities
               </Link>
-              <Link href="/team" className="dropdown-item">
+              <Link to="/team" className="dropdown-item">
                 Popular Teachers
               </Link>
-              <Link href="/call-to-action" className="dropdown-item">
+              <Link to="/call-to-action" className="dropdown-item">
                 Become A Teacher
               </Link>
-              <Link href="/appointment" className="dropdown-item">
+              <Link to="/appointment" className="dropdown-item">
                 Make Better
               </Link>
-              <Link href="/testimonial" className="dropdown-item">
+              <Link to="/testimonial" className="dropdown-item">
                 Testimonial
               </Link>
-              <Link href="/404" className="dropdown-item">
+              <Link to="/404" className="dropdown-item">
                 404 Error
               </Link>
             </div>
           </div>
-          <Link href="/contactUs" className="nav-item nav-link" style={{fontSize:"20px"}}>
+          <Link to="/contactUs" className="nav-item nav-link" style={{fontSize:"20px"}}>
             Contact Us
+          </Link>
+
+          <Link to="/addStaff" className="nav-item nav-link" style={{fontSize:"20px"}}>
+            Add Staff
           </Link>
         </div>
         <button onClick={()=>navigate("/signIn")} className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
