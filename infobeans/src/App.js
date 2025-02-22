@@ -7,8 +7,10 @@ import Gallery from "./Gallery";
 import ContactUs from "./ContactUs";
 import SignIn from "./LoginComponent/Sign-in";
 import SignUp from "./LoginComponent/Sign-up";
-import AddStaff from "./Admin/AddStaff/AddStaff";
+import AddStaff from "./Admin/Staff/AddStaff/AddStaff";
 import RegistrationForm from "./FinalRegForm/RegistrationForm";
+import StaffList from "./Admin/Staff/StaffList/StaffList";
+import MemberDetail from "./Admin/Staff/StaffMemberDetail/StaffMemberDetail.js";
 
 function App() {
     return <>
@@ -22,6 +24,9 @@ function App() {
             <Route path="/SignIn" element={<SignIn />}> </Route>
             <Route path="/sign-up" element={<SignUp />}> </Route>
             <Route path="/register" element={<RegistrationForm/>}> </Route>
+
+            <Route path="/staff-list" element={<StaffList/>}/>
+            <Route path="/staff/:staffId" element={<MemberDetail/>}/>
             <Route path="/addStaff" element={<AddStaff/>}/>
         </Routes>
 
