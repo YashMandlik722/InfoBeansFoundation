@@ -98,8 +98,11 @@ function Navbar() {
                 <Link to="/itepReg" className="dropdown-item">
                   ITEP Registrations
                 </Link>
-                <Link to="/brepReg" className="dropdown-item">
-                  BREP Registrations
+                <Link to="/Slots" className="dropdown-item">
+                  Slots
+                </Link>
+                <Link to="/call-to-action" className="dropdown-item">
+                  Become A Teacher
                 </Link>
                 <Link to="/appointment" className="dropdown-item">
                   Make Better

@@ -21,8 +21,11 @@ const slotSchema = new mongoose.Schema({
     capacity:{
         type:Number,
         require:true
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     }
-
 })
 
 export const slot = mongoose.model("slot", slotSchema);
