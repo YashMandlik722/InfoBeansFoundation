@@ -18,11 +18,11 @@ export const getStaffById = async (req, res) => {
 };
 
 //Getting Staff List
-export const listOfStaff = async (req, res) => {
+export const listOfStaff = async (req, response) => {
     try {
         const list = await staff.find();
         if (list) {
-            return response.status(200).json({ Message: list });
+            return response.status(200).json({ message: list });
         }
         else {
             return response.status(404).json({ error: "List is not found" });
