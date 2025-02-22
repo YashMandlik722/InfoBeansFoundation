@@ -4,7 +4,7 @@ import { uploadRegistrationDoc } from "../helper/multerConfig.js"
 
 const route = express.Router()
 
-route.post("/register",uploadRegistrationDoc.fields([{name:"aadhar"},{name:"fatherAadhar"},{name:"marksheet12"},{name:"latestMarksheet"},{name:"passportPhoto"},{name:"incomeCertificate"},{name:"samagraId"}]),registerForExam)
+route.post("/register",uploadRegistrationDoc.fields([{name:"aadhar",maxCount: 1},{name:"fatherAadhar",maxCount: 1},{name:"marksheet12",maxCount: 1},{name:"latestMarksheet",maxCount: 1},{name:"passportPhoto",maxCount: 1},{name:"incomeCertificate",maxCount: 1},{name:"samagraId",maxCount: 1}]),registerForExam)
 route.get("/getRegList",getRegList);
 route.get("/getRegByUserId/:id",getRegByUserId);
 route.get("/regForPerticularCourse/:courseType",regForPerticularCourse);

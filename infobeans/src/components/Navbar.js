@@ -92,8 +92,8 @@ function Navbar() {
                 Admin
               </Link>
               <div className="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" >
-                <Link to="/facility" className="dropdown-item">
-                  Foundation Facilities
+                <Link to="/addStaff" className="dropdown-item">
+                  Add Staff
                 </Link>
                 <Link to="/team" className="dropdown-item">
                   Popular Teachers

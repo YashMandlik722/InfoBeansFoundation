@@ -1,0 +1,30 @@
+.staff-form-container {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 15px;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.523);
+    background: white;
+}
+
+.staff-form-label {
+    font-weight: 600;
+    color: #d9534f;
+}
+
+.staff-btn-custom {
+    background-color: #d9534f;
+    color: white;
+    font-weight: bold;
+}
+
+.staff-btn-custom:hover {
+    background-color: #c9302c;
+}
+
+.staff-header {
+    text-align: center;
+    color: #d9534f;
+    margin-bottom: 20px;
+}

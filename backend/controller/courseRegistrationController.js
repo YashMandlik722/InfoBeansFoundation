@@ -41,9 +41,8 @@ const generateRollNumber = async (courseType) => {
 
 //Taking Registration
 export const registerForExam = async (request, response) => {
+
     try {
-
-
         const { courseType } = request.body;
         const rollNo = await generateRollNumber(courseType);
 
@@ -52,7 +51,7 @@ export const registerForExam = async (request, response) => {
         
         Object.values(request.files).forEach(fileArray => {
             fileArray.forEach(file => {
-                file.fullPath = `${baseURL}${file.destination}/${file.filename}`;
+                file.fullPath = `${baseURL}${file.destination.split("/")[1]+ "/"+file.destination.split("/")[2]}/${file.filename}`;
             });
         });
 
@@ -74,7 +73,7 @@ export const registerForExam = async (request, response) => {
         //     `Dear ${reg.name},\n\nYour Application For ITEP coarse has been registered!\nStay tuned for further updates. Together, we can make a positive impact!\n\nBest Regards\nInfoBeans Foundation`
         // );
 
-        return response.status(201).json({ message: "Registration working", reg });
+        return response.status(201).json({ message: "Registration working" , reg});
     } catch (err) {
         console.log("Error In courseRegistrationController's registerForExam");
         console.log(err);

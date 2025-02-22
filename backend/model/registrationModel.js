@@ -50,7 +50,7 @@ const registrationSchema = new mongoose.Schema({
     maritalStatus:{
         type: String,
         require:true,
-        enum: ['single',"married"]
+        enum: ['unmarried',"married"]
     },
     qualification:{
         type: String,

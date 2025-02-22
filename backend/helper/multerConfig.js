@@ -1,5 +1,29 @@
 import multer from "multer";
 
+// const registrationDoc = multer.diskStorage({
+//     destination: (req,file,callback)=>{
+//         if(file.fieldname == "studentAadhar"  || file.fieldname == "fatherAadhar"){
+//             callback(null, "public/userDoc/aadhar")
+//         }
+//         else if(file.fieldname == "marksheet12"  || file.fieldname == "marksheetLatest"){
+//             callback(null, "public/userDoc/marksheet")
+//         }
+//         else if(file.fieldname == "passportPhoto" ){
+//             callback(null, "public/userDoc/photo")
+//         }
+//         else if(file.fieldname == "incomeCertificate" ){
+//             callback(null, "public/userDoc/incomeCertificate")
+//         }
+//         else if(file.fieldname == "samagraId" ){
+//             callback(null, "public/userDoc/samagra")
+//         }
+//     },
+//     filename: (req,file,callback)=>{
+//         const uniqueName = Date.now() + file.originalname;
+//         callback(null, uniqueName)
+//     }
+// })
+
 const registrationDoc = multer.diskStorage({
     destination: (req,file,callback)=>{
         if(file.fieldname == "studentAadhar"  || file.fieldname == "fatherAadhar"){
@@ -8,7 +32,7 @@ const registrationDoc = multer.diskStorage({
         else if(file.fieldname == "marksheet12"  || file.fieldname == "marksheetLatest"){
             callback(null, "public/userDoc/marksheet")
         }
-        else if(file.fieldname == "pic" ){
+        else if(file.fieldname == "passportPhoto" ){
             callback(null, "public/userDoc/photo")
         }
         else if(file.fieldname == "incomeCertificate" ){
@@ -17,6 +41,10 @@ const registrationDoc = multer.diskStorage({
         else if(file.fieldname == "samagraId" ){
             callback(null, "public/userDoc/samagra")
         }
+        else{
+            callback(null, "public/userDoc/moreData")
+        }
+        
     },
     filename: (req,file,callback)=>{
         const uniqueName = Date.now() + file.originalname;
@@ -30,10 +58,10 @@ console.log("In Multer");
 const staffDoc = multer.diskStorage({
     destination: (req,file,callback)=>{
         if(file.fieldname == "aadhar"){
-            callback(null, "public/staffDoc/aadhar")
+            callback(null, "/staffDoc/aadhar")
         }
         else if(file.fieldname == "pic" ){
-            callback(null, "public/staffDoc/photo")
+            callback(null, "/staffDoc/photo")
         }
         
     },

@@ -29,6 +29,7 @@ console.log(__dirname);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname,"public")))
 app.use("/user", userRouter);
 app.use("/course", registerRouter);
 app.use("/result", resultRouter);
@@ -36,7 +37,9 @@ app.use("/staff", staffRouter);
 app.use("/Gallery" , Gallery)
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/slot", slotRouter);
-
+app.get("/",(req,res)=>{
+    res.status(200).json({message:"OK"})
+})
 app.listen(3001, () => {
     console.log("running on localhost:3001");
 })

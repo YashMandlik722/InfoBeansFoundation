@@ -1,4 +1,4 @@
-import React, { use, useRef, useState } from "react";
+import React, { use, useReducer, useRef, useState } from "react";
 import axios from "axios"
 
 import {
@@ -46,6 +46,41 @@ const RegistrationForm = () => {
         preferredCity: "",
         userID: user._id
     });
+    
+    const [myFiles, dispatch] = useReducer((myFiles,action)=>{
+        if(action.type == "aadhar")
+            myFiles.aadhar = action.payload
+        else if(action.type == "fatherAadhar")
+            myFiles.fatherAadhar = action.payload
+        else if(action.type == "passportPhoto")
+            myFiles.passportPhoto = action.payload
+        else if(action.type == "marksheet12")
+            myFiles.marksheet12 = action.payload
+        else if(action.type == "latestMarksheet")
+            myFiles.latestMarksheet = action.payload
+        else if(action.type == "samagraId")
+            myFiles.samagraId = action.payload
+        else if(action.type == "incomeCertificate")
+            myFiles.incomeCertificate = action.payload
+        return {...myFiles}
+    },{
+        
+        aadhar: {},
+        fatherAadhar: {},
+        passportPhoto: {},
+        marksheet12: {},
+        latestMarksheet: {},
+        samagraId: {},
+        incomeCertificate: {}
+    })
+
+    const hand = (type, event) => {
+        const file = event.target.files[0];
+        console.log(file);
+        dispatch({ type, payload: file });
+      };
+
+    
 
     const [errors, setErrors] = useState({});
 
@@ -101,9 +136,7 @@ const RegistrationForm = () => {
     const handleBack = () => setActiveStep((prevStep) => prevStep - 1);
 
     // Handle final submission
-    const handleSubmit = () => {
-        // alert("Form submitted successfully!");
-        // console.log(formData);
+    const handleSubmit = (e) => {
         sendData();
     };
 
@@ -126,15 +159,22 @@ const RegistrationForm = () => {
         f.append("courseType",formData.courseType)
         f.append("preferredCity",formData.preferredCity)
         f.append("userID",formData.userID)
-        f.append("aadhar",aadhar.current.files)
-        f.append("fatherAadhar",fatherAadhar.current.files)
-        f.append("passportPhoto",passportPhoto.current.files)
-        f.append("marksheet12",marksheet12.current.files)
-        f.append("latestMarksheet",latestMarksheet.current.files)
-        f.append("samagraId",samagraId.current.files)
-        f.append("incomeCertificate",incomeCertificate.current.files)
-        let response = await axios.post(url, f)
-        console.log(response);
+        f.append("aadhar",myFiles.aadhar)
+        f.append("fatherAadhar",myFiles.fatherAadhar)
+        f.append("passportPhoto",myFiles.passportPhoto)
+        f.append("marksheet12",myFiles.marksheet12)
+        f.append("latestMarksheet",myFiles.latestMarksheet)
+        f.append("samagraId",myFiles.samagraId)
+        f.append("incomeCertificate",myFiles.incomeCertificate)
+        const obj = {...formData,...myFiles} 
+        console.log(obj)
+        // let response = await axios.post(url, f)
+        let response = await axios.post("http://localhost:3001/course/register",obj,{
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+        console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -284,7 +324,7 @@ const RegistrationForm = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <Input type="file" ref={aadhar}  name="aadhar" fullWidth margin="normal"  />
+                                        <Input type="file" ref={aadhar} onChange={(e)=>hand("aadhar",e)} name="aadhar" fullWidth margin="normal"  />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>Aadhar</h3>
@@ -292,7 +332,7 @@ const RegistrationForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Input type="file" ref={fatherAadhar} name="fatherAadhar" fullWidth margin="normal"  />
+                                        <Input type="file" ref={fatherAadhar} onChange={(e)=>hand("fatherAadhar",e)} name="fatherAadhar" fullWidth margin="normal"  />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>Father's Aadhar</h3>
@@ -300,7 +340,7 @@ const RegistrationForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="file" ref={passportPhoto} label="passportPhoto" name="passportPhoto" fullWidth margin="normal"  />
+                                        <input type="file" ref={passportPhoto} label="passportPhoto" onChange={(e)=>hand("passportPhoto",e)} name="passportPhoto" fullWidth margin="normal"  />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>Passport Size Photo</h3>
@@ -308,7 +348,7 @@ const RegistrationForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Input type="file" ref={marksheet12} label="marksheet12" name="marksheet12" fullWidth margin="normal"  />
+                                        <Input type="file" ref={marksheet12} label="marksheet12" onChange={(e)=>hand("marksheet12",e)} name="marksheet12" fullWidth margin="normal"  />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>12th Marksheet</h3>
@@ -316,7 +356,7 @@ const RegistrationForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Input type="file" ref={latestMarksheet} label="latestMarksheet" name="latestMarksheet" fullWidth margin="normal"  />
+                                        <Input type="file" ref={latestMarksheet} label="latestMarksheet" onChange={(e)=>hand("latestMarksheet",e)} name="latestMarksheet" fullWidth margin="normal"  />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>Latest marksheet</h3>
@@ -324,7 +364,7 @@ const RegistrationForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Input type="file" ref={samagraId} label="samagraId" name="samagraId" fullWidth margin="normal"   />
+                                        <Input type="file" ref={samagraId} label="samagraId" onChange={(e)=>hand("samagraId",e)} name="samagraId" fullWidth margin="normal"   />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>Samagra Id</h3>
@@ -332,7 +372,7 @@ const RegistrationForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Input type="file" ref={incomeCertificate} label="incomeCertificate" name="incomeCertificate" fullWidth margin="normal"  />
+                                        <Input type="file" ref={incomeCertificate} label="incomeCertificate" onChange={(e)=>hand("incomeCertificate",e)} name="incomeCertificate" fullWidth margin="normal"  />
                                     </td>
                                     <td className="align-items-center">
                                         <h3>Income Certificate</h3>
