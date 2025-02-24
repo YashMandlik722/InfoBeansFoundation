@@ -29,14 +29,7 @@ const MySlots = () => {
     setDivVisible(!divVisible);
   };
 
-  const handleDelete = (event,id) => {
-    deleteSlots(id);
-    const row = event.currentTarget.closest('tr');
-    row.classList.add('fade-out');
-    setTimeout(() => {
-      row.remove();
-    }, 500);
-  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -127,7 +120,7 @@ const MySlots = () => {
                     <button className="btn btn-warning btn-sm update-btn" style={{marginRight: "10px", backgroundColor: "lightyellow",color: "black"}} onClick={()=>updateSlots(data)}>Update</button>
                     <button
                       className="btn btn-danger btn-sm delete-btn"
-                      onClick={(event)=>handleDelete(event,data._id)}
+                      onClick={()=>deleteSlots(data._id)}
                     >
                       Delete
                     </button>
