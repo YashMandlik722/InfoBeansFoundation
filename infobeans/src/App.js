@@ -11,6 +11,7 @@ import AddStaff from "./Admin/Staff/AddStaff/AddStaff";
 import RegistrationForm from "./FinalRegForm/RegistrationForm";
 import StaffList from "./Admin/Staff/StaffList/StaffList";
 import MemberDetail from "./Admin/Staff/StaffMemberDetail/StaffMemberDetail.js";
+import EditMember from "./Admin/Staff/EdifStaffMember/EditMember.js";
 
 function App() {
     return <>
@@ -27,6 +28,7 @@ function App() {
 
             <Route path="/staff-list" element={<StaffList/>}/>
             <Route path="/staff/:staffId" element={<MemberDetail/>}/>
+            <Route path="/edit-staff-member" element={<EditMember/>}/>
             <Route path="/addStaff" element={<AddStaff/>}/>
         </Routes>
 

@@ -1,5 +1,5 @@
 import express from "express"
-import { getStaffById, listOfStaff, getStaffByName, addStaff } from "../controller/staffController.js"
+import { getStaffById, listOfStaff, getStaffByName, addStaff, editStaff } from "../controller/staffController.js"
 import multer from "multer";
 
 const storage = multer.diskStorage({
@@ -18,4 +18,6 @@ router.get("/:id", getStaffById);
 router.get("/listOfStaff", listOfStaff);
 router.get("/staffByName", getStaffByName);
 router.post("/addStaff",upload.fields([{name: "photo"},{name: "aadhar"}]),addStaff);
+router.patch("/edit-staff/:staffId", editStaff);
+
 export default router;
