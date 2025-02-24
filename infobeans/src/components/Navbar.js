@@ -95,8 +95,11 @@ function Navbar() {
                 <Link to="/staff-list" className="dropdown-item">
                   Manage Staff
                 </Link>
-                <Link to="/team" className="dropdown-item">
-                  Popular Teachers
+                <Link to="/itepReg" className="dropdown-item">
+                  ITEP Registrations
+                </Link>
+                <Link to="/Slots" className="dropdown-item">
+                  Slots
                 </Link>
                 <Link to="/call-to-action" className="dropdown-item">
                   Become A Teacher

@@ -90,7 +90,7 @@ export const getRegList = async (request, response) => {
         }
         else {
             console.log("No registration found (In courseRegistrationController's getRegList)");
-            return response.status(404).json({ error: "No user Found" });
+            return response.status(404).json({ error: "No registration found" });
         }
     } catch (err) {
         console.log("Error In courseRegistrationController's getUserList");
@@ -168,8 +168,8 @@ export const regForPerticularCourse = async (req,res) => {
     try {
         let courseType  = req.params.courseType;
         const list = await registration.find({ courseType });
-        if (!list) {
-            return response.status(404).json({ error: "Registration Detail not found" });
+        if (list.length == 0) {
+            return res.status(404).json({ error: "Registration Detail not found" });
         } else {
             return res.status(200).json({ Message: "Registration List Found",list });
         }

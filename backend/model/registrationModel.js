@@ -69,7 +69,7 @@ const registrationSchema = new mongoose.Schema({
     reference:{
         type: String,
         require:true,
-        enum: ["LinkedIn","Instagram","FaceBook","Print Media", "Other"]
+        enum: ["LinkedIn","Instagram","Facebook","Print Media", "Other"]
     },
     passportPhoto:{
         type: String,
@@ -101,8 +101,7 @@ const registrationSchema = new mongoose.Schema({
     },
     transactionId:{
         type: String,
-        require:true,
-        unique: true
+        default:"DummyId"
     },
     courseType:{
         type: String,

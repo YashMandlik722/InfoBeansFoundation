@@ -1,0 +1,33 @@
+
+.registration-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.registration-title {
+    text-align: center;
+    color: #b30000;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.profile-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.profile-info {
+    flex: 1;
+}

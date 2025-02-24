@@ -1,0 +1,35 @@
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+.registration-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.registration-title {
+    text-align: center;
+    color: #b30000;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.registration-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.registration-table th, .registration-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.registration-table th {
+    background-color: #b30000;
+    color: white;
+}
+.registration-table tr:hover {
+    background-color: #f1f1f1;
+}

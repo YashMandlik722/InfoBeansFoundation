@@ -21,10 +21,12 @@ import {
     Input,
 } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const steps = ["Basic Details", "Address & Qualification", "Document Uploads", "Payment & Submission"];
 
 const RegistrationForm = () => {
+    const navigate = useNavigate()
     const {user}=useSelector((store)=>store.user);
     // console.log(user);
     
@@ -175,6 +177,13 @@ const RegistrationForm = () => {
             },
           })
         console.log(response.data);
+        if(response.data.message == "Registration working"){
+            window.alert("Registration Successful");
+            navigate("/")
+        }else{
+            window.alert("Registration Failed");
+            navigate("/register")
+        }
         } catch (error) {
             console.log(error);
         }
