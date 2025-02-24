@@ -16,6 +16,7 @@ import BrepRegComponent from "./FinalRegUI/BrepRegComponent";
 import ViewItepDetail from "./FinalRegUI/ViewItepDetail";
 import ViewBrepDetail from "./FinalRegUI/ViewBrepDetail";
 import EditMember from "./Admin/Staff/EdifStaffMember/EditMember.js";
+import StaffList from "./Admin/Staff/StaffList/StaffList.js";
 
 function App() {
     return <>
@@ -31,6 +32,8 @@ function App() {
             <Route path="/register" element={<RegistrationForm/>}> </Route>
 
             {/* <Route path="/staff-list" element={<StaffList/>}/> */}
+
+            <Route path="/staff-list" element={<StaffList/>}/>
             <Route path="/staff/:staffId" element={<MemberDetail/>}/>
             <Route path="/itepReg" element={<ItepRegComponent/>}> </Route>
             <Route path="/viewDetailItep" element={<ViewItepDetail/>}> </Route>
