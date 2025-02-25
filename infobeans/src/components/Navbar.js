@@ -76,13 +76,10 @@ function Navbar() {
             </Link>}
 
             {/* Result Button */}
-            {isLoggedIn && !user.isAdmin && <Link to="/userResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
+            {isLoggedIn && !user.isAdmin && <Link to="/studentResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
               Result
             </Link>}
             {/* Result Button */}
-            {isLoggedIn && user.isAdmin && <Link to="/adminResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
-              Result
-            </Link>}
 
 
             {/* About Us Button */}
@@ -99,13 +96,19 @@ function Navbar() {
                 <Link to="/staff-list" className="dropdown-item">
                   Manage Staff
                 </Link>
+                <Link to="/adminResult" className="dropdown-item">
+                  Manage Result
+                </Link>
                 <Link to="/itepReg" className="dropdown-item">
                   ITEP Registrations
                 </Link>
-                <Link to="/Slots" className="dropdown-item">
-                  Slots
+                <Link to="/brepReg" className="dropdown-item">
+                  BREP Registrations
                 </Link>
-                <Link to="/call-to-action" className="dropdown-item">
+                <Link to="/Slots" className="dropdown-item">
+                  Manage Slots
+                </Link>
+                {/* <Link to="/call-to-action" className="dropdown-item">
                   Become A Teacher
                 </Link>
                 <Link to="/appointment" className="dropdown-item">
@@ -116,7 +119,7 @@ function Navbar() {
                 </Link>
                 <Link to="/404" className="dropdown-item">
                   404 Error
-                </Link>
+                </Link> */}
               </div>
             </div>}
 

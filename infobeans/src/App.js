@@ -15,6 +15,8 @@ import ItepRegComponent from "./FinalRegUI/ItepRegComponent";
 import BrepRegComponent from "./FinalRegUI/BrepRegComponent";
 import ViewItepDetail from "./FinalRegUI/ViewItepDetail";
 import ViewBrepDetail from "./FinalRegUI/ViewBrepDetail";
+import EditMember from "./Admin/Staff/EdifStaffMember/EditMember.js";
+import StaffList from "./Admin/Staff/StaffList/StaffList.js";
 import StudentResult from "./ResultComponents/StudentResult.js";
 import AdminResult from "./ResultComponents/AdminResult.js";
 
@@ -34,13 +36,18 @@ function App() {
             <Route path="/register" element={<RegistrationForm/>}> </Route>
 
             {/* <Route path="/staff-list" element={<StaffList/>}/> */}
+
+            <Route path="/staff-list" element={<StaffList/>}/>
             <Route path="/staff/:staffId" element={<MemberDetail/>}/>
             <Route path="/itepReg" element={<ItepRegComponent/>}> </Route>
             <Route path="/viewDetailItep" element={<ViewItepDetail/>}> </Route>
             <Route path="/viewDetailBrep" element={<ViewBrepDetail/>}> </Route>
             <Route path="/brepReg" element={<BrepRegComponent/>}> </Route>
+            <Route path="/edit-staff-member" element={<EditMember/>}/>
             <Route path="/addStaff" element={<AddStaff/>}/>
             <Route path="/Slots" element={<Slots/>}/>
+            <Route path="/adminResult" element={<AdminResult/>}/>
+            <Route path="/studentResult" element={<StudentResult/>}/>
         </Routes>
 
 

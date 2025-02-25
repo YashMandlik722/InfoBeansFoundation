@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./StaffMemberDetail.css";
 
 function MemberDetail() {
+    const navigate = useNavigate();
     const [member, setMember] = useState();
     const location = useLocation();
 
     useEffect(() => {
         setMember(location.state);
-    }, []);
+    }, [])
 
     return (
         <div className="staff-member-container container mb-3 ">
@@ -35,6 +36,10 @@ function MemberDetail() {
                             <p><strong>Address:</strong> {member.address}</p>
                         </div>
                     </div>
+                    <button className="rounded p-1 w-50 btn-lg btn-outline-primary" 
+                    onClick={()=>navigate("/edit-staff-member",{state: member})}>Edit</button>
+
+                    <button className="p-1 btn-lg w-50 btn-outline-danger">Delete</button>
                 </div>
             )}
         </div>
