@@ -19,6 +19,7 @@ import EditMember from "./Admin/Staff/EdifStaffMember/EditMember.js";
 import StaffList from "./Admin/Staff/StaffList/StaffList.js";
 import StudentResult from "./ResultComponents/StudentResult.js";
 import AdminResult from "./ResultComponents/AdminResult.js";
+import SlotResult from "./ResultComponents/Slot Result/SlotResult.js";
 
 function App() {
     return <>
@@ -47,6 +48,7 @@ function App() {
             <Route path="/addStaff" element={<AddStaff/>}/>
             <Route path="/Slots" element={<Slots/>}/>
             <Route path="/adminResult" element={<AdminResult/>}/>
+            <Route path="/adminResult/slot/:slotId" element={<SlotResult/>}/>
             <Route path="/studentResult" element={<StudentResult/>}/>
         </Routes>
 
