@@ -82,16 +82,16 @@ export const resultMarking = async (req, res) => {
         const existingResults = await result.find();
 
         const obj = {
-            resultType : ""
+            resultType: ""
         }
         let phase = existingResults[0].phase;
-        if(phase === "Applied"){
+        if (phase === "Applied") {
             phase = "Witten Done";
             obj.resultType = "written_result"
-        }else if(phase === "Written Done"){
+        } else if (phase === "Written Done") {
             phase = "Interview Done";
             obj.resultType = "interview_result"
-        }else if(phase === "Interview Done"){
+        } else if (phase === "Interview Done") {
             phase = "House Visit Done";
             obj.resultType = "houseVisit_result"
         }
@@ -101,24 +101,24 @@ export const resultMarking = async (req, res) => {
             for (let j = 0; j < existingResults.length; j++) {
                 if (json[i].rollNo === existingResults[j].rollNo) {
                     break;
-                } else if (j == existingResults.length-1 && !json[i].rollNo === existingResults[j].rollNo) {
+                } else if (j == existingResults.length - 1 && !json[i].rollNo === existingResults[j].rollNo) {
                     return res.status(400).send("Error in inserting data in" + json[i].rollNo)
                 }
             }
         }
 
-        const {resultType} = obj;
-        
-        json.map(async(student)=>{
-            const updatedResult = await result.updateOne({rollNo:student.rollNo},{[resultType]:student.result,phase:phase,isSlotAssigned:false});
+        const { resultType } = obj;
+
+        json.map(async (student) => {
+            const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
             // const updatedResult = await result.updateOne({rollNo:student.rollNo},{$set: {[resultType]:student.result}});
-            if(!updatedResult){
+            if (!updatedResult) {
                 return res.status(400).send("Error in inserting data")
             }
         })
-        
 
-        return res.status(200).json({Message:"Result Updated"})
+
+        return res.status(200).json({ Message: "Result Updated" })
 
     } catch (err) {
         console.log("Error In resultController's resultMarking");
@@ -145,4 +145,14 @@ export const getResultByUserId = async (request, response, next) => {
         });
 }
 
+// Getting Result By Slot Id (Admin)
+export const resultBySlotId = async (req, res) => {
+    try {
+        const data = await result.find({ slotId: req.params.slotId });
+        res.status(200).json({ "operation": true, "result": data })
 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ "operation": false, "message": "Internal Server Error" })
+    }
+}
