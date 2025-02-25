@@ -15,6 +15,8 @@ import ItepRegComponent from "./FinalRegUI/ItepRegComponent";
 import BrepRegComponent from "./FinalRegUI/BrepRegComponent";
 import ViewItepDetail from "./FinalRegUI/ViewItepDetail";
 import ViewBrepDetail from "./FinalRegUI/ViewBrepDetail";
+import StudentResult from "./ResultComponents/StudentResult.js";
+import AdminResult from "./ResultComponents/AdminResult.js";
 
 function App() {
     return <>
@@ -24,6 +26,8 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/About" element={<About />}></Route>
             <Route path="/Gallery" element={<Gallery />}></Route>
+            <Route path="/userResult" element={<StudentResult />}></Route>
+            <Route path="/adminResult" element={<AdminResult />}></Route>
             <Route path="/ContactUs" element={<ContactUs />}></Route>
             <Route path="/SignIn" element={<SignIn />}> </Route>
             <Route path="/sign-up" element={<SignUp />}> </Route>

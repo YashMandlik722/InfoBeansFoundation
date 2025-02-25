@@ -76,7 +76,11 @@ function Navbar() {
             </Link>}
 
             {/* Result Button */}
-            {isLoggedIn && !user.isAdmin && <Link to="/gallery" className="nav-item nav-link" style={{ fontSize: "20px" }}>
+            {isLoggedIn && !user.isAdmin && <Link to="/userResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
+              Result
+            </Link>}
+            {/* Result Button */}
+            {isLoggedIn && user.isAdmin && <Link to="/adminResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
               Result
             </Link>}
 
