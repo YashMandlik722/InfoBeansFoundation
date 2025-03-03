@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { registration } from "../model/registrationModel.js";
 import { result } from "../model/resultModel.js";
 import convertExcelToJson from "convert-excel-to-json";
@@ -130,7 +131,7 @@ export const resultMarking = async (req, res) => {
 //Getting Results By User Id (User)
 export const getResultByUserId = async (request, response, next) => {
     let id = request.params.id;
-    result.findOne({ userID: id })
+    result.findOne({ userID: new mongoose.Types.ObjectId(id)})
         .then(result => {
             if (result) {
                 return response.status(200).json({ message: "Result Details Found Successfully", result });

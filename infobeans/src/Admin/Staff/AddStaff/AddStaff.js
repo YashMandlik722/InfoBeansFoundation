@@ -13,7 +13,7 @@ function AddStaff() {
         maritalStatus: "single",
         qualification: "",
         salary: "",
-        role: "management"
+        role: "Management"
     });
 
     const handleChangeData = (event) => {

@@ -55,14 +55,14 @@ ul li {
 
 .btn {
   margin-top: 10px;
-  background-color: #dc0033;
+  /* background-color: transparent; */
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
 }
 
 .btn:hover {
-  background-color: #b3001e;
+  /* background-color: transparent; */
 }
 
 /* Fade-in animation */

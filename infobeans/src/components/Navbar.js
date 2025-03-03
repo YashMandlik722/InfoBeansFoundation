@@ -132,7 +132,7 @@ function Navbar() {
           {!isLoggedIn && <button onClick={() => navigate("/signIn")} className="nav-item bg-danger  text-light  rounded-5 roundedx ">
             Sign In<i className="fa fa-arrow-right ms-3"></i>
           </button>}
-          {isLoggedIn && <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); }} to="/" className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
+          {isLoggedIn && <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); navigate("/");}}  className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
             Sign Out<i className="fa fa-sign-out-alt ms-3"></i>
           </button>}
         </div>
