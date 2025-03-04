@@ -69,7 +69,7 @@ export const getResultList = async (request, response) => {
 //Marking Results (Admin)
 export const resultMarking = async (req, res) => {
     try {
-
+        console.log(req.file)
         const excelData = req.file.buffer;
         const json = convertExcelToJson({
             source: excelData,
@@ -80,46 +80,57 @@ export const resultMarking = async (req, res) => {
             }
         }).Sheet1;
 
-        const existingResults = await result.find();
+        // console.log(json)
+        const phase = req.body.phase;
 
-        const obj = {
-            resultType : ""
-        }
-        let phase = existingResults[0].phase;
-        if(phase === "Applied"){
+        // not getting this 
+        const existingResults = await result.find();
+        if(existingResults.length == 0) return res.send({"opration": false, "message": "No Exiting result found.."});
+
+        // const obj = {
+        //     resultType: ""
+        // }
+        // cannot read the properties of undefined means not getting the existingResults
+        // now the logic is changed so we need to make the changes accordingly.
+        
+        // not required
+        /*let phase = existingResults[0].phase;
+        if (phase === "Applied") {
             phase = "Witten Done";
             obj.resultType = "written_result"
-        }else if(phase === "Written Done"){
+        } else if (phase === "Written Done") {
             phase = "Interview Done";
             obj.resultType = "interview_result"
-        }else if(phase === "Interview Done"){
+        } else if (phase === "Interview Done") {
             phase = "House Visit Done";
             obj.resultType = "houseVisit_result"
-        }
+        }*/
 
         for (let i = 0; i < json.length; i++) {
-            json[i].phase = phase;
+            json[i].phase = req.body.phase;
             for (let j = 0; j < existingResults.length; j++) {
                 if (json[i].rollNo === existingResults[j].rollNo) {
                     break;
-                } else if (j == existingResults.length-1 && !json[i].rollNo === existingResults[j].rollNo) {
+                } else if (j == existingResults.length - 1 && !json[i].rollNo === existingResults[j].rollNo) {
                     return res.status(400).send("Error in inserting data in" + json[i].rollNo)
                 }
             }
         }
 
-        const {resultType} = obj;
-        
-        json.map(async(student)=>{
-            const updatedResult = await result.updateOne({rollNo:student.rollNo},{[resultType]:student.result,phase:phase,isSlotAssigned:false});
-            // const updatedResult = await result.updateOne({rollNo:student.rollNo},{$set: {[resultType]:student.result}});
-            if(!updatedResult){
+        let resultType ;
+        if(phase=="Written Done") resultType = "written_result";
+        else if(phase == "Interview Done") resultType = "interview_result";
+        else if(phase == "House Visit Done") resultType = "houseVisit_result";
+
+        json.map(async (student) => {
+            const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
+            if (!updatedResult) {
                 return res.status(400).send("Error in inserting data")
             }
         })
-        
 
-        return res.status(200).json({Message:"Result Updated"})
+
+        return res.status(200).json({ Message: "Result Updated" })
 
     } catch (err) {
         console.log("Error In resultController's resultMarking");
@@ -146,4 +157,14 @@ export const getResultByUserId = async (request, response, next) => {
         });
 }
 
+// Getting Result By Slot Id (Admin)
+export const resultBySlotId = async (req, res) => {
+    try {
+        const data = await result.find({ slotId: req.params.slotId });
+        res.status(200).json({ "operation": true, "result": data })
 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ "operation": false, "message": "Internal Server Error" })
+    }
+}

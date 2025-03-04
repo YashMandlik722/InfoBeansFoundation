@@ -10,8 +10,13 @@ function ItepRegComponent(){
     const location = useLocation()
 
     const loadData = async()=>{
-        const response = await axios.get("http://localhost:3001/course/regForPerticularCourse/ITEP");
-        setRegData(response.data.list);
+        try {
+            const response = await axios.get("http://localhost:3001/course/regForPerticularCourse/ITEP");
+            console.log(response.data.list);
+            setRegData(response.data.list);
+        } catch (error) {
+            console.log(error)
+        }
     }
     useEffect(()=>{
         loadData();

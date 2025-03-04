@@ -145,11 +145,12 @@ export const rejectApplication = async (req, res) => {
     try {
         let { reason } = req.body;
         let id = req.params.id;
+        console.log(id);
         const regInfo = await registration.findOne({ userID: id });
         if (!regInfo) {
             return response.status(404).json({ error: "Registration Detail not found" });
         } else {
-            const update = await registration.findByIdAndUpdate(id, { isVerified: "Rejected" });
+            const update = await registration.findByIdAndUpdate(regInfo._id, { isVerified: "Rejected" });
             // sendMail(regInfo.email,
             //     "Better Luck Next Time!",
             //     `Dear ${regInfo.name},\n\nYour Application For ITEP coarse has been rejected!\nDue to - ${reason}.\n\nBest Regards\nInfoBeans Foundation`
@@ -167,7 +168,7 @@ export const rejectApplication = async (req, res) => {
 export const regForPerticularCourse = async (req,res) => {
     try {
         let courseType  = req.params.courseType;
-        const list = await registration.find({ courseType });
+        const list = await registration.find({ courseType, isVerified:"Pending" });
         if (list.length == 0) {
             return res.status(404).json({ error: "Registration Detail not found" });
         } else {
