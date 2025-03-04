@@ -16,6 +16,7 @@ function AdminResult() {
         try {
             const response = await axios.get(API.GET_ALL_SLOTS);
             setSlots(response.data.slots);
+            // console.log(response.data.slots);
         } catch (err) {
             console.log(err);
         }
@@ -45,6 +46,7 @@ function AdminResult() {
                     ))}
                 </tbody>
             </table>
+            <button onClick={()=>navigate("/uploadResult",{state: slots})} className="w-100 btn btn-primary m-auto">Upload result</button>
         </div>
     );
 }

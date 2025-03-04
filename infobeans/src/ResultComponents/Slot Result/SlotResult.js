@@ -12,7 +12,6 @@ function SlotResult(){
     const loadResult = async()=>{
         const response = await axios.get(Api.GET_SLOT_RESULT+params.slotId);
         console.log(response.data);
-
         setResult(response.data.result);
     }
     return <>

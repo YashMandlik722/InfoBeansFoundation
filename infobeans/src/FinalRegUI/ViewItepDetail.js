@@ -10,15 +10,27 @@ function ViewItepDetail() {
 
     const [regData, setRegData] = useState(location.state);
 
-    const markVerified = async()=>{
-        const response = await axios.put("http://localhost:3001/course//markVerified/"+regData.userID);
-        window.alert("Marked Verified");
-        navigate("/itepReg");
+    const markVerified = async () => {
+        try {
+            const response = await axios.put("http://localhost:3001/course//markVerified/" + regData.userID);
+            console.log(response.data);
+            window.alert("Marked Verified");
+            navigate("/itepReg");
+        } catch (err) {
+            window.alert(err)
+            console.log(err);
+        }
     }
-    const markRejected = async()=>{
-        const response = await axios.put("http://localhost:3001/course//rejectApplication/"+regData.userID);
-        window.alert("Marked rejected");
-        navigate("/itepReg");
+    const markRejected = async () => {
+        try {
+            const response = await axios.put("http://localhost:3001/course//rejectApplication/" + regData.userID);
+            console.log(response.data);
+
+            window.alert("Marked rejected");
+            navigate("/itepReg");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return <>
@@ -50,43 +62,43 @@ function ViewItepDetail() {
                 <div className="col-md-4 d-flex justify-content-center bg-light p-2" >
                     <div>
                         <h4 className="text-danger">Aadhar</h4>
-                        <img src={regData.aadhar} alt="Profile Image" className="profile-image mb-3" style={{width:"100%" , border:"1px solid black"}}/>
+                        <img src={regData.aadhar} alt="Profile Image" className="profile-image mb-3" style={{ width: "100%", border: "1px solid black" }} />
                     </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-center bg-light" >
                     <div>
                         <h4 className="text-danger">Father's Aadhar</h4>
-                        <img src={regData.fatherAadhar} alt="Profile Image" className="profile-image mb-3" style={{width:"100%" , border:"1px solid black"}}/>
+                        <img src={regData.fatherAadhar} alt="Profile Image" className="profile-image mb-3" style={{ width: "100%", border: "1px solid black" }} />
                     </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-center bg-light p-2" >
                     <div>
                         <h4 className="text-danger">Income Certificate</h4>
-                        <img src={regData.incomeCertificate} alt="Profile Image" className="profile-image mb-3" style={{width:"100%" , border:"1px solid black"}}/>
+                        <img src={regData.incomeCertificate} alt="Profile Image" className="profile-image mb-3" style={{ width: "100%", border: "1px solid black" }} />
                     </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-center bg-light" >
                     <div>
                         <h4 className="text-danger">12th Marksheet</h4>
-                        <img src={regData.marksheet12} alt="Profile Image" className="profile-image mb-3" style={{width:"100%" , border:"1px solid black"}}/>
+                        <img src={regData.marksheet12} alt="Profile Image" className="profile-image mb-3" style={{ width: "100%", border: "1px solid black" }} />
                     </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-center bg-light p-2" >
                     <div>
                         <h4 className="text-danger">Latest Marksheet</h4>
-                        <img src={regData.latestMarksheet} alt="Profile Image" className="profile-image mb-3" style={{width:"100%" , border:"1px solid black"}}/>
+                        <img src={regData.latestMarksheet} alt="Profile Image" className="profile-image mb-3" style={{ width: "100%", border: "1px solid black" }} />
                     </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-center bg-light" >
                     <div>
                         <h4 className="text-danger">Samagra Id</h4>
-                        <img src={regData.samagraId} alt="Profile Image" className="profile-image mb-3" style={{width:"100%" , border:"1px solid black"}}/>
+                        <img src={regData.samagraId} alt="Profile Image" className="profile-image mb-3" style={{ width: "100%", border: "1px solid black" }} />
                     </div>
                 </div>
             </div>
             <div className="text-center mt-3">
-                <button className="btn-outline-success w-25 m-2" onClick={markVerified} style={{borderRadius:"7px"}}>Accept</button>
-                <button className="btn-outline-danger w-25 m-2" onClick={markRejected} style={{borderRadius:"7px"}}>Reject</button>
+                <button className="btn-outline-success w-25 m-2" onClick={markVerified} style={{ borderRadius: "7px" }}>Accept</button>
+                <button className="btn-outline-danger w-25 m-2" onClick={markRejected} style={{ borderRadius: "7px" }}>Reject</button>
             </div>
         </div>
     </>

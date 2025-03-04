@@ -68,7 +68,7 @@ export const getResultList = async (request, response) => {
 //Marking Results (Admin)
 export const resultMarking = async (req, res) => {
     try {
-
+        console.log(req.file)
         const excelData = req.file.buffer;
         const json = convertExcelToJson({
             source: excelData,
@@ -79,12 +79,21 @@ export const resultMarking = async (req, res) => {
             }
         }).Sheet1;
 
-        const existingResults = await result.find();
+        // console.log(json)
+        const phase = req.body.phase;
 
-        const obj = {
-            resultType: ""
-        }
-        let phase = existingResults[0].phase;
+        // not getting this 
+        const existingResults = await result.find();
+        if(existingResults.length == 0) return res.send({"opration": false, "message": "No Exiting result found.."});
+
+        // const obj = {
+        //     resultType: ""
+        // }
+        // cannot read the properties of undefined means not getting the existingResults
+        // now the logic is changed so we need to make the changes accordingly.
+        
+        // not required
+        /*let phase = existingResults[0].phase;
         if (phase === "Applied") {
             phase = "Witten Done";
             obj.resultType = "written_result"
@@ -94,10 +103,10 @@ export const resultMarking = async (req, res) => {
         } else if (phase === "Interview Done") {
             phase = "House Visit Done";
             obj.resultType = "houseVisit_result"
-        }
+        }*/
 
         for (let i = 0; i < json.length; i++) {
-            json[i].phase = phase;
+            json[i].phase = req.body.phase;
             for (let j = 0; j < existingResults.length; j++) {
                 if (json[i].rollNo === existingResults[j].rollNo) {
                     break;
@@ -107,11 +116,13 @@ export const resultMarking = async (req, res) => {
             }
         }
 
-        const { resultType } = obj;
+        let resultType ;
+        if(phase=="Written Done") resultType = "written_result";
+        else if(phase == "Interview Done") resultType = "interview_result";
+        else if(phase == "House Visit Done") resultType = "houseVisit_result";
 
         json.map(async (student) => {
             const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
-            // const updatedResult = await result.updateOne({rollNo:student.rollNo},{$set: {[resultType]:student.result}});
             if (!updatedResult) {
                 return res.status(400).send("Error in inserting data")
             }

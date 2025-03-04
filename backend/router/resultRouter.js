@@ -4,7 +4,9 @@ import { bulkResult, getResultById, getResultByUserId, getResultList, resultBySl
 
 
 const router  =  express.Router();
-const upload = multer();
+
+const storage = multer.memoryStorage();
+const upload = multer({storage});
 
 router.get("/getResult/:id", getResultById);
 router.get("/getResultByUserId/:id", getResultByUserId);
