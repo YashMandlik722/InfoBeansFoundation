@@ -125,7 +125,10 @@ export const markVerified = async (req, res) => {
         if (!regInfo) {
             return res.status(404).json({ error: "Registration Detail not found" });
         } else {
-            const update = await registration.findByIdAndUpdate(id, { isVerified: "Verified" });
+            const update = await registration.findByIdAndUpdate(regInfo._id, {$set:{ isVerified: "Verified"} });
+            if (!regInfo) {
+                return res.status(400).json({ error: "Registration's Verification failed" });
+            }
             const resultInitialised = await result.create({ userID: regInfo.userID, rollNo: regInfo.rollNo ,courseType:regInfo.courseType })
             // sendMail(regInfo.email,
             //     "Profile Verified!",

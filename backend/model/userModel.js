@@ -23,5 +23,12 @@ const userSchema = new mongoose.Schema({
         default: false
     }
 })
+//{
+// name: 'Vishal',
+// password: '$2a$10$qvFl06w7Jc4p8j90HgLAXuWmbN1fw/aRmwLMPnRANc7zVh.xiRvrW',(Hashed keep passwerd - 12345 for every user but in hashed)
+// email: 'v@gmail.com',
+// contact: '1231231234',
+// isAdmin: false
+// }
 
 export const user = mongoose.model("user", userSchema);

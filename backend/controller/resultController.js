@@ -69,7 +69,6 @@ export const getResultList = async (request, response) => {
 //Marking Results (Admin)
 export const resultMarking = async (req, res) => {
     try {
-        console.log(req.file)
         const excelData = req.file.buffer;
         const json = convertExcelToJson({
             source: excelData,
@@ -84,14 +83,28 @@ export const resultMarking = async (req, res) => {
         const phase = req.body.phase;
 
         // not getting this 
-        const existingResults = await result.find();
-        if(existingResults.length == 0) return res.send({"opration": false, "message": "No Exiting result found.."});
+        // const existingResults = await result.find();
+        // if(existingResults.length == 0) return res.send({"opration": false, "message": "No Exiting result found.."});
+        // console.log(existingResults);
+        let existingResults = [];
+        let flag = false;
+        json.forEach(async(obj)=>{
+            let objResult = await result.findOne({rollNo:obj.rollNo,phase:req.body.phase});
+            if(!objResult) flag = true;
+            existingResults.push(null);
+            console.log(objResult);
+            
+        })
+        if(flag) return res.send("Problem")
+            console.log("Processed")
+        existingResults.push(null);
+        
+        console.log(existingResults);
+        
 
         // const obj = {
         //     resultType: ""
         // }
-        // cannot read the properties of undefined means not getting the existingResults
-        // now the logic is changed so we need to make the changes accordingly.
         
         // not required
         /*let phase = existingResults[0].phase;
@@ -123,10 +136,10 @@ export const resultMarking = async (req, res) => {
         else if(phase == "House Visit Done") resultType = "houseVisit_result";
 
         json.map(async (student) => {
-            const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
-            if (!updatedResult) {
-                return res.status(400).send("Error in inserting data")
-            }
+            // const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
+            // if (!updatedResult) {
+            //     return res.status(400).send("Error in inserting data")
+            // }
         })
 
 
