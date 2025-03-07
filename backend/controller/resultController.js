@@ -53,7 +53,7 @@ export const getResultList = async (request, response) => {
     try {
         const list = await result.find();
         if (list.length) {
-            return response.status(200).json({ Message: list });
+            return response.status(200).json({ message: list });
         }
         else {
             console.log("No result found (In resultController's getResultList)");
@@ -80,70 +80,38 @@ export const resultMarking = async (req, res) => {
         }).Sheet1;
 
         // console.log(json)
-        const phase = req.body.phase;
-
-        // not getting this 
-        // const existingResults = await result.find();
-        // if(existingResults.length == 0) return res.send({"opration": false, "message": "No Exiting result found.."});
-        // console.log(existingResults);
-        let existingResults = [];
-        let flag = false;
-        json.forEach(async(obj)=>{
-            let objResult = await result.findOne({rollNo:obj.rollNo,phase:req.body.phase});
-            if(!objResult) flag = true;
-            existingResults.push(null);
-            console.log(objResult);
-            
-        })
-        if(flag) return res.send("Problem")
-            console.log("Processed")
-        existingResults.push(null);
+        let phase = req.body.phase;
         
-        console.log(existingResults);
-        
-
-        // const obj = {
-        //     resultType: ""
-        // }
-        
-        // not required
-        /*let phase = existingResults[0].phase;
-        if (phase === "Applied") {
-            phase = "Witten Done";
-            obj.resultType = "written_result"
-        } else if (phase === "Written Done") {
+        for (let obj of json) {
+            let objResult = await result.findOne({ rollNo: obj.rollNo, phase: req.body.phase });
+            if (!objResult)
+                return res.status(400).json({ error: `Bad Request | One of the student does not exist` })
+        }
+                                    
+        let resultType;
+        if (phase == "Applied") {
+            resultType = "written_result";
+            phase = "Written Done";
+        }else if (phase == "Written Done"){
+            resultType = "interview_result";
             phase = "Interview Done";
-            obj.resultType = "interview_result"
-        } else if (phase === "Interview Done") {
+        } 
+        else if (phase == "Interview Done"){
+            resultType = "houseVisit_result";
             phase = "House Visit Done";
-            obj.resultType = "houseVisit_result"
-        }*/
-
-        for (let i = 0; i < json.length; i++) {
-            json[i].phase = req.body.phase;
-            for (let j = 0; j < existingResults.length; j++) {
-                if (json[i].rollNo === existingResults[j].rollNo) {
-                    break;
-                } else if (j == existingResults.length - 1 && !json[i].rollNo === existingResults[j].rollNo) {
-                    return res.status(400).send("Error in inserting data in" + json[i].rollNo)
-                }
-            }
+        }else{
+            return res.status(400).json({ error: `Bad Request | Incorrect Phase` });
         }
 
-        let resultType ;
-        if(phase=="Written Done") resultType = "written_result";
-        else if(phase == "Interview Done") resultType = "interview_result";
-        else if(phase == "House Visit Done") resultType = "houseVisit_result";
-
         json.map(async (student) => {
-            // const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
-            // if (!updatedResult) {
-            //     return res.status(400).send("Error in inserting data")
-            // }
+            const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
+            if (!updatedResult) {
+                return res.status(400).send("Error in inserting data")
+            }
         })
 
 
-        return res.status(200).json({ Message: "Result Updated" })
+        return res.status(200).json({ message: "Result Updated" })
 
     } catch (err) {
         console.log("Error In resultController's resultMarking");
@@ -155,7 +123,7 @@ export const resultMarking = async (req, res) => {
 //Getting Results By User Id (User)
 export const getResultByUserId = async (request, response, next) => {
     let id = request.params.id;
-    result.findOne({ userID: new mongoose.Types.ObjectId(id)})
+    result.findOne({ userID: new mongoose.Types.ObjectId(id) })
         .then(result => {
             if (result) {
                 return response.status(200).json({ message: "Result Details Found Successfully", result });

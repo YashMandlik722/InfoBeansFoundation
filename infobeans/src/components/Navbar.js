@@ -108,6 +108,9 @@ function Navbar() {
                 <Link to="/Slots" className="dropdown-item">
                   Manage Slots
                 </Link>
+                <Link to="/downloadExcel" className="dropdown-item">
+                Download Excel
+                </Link>
                 {/* <Link to="/call-to-action" className="dropdown-item">
                   Become A Teacher
                 </Link>

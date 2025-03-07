@@ -21,6 +21,7 @@ import StudentResult from "./ResultComponents/StudentResult.js";
 import AdminResult from "./ResultComponents/AdminResult.js";
 import SlotResult from "./ResultComponents/Slot Result/SlotResult.js";
 import UploadResult from "./ResultComponents/Upload Result/UploadResult.js";
+import DownLoadExcel from "./GetExcelSheet/DownLoadExcel.js";
 
 function App() {
     return <>
@@ -52,6 +53,7 @@ function App() {
             <Route path="/adminResult/slot/:slotId" element={<SlotResult/>}/>
             <Route path="/uploadResult" element={<UploadResult/>}/>
             <Route path="/studentResult" element={<StudentResult/>}/>
+            <Route path="/downloadExcel" element={<DownLoadExcel/>}/>
         </Routes>
 
 
