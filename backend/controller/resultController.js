@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { registration } from "../model/registrationModel.js";
 import { result } from "../model/resultModel.js";
 import convertExcelToJson from "convert-excel-to-json";
@@ -52,7 +53,7 @@ export const getResultList = async (request, response) => {
     try {
         const list = await result.find();
         if (list.length) {
-            return response.status(200).json({ Message: list });
+            return response.status(200).json({ message: list });
         }
         else {
             console.log("No result found (In resultController's getResultList)");
@@ -68,57 +69,60 @@ export const getResultList = async (request, response) => {
 //Marking Results (Admin)
 export const resultMarking = async (req, res) => {
     try {
-
-        const excelData = req.file.buffer;
+        const excelSheetData = req.file.buffer;
         const json = convertExcelToJson({
-            source: excelData,
+            source: excelSheetData,
             header: { rows: 1 },
             columnToKey: {
-                A: 'rollNo',
-                B: 'result'
+                B: 'rollNo',
+                F: 'attendance',
+                G: 'result',
+                H: 'set',
+                I: 'english',
+                J: 'hindi',
+                K: 'gk',
+                L: 'math',
+                M: 'total',
+                N: 'percentage',
             }
-        }).Sheet1;
+        }).Students;
 
-        const existingResults = await result.find();
-
-        const obj = {
-            resultType : ""
-        }
-        let phase = existingResults[0].phase;
-        if(phase === "Applied"){
-            phase = "Witten Done";
-            obj.resultType = "written_result"
-        }else if(phase === "Written Done"){
-            phase = "Interview Done";
-            obj.resultType = "interview_result"
-        }else if(phase === "Interview Done"){
-            phase = "House Visit Done";
-            obj.resultType = "houseVisit_result"
-        }
-
-        for (let i = 0; i < json.length; i++) {
-            json[i].phase = phase;
-            for (let j = 0; j < existingResults.length; j++) {
-                if (json[i].rollNo === existingResults[j].rollNo) {
-                    break;
-                } else if (j == existingResults.length-1 && !json[i].rollNo === existingResults[j].rollNo) {
-                    return res.status(400).send("Error in inserting data in" + json[i].rollNo)
-                }
-            }
-        }
-
-        const {resultType} = obj;
+        // console.log(json)
+        let phase = req.body.phase;
         
-        json.map(async(student)=>{
-            const updatedResult = await result.updateOne({rollNo:student.rollNo},{[resultType]:student.result,phase:phase,isSlotAssigned:false});
-            // const updatedResult = await result.updateOne({rollNo:student.rollNo},{$set: {[resultType]:student.result}});
-            if(!updatedResult){
-                return res.status(400).send("Error in inserting data")
+        for (let obj of json) {
+            let objResult = await result.findOne({ rollNo: obj.rollNo, phase: req.body.phase });
+            if (!objResult)
+                return res.status(404).json({ error: `Student with Roll NO - ${obj.rollNo} not found` })
+        }
+                                    
+        let resultType;
+        if (phase == "Applied") {
+            resultType = "written_result";
+            phase = "Written Done";
+        }else if (phase == "Written Done"){
+            resultType = "interview_result";
+            phase = "Interview Done";
+        } 
+        else if (phase == "Interview Done"){
+            resultType = "houseVisit_result";
+            phase = "House Visit Done";
+        }else{
+            return res.status(400).json({ error: `Bad Request | Incorrect Phase` });
+        }
+        // console.log(`${[resultType]}.status`);
+        let a = `${[resultType]}.status`;
+        let b = `${[resultType]}.detail`;
+
+        json.map(async (student) => {    
+            let updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [a]: student.result,[b]: student, phase: phase, isSlotAssigned: false });
+            if (!updatedResult) {
+                return res.status(404).json({ error: `Error in uploading students` });
             }
         })
-        
 
-        return res.status(200).json({Message:"Result Updated"})
+
+        return res.status(200).json({ message: "Result Updated" })
 
     } catch (err) {
         console.log("Error In resultController's resultMarking");
@@ -130,7 +134,7 @@ export const resultMarking = async (req, res) => {
 //Getting Results By User Id (User)
 export const getResultByUserId = async (request, response, next) => {
     let id = request.params.id;
-    result.findOne({ userID: id })
+    result.findOne({ userID: new mongoose.Types.ObjectId(id) })
         .then(result => {
             if (result) {
                 return response.status(200).json({ message: "Result Details Found Successfully", result });
@@ -145,4 +149,14 @@ export const getResultByUserId = async (request, response, next) => {
         });
 }
 
+// Getting Result By Slot Id (Admin)
+export const resultBySlotId = async (req, res) => {
+    try {
+        const data = await result.find({ slotId: req.params.slotId });
+        res.status(200).json({ "operation": true, "result": data })
 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ "operation": false, "message": "Internal Server Error" })
+    }
+}

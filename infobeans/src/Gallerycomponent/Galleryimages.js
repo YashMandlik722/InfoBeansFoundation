@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Gallerycomponent/Galleryimages.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const Galleryimages = () => {
+
+  const { isLoggedIn, user } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
   const [file, setfile] = useState(null);
   const [image, setimage] = useState([]);
 
   const handler = (event) => {
     const selectedFile = event.target.files[0];
-    if (selectedFile) {
+    console.log(selectedFile);
+    if (selectedFile)
       setfile(selectedFile);
-      console.log("Selected file:", selectedFile);
-    } else {
-      console.log("No file selected.");
-    }
+
   };
 
   const handleUpload = async () => {
-    // if (!file) {
-    //   alert("Please select an image first!");
-    //   return;
-    // }
+    if (!file) {
+      window.alert("Please select an image first!");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -32,8 +35,6 @@ const Galleryimages = () => {
         { headers: { "Content-Type": "multipart/form-data" } }
       );
 
-      console.log("Upload Success:", result.data);
-
       fetchImages();
     } catch (err) {
       console.error("Error uploading image:", err);
@@ -44,7 +45,6 @@ const Galleryimages = () => {
     try {
       const res = await axios.get("http://localhost:3001/gallery/getimage");
       setimage(res.data.images);
-
     } catch (err) {
       console.error("Error fetching images:", err);
     }
@@ -55,38 +55,40 @@ const Galleryimages = () => {
   }, []);
 
   return (<>
- 
+
+
+    {user.isAdmin && <div className="d-flex " style={{ float: "right" }}>
+      <input type="file" onChange={handler} style={{ height: "45px", width: "250px" }} className="mt-2" />
+      <button onClick={handleUpload} className="btn btn-primary m-2">Upload</button>
+    </div>}
     
-      <div className="d-flex " style={{float:"right"}}>
-     <input type="file" onChange={handler} style={{height:"45px" , width:"110px"}} className="mt-2"/>
-      <button  onClick={handleUpload} className="btn btn-primary m-2">Upload</button>
-      </div><br/>
+    {user.isAdmin && <br />}
 
 
-      <div>
-      <h2 style={{marginLeft:"180px"}} className="text-danger">Our Gallery</h2>
+    <div>
+      <h2 style={{ marginLeft: "180px" }} className="text-danger">Our Gallery</h2>
 
       <div className="gallery-container m-3">
-  {image.length > 0 ? (
-    image.map((img, index) => (
-      <img
-        key={index}
-        src={`http://localhost:3001${img.picture}`} 
-        alt="Uploaded"
-        width="300px"
-        height="300px"
-        className="gallery-image m-2"
-        onError={(e) => console.error("Image Load Error:", e)} 
-      />
-    ))
-  ) : (
-    <p>No images uploaded yet.</p>
-  )}
-</div>
-</div>
-    
+        {image.length > 0 ? (
+          image.map((img, index) => (
+            <img
+              key={index}
+              src={`${img.picture}`}
+              alt="Uploaded"
+              width="300px"
+              height="300px"
+              className="gallery-image m-2"
+              onError={(e) => console.error("Image Load Error:", e)}
+            />
+          ))
+        ) : (
+          <p>No images uploaded yet.</p>
+        )}
+      </div>
+    </div>
 
-</>);
+
+  </>);
 };
 
 export default Galleryimages;

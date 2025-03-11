@@ -9,43 +9,61 @@ const resultSchema = new mongoose.Schema({
         unique: true
     },
     userID: {
-        type : mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: user,
         require: true
     },
-    courseType:{
+    courseType: {
         type: String,
-        require:true,
-        enum:["ITEP", "BREP"]
+        require: true,
+        enum: ["ITEP", "BREP"]
     },
-    isSlotAssigned:{
-        type : Boolean,
-        default : false
+    isSlotAssigned: {
+        type: Boolean,
+        default: false
     },
-    slotId:{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : slot,
-        default : null
+    slotId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: slot,
+        default: null
     },
-    phase:{
+    phase: {
         type: String,
         enum: ["Applied", "Written Done", "Interview Done", "House Visit Done"],
-        default : "Applied" 
+        default: "Applied"
     },
     written_result: {
-        type: String,
-        enum: ["Pending", "Absent", "Passed", "Failed"],
-        default : "Pending"
+        status: {
+            type: String,
+            enum: ["Pending", "Absent", "Passed", "Failed"],
+            default: "Pending"
+        },
+        detail: {
+            type: Object,
+            default: {}
+        }
     },
     interview_result: {
-        type: String,
-        enum: ["Pending", "Absent", "Passed", "Failed"],
-        default : "Pending"
+        status: {
+            type: String,
+            enum: ["Pending", "Absent", "Passed", "Failed"],
+            default: "Pending"
+        },
+        detail: {
+            type: Object,
+            default: {}
+        }
     },
     houseVisit_result: {
-        type: String,
-        enum: ["Pending", "Absent", "Passed", "Failed"],
-        default : "Pending"
+        status: {
+            type: String,
+            enum: ["Pending", "Absent", "Passed", "Failed"],
+            default: "Pending"
+        },
+        detail: {
+            type: Object,
+            default: {}
+        }
     }
 })
 export const result = mongoose.model("result", resultSchema)

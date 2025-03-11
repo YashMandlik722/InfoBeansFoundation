@@ -53,7 +53,6 @@ const registrationDoc = multer.diskStorage({
 })
 
 export const uploadRegistrationDoc = multer({storage: registrationDoc});
-console.log("In Multer");
 
 const staffDoc = multer.diskStorage({
     destination: (req,file,callback)=>{

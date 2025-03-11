@@ -76,9 +76,10 @@ function Navbar() {
             </Link>}
 
             {/* Result Button */}
-            {isLoggedIn && !user.isAdmin && <Link to="/gallery" className="nav-item nav-link" style={{ fontSize: "20px" }}>
+            {isLoggedIn && !user.isAdmin && <Link to="/studentResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
               Result
             </Link>}
+            {/* Result Button */}
 
 
             {/* About Us Button */}
@@ -95,13 +96,22 @@ function Navbar() {
                 <Link to="/staff-list" className="dropdown-item">
                   Manage Staff
                 </Link>
+                <Link to="/adminResult" className="dropdown-item">
+                  Manage Result
+                </Link>
                 <Link to="/itepReg" className="dropdown-item">
                   ITEP Registrations
                 </Link>
-                <Link to="/Slots" className="dropdown-item">
-                  Slots
+                <Link to="/brepReg" className="dropdown-item">
+                  BREP Registrations
                 </Link>
-                <Link to="/call-to-action" className="dropdown-item">
+                <Link to="/Slots" className="dropdown-item">
+                  Manage Slots
+                </Link>
+                <Link to="/downloadExcel" className="dropdown-item">
+                Download Excel
+                </Link>
+                {/* <Link to="/call-to-action" className="dropdown-item">
                   Become A Teacher
                 </Link>
                 <Link to="/appointment" className="dropdown-item">
@@ -115,7 +125,7 @@ function Navbar() {
                 </Link>
                 <Link to="/404" className="dropdown-item">
                   404 Error
-                </Link>
+                </Link> */}
               </div>
             </div>}
 
@@ -128,7 +138,7 @@ function Navbar() {
           {!isLoggedIn && <button onClick={() => navigate("/signIn")} className="nav-item bg-danger  text-light  rounded-5 roundedx ">
             Sign In<i className="fa fa-arrow-right ms-3"></i>
           </button>}
-          {isLoggedIn && <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); }} to="/" className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
+          {isLoggedIn && <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); navigate("/");}}  className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
             Sign Out<i className="fa fa-sign-out-alt ms-3"></i>
           </button>}
         </div>

@@ -45,7 +45,7 @@ export const signIn = async (request, response) => {
         let User = await user.findOne({ email });
         if (User) {
             let status = bcrypt.compareSync(password, User.password);
-
+            
             if (status) {
                 // sendMail(email,
                 //     "Welcome Back to InfoBeans Foundation!",

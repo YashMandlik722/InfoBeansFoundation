@@ -15,6 +15,13 @@ import ItepRegComponent from "./FinalRegUI/ItepRegComponent";
 import BrepRegComponent from "./FinalRegUI/BrepRegComponent";
 import ViewItepDetail from "./FinalRegUI/ViewItepDetail";
 import ViewBrepDetail from "./FinalRegUI/ViewBrepDetail";
+import EditMember from "./Admin/Staff/EdifStaffMember/EditMember.js";
+import StaffList from "./Admin/Staff/StaffList/StaffList.js";
+import StudentResult from "./ResultComponents/StudentResult.js";
+import AdminResult from "./ResultComponents/AdminResult.js";
+import SlotResult from "./ResultComponents/Slot Result/SlotResult.js";
+import UploadResult from "./ResultComponents/Upload Result/UploadResult.js";
+import DownLoadExcel from "./GetExcelSheet/DownLoadExcel.js";
 import BannerSetting from "./AdminSlotComponent/BannerSetting.js";
 
 function App() {
@@ -25,19 +32,29 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/About" element={<About />}></Route>
             <Route path="/Gallery" element={<Gallery />}></Route>
+            <Route path="/userResult" element={<StudentResult />}></Route>
+            <Route path="/adminResult" element={<AdminResult />}></Route>
             <Route path="/ContactUs" element={<ContactUs />}></Route>
             <Route path="/SignIn" element={<SignIn />}> </Route>
             <Route path="/sign-up" element={<SignUp />}> </Route>
             <Route path="/register" element={<RegistrationForm/>}> </Route>
 
             {/* <Route path="/staff-list" element={<StaffList/>}/> */}
+
+            <Route path="/staff-list" element={<StaffList/>}/>
             <Route path="/staff/:staffId" element={<MemberDetail/>}/>
             <Route path="/itepReg" element={<ItepRegComponent/>}> </Route>
             <Route path="/viewDetailItep" element={<ViewItepDetail/>}> </Route>
             <Route path="/viewDetailBrep" element={<ViewBrepDetail/>}> </Route>
             <Route path="/brepReg" element={<BrepRegComponent/>}> </Route>
+            <Route path="/edit-staff-member" element={<EditMember/>}/>
             <Route path="/addStaff" element={<AddStaff/>}/>
             <Route path="/Slots" element={<Slots/>}/>
+            <Route path="/adminResult" element={<AdminResult/>}/>
+            <Route path="/adminResult/slot/:slotId" element={<SlotResult/>}/>
+            <Route path="/uploadResult" element={<UploadResult/>}/>
+            <Route path="/studentResult" element={<StudentResult/>}/>
+            <Route path="/downloadExcel" element={<DownLoadExcel/>}/>
             <Route path="/banner" element={<BannerSetting/>}/>
         </Routes>
 

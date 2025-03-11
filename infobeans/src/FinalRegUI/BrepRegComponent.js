@@ -14,6 +14,7 @@ function BrepRegComponent(){
         try {
         const response = await axios.get("http://localhost:3001/course/regForPerticularCourse/BREP");
         setRegData(response.data.list);
+        console.log(response.data.list);
         } catch (error) {
             console.log(error);
         }

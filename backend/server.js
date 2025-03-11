@@ -13,8 +13,8 @@ import resultRouter from "./router/resultRouter.js";
 import staffRouter from "./router/staffRouter.js";
 import Gallery from "./router/galleryRouter.js";
 import slotRouter from "./router/slotRouter.js"
+import excelRouter from "./router/excelSheetRouter.js";
 import bannerRouter from "./router/bannerRouter.js"
-
 //Db Connection
 import "./DBConfig/connection.js";
 
@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname,"public")))
 app.use("/user", userRouter);
 app.use("/course", registerRouter);
 app.use("/result", resultRouter);
+app.use("/excel", excelRouter);
 app.use("/staff", staffRouter);
 app.use("/Gallery" , Gallery)
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

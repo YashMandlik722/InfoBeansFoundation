@@ -4,7 +4,7 @@ import Image from "../model/galleryModel.js";
 export const imagepost = async (req, res, next) => {
   try {
     if (req.file) {
-      const picture = `/uploads/${req.file.filename}`; 
+      const picture = `http://localhost:3001/galleryImg/${req.file.filename}`; 
       const newImage = new Image({ picture }); 
       await newImage.save();
       res.status(201).json({ message: "Image inserted successfully", picture });
