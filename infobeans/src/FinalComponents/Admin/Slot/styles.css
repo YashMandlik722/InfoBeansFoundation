@@ -1,51 +1,48 @@
 body {
-    background-color: white;
-  }
-  
-  .table-container {
-    width: 100%;
-    height: 600px; /* Set default height */
-    transition: width 0.5s;
-    display: inline-block;
-    vertical-align: top;
-    overflow-y: auto; /* Ensure scrollability if content overflows */
-    position: relative; /* Ensure proper stacking order */
-    z-index: 1; /* Ensure it stays below the side div */
-  }
-  
-  .table {
-    background-color: white;
-  }
-  
-  .table thead {
-    background-color: rgba(251, 53, 53, 0.76);
-    color: white;
-  }
-  
-  .side-div {
-    display: none;
-    position: absolute; /* Changed from fixed to absolute */
-    top: 0;
-    right: 0;
-    height: 600px; /* Set default height */
-    width: 40%;
-    background-color: #dfdbdbc1;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
-    padding: 20px;
-    overflow-y: auto; /* Enable scrolling for the side div content */
-    z-index: 2; /* Ensure it stays above the table container */
-  }
-  
-  .show-div {
-    display: block;
-  }
-  
-  .shrink-table {
-    width: 60% !important;
-  }
-  
-  .fade-out {
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-  
+  background-color: white;
+}
+
+.table-container {
+  width: 100%;
+  height: 600px;
+  transition: width 0.5s;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.table thead {
+  background-color: rgba(251, 53, 53, 0.76);
+  color: white;
+}
+
+.side-div {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 600px;
+  width: 40%;
+  background-color: #dfdbdbc1;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.show-div {
+  display: block;
+}
+
+.shrink-table {
+  width: 60% !important;
+}
+
+.btn-warning.update-btn {
+  background-color: lightyellow;
+  color: black;
+}
+
+.btn-warning.update-btn:hover {
+  background-color: #f7e8a2;
+}

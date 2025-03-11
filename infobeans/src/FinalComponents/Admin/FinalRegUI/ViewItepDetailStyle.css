@@ -1,33 +1,103 @@
-
-.registration-container {
-    max-width: 900px;
+.itep-container {
+    max-width: 1000px;
     margin: 40px auto;
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 0px 8px red;
 }
-.registration-title {
+
+.itep-title {
     text-align: center;
     color: #b30000;
     font-weight: bold;
     margin-bottom: 20px;
 }
-.profile-card {
-    display: flex;
-    align-items: center;
+
+.itep-detail-card {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.profile-image {
+
+.itep-image-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.itep-profile-img {
     width: 150px;
     height: 150px;
     border-radius: 8px;
     object-fit: cover;
-    margin-right: 20px;
+    border: 1px solid #ccc;
 }
-.profile-info {
-    flex: 1;
+
+.itep-info-section {
+    padding: 20px;
+}
+
+.itep-student-name {
+    color: #b30000;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.itep-documents-section {
+    margin-top: 20px;
+}
+
+.itep-document {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.itep-doc-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.itep-doc-img {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.itep-button-group {
+    margin-top: 20px;
+}
+
+.itep-accept-btn,
+.itep-reject-btn {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 7px;
+    transition: all 0.3s ease-in-out;
+}
+
+.itep-accept-btn {
+    background-color: white;
+    border: 2px solid green;
+    color: green;
+}
+
+.itep-accept-btn:hover {
+    background-color: green;
+    color: white;
+}
+
+.itep-reject-btn {
+    background-color: white;
+    border: 2px solid red;
+    color: red;
+}
+
+.itep-reject-btn:hover {
+    background-color: red;
+    color: white;
 }
