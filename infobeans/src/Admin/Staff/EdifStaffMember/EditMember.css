@@ -1,5 +1,5 @@
 /* Member Card */
-.custom-member-card {
+.edit-member-card {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2); /* Soft shadow */
@@ -7,14 +7,14 @@
 }
 
 /* Member Image */
-.custom-member-image {
+.edit-member-image {
     max-width: 100%;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(211, 47, 47, 0.2); /* Soft shadow */
 }
 
 /* Styled Input Box */
-.custom-label-input-box {
+.edit-label-input-box {
     background-color: #fff;
     border-radius: 8px;
     padding: 10px;
@@ -25,7 +25,7 @@
 }
 
 /* Label Styling */
-.custom-label-input-box label {
+.edit-label-input-box label {
     font-weight: bold;
     color: #d32f2f; /* Red text */
     min-width: 150px;
@@ -34,7 +34,7 @@
 }
 
 /* Input Styling */
-.custom-label-input-box input {
+.edit-label-input-box input {
     flex: 1;
     padding: 8px;
     border: 1px solid #ddd; /* Light border for a cleaner look */
@@ -44,25 +44,27 @@
 }
 
 /* Read-only Input (DOB) Styling */
-.custom-readonly-field {
+.edit-readonly-field {
     background-color: #fbeaea; /* Light red background */
     color: #b71c1c; /* Dark red text */
 }
 
 /* Input Focus Effect */
-.custom-label-input-box input:focus {
+.edit-label-input-box input:focus {
     border-color: #d32f2f;
     box-shadow: 0 0 6px rgba(211, 47, 47, 0.3);
 }
 
 /* Submit Button Styling */
-.custom-submit-button {
+.edit-submit-button {
     font-weight: bold;
+    background-color: #d32f2f;
     padding: 10px;
     border-radius: 6px;
     transition: 0.3s;
 }
 
-.custom-submit-button:hover {
-    background-color: #b71c1c !important;
+.edit-submit-button:hover {
+    background-color: #b71c1c ;
+    color: white;
 }

@@ -53,17 +53,6 @@ ul li {
   margin-bottom: 5px;
 }
 
-.btn {
-  margin-top: 10px;
-  /* background-color: transparent; */
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  /* background-color: transparent; */
-}
 
 /* Fade-in animation */
 .subject-card.fade-in {

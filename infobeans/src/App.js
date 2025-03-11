@@ -43,12 +43,13 @@ function App() {
 
             <Route path="/staff-list" element={<StaffList/>}/>
             <Route path="/staff/:staffId" element={<MemberDetail/>}/>
+            <Route path="/edit-staff-member" element={<EditMember/>}/>
+            <Route path="/addStaff" element={<AddStaff/>}/>
+            
             <Route path="/itepReg" element={<ItepRegComponent/>}> </Route>
             <Route path="/viewDetailItep" element={<ViewItepDetail/>}> </Route>
             <Route path="/viewDetailBrep" element={<ViewBrepDetail/>}> </Route>
             <Route path="/brepReg" element={<BrepRegComponent/>}> </Route>
-            <Route path="/edit-staff-member" element={<EditMember/>}/>
-            <Route path="/addStaff" element={<AddStaff/>}/>
             <Route path="/Slots" element={<Slots/>}/>
             <Route path="/adminResult" element={<AdminResult/>}/>
             <Route path="/adminResult/slot/:slotId" element={<SlotResult/>}/>

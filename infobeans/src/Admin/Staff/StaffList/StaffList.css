@@ -1,8 +1,8 @@
-.staff-container {
+.stafflist-container {
     padding: 20px;
 }
 
-.staff-title {
+.stafflist-title {
     text-align: center;
     color: #d32f2f;
     font-size: 24px;
@@ -10,14 +10,14 @@
     margin-bottom: 20px;
 }
 
-.staff-grid {
+.stafflist-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
 
-.staff-card {
+.stafflist-card {
     width: 300px;
     background: #ffffff;
     border-radius: 12px;
@@ -27,11 +27,11 @@
     cursor: pointer;
 }
 
-.staff-card:hover {
+.stafflist-card:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-.staff-card-header {
+.stafflist-card-header {
     background-color: #d32f2f;
     color: white;
     font-weight: bold;
@@ -40,19 +40,17 @@
     font-size: 18px;
 }
 
-.staff-card-body {
+.stafflist-card-body {
     background-color: #ffffff;
     color: black;
     text-align: center;
     padding: 15px;
 }
 
-.staff-photo {
+.stafflist-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10%;
-    /* border: 3px solid #d32f2f; */
-    /* box-shadow: 1px 2px 3px red; */
     margin-bottom: 10px;
 }

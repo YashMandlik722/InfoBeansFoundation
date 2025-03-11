@@ -21,20 +21,20 @@ function StaffList() {
     };
 
     return (
-        <div className="staff-container">
-            <h2 className="staff-title">Staff Directory</h2>
-            <div className="staff-grid">
+        <div className="stafflist-container">
+            <h2 className="stafflist-title">Staff Directory</h2>
+            <div className="stafflist-grid">
                 {staffList.map((staff) => (
                     <div 
                         key={staff._id} 
-                        className="staff-card"
-                        onClick={() => navigate(`/staff/${staff._id}`,{state: staff})}
+                        className="stafflist-card"
+                        onClick={() => navigate(`/staff/${staff._id}`, { state: staff })}
                     >
-                        <div className="staff-card-header">{staff.name} - {staff.role}</div>
-                        <div className="staff-card-body">
+                        <div className="stafflist-card-header">{staff.name} - {staff.role}</div>
+                        <div className="stafflist-card-body">
                             <img 
                                 src={`http://localhost:3001/staffDoc/${staff.photo_url}`} 
-                                className="staff-photo" 
+                                className="stafflist-photo" 
                                 alt={staff.name} 
                             />
                             <p className="mt-2"><strong>Email:</strong> {staff.email}</p>

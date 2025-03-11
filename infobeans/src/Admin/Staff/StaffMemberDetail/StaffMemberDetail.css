@@ -1,47 +1,70 @@
-.staff-member-container {
+.staffmember-container {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    width: 80% ;
+    width: 80%;
 }
 
-.staff-detail-card {
+.staffmember-detail-card {
     background: white;
-    /* border: 2px solid red; */
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
 }
 
-.staff-image img {
+.staffmember-image img {
     width: 100%;
     height: 100%;
-    /* border: 3px solid red; */
     box-shadow: 1px 2px 5px red;
     border-radius: 50%;
     margin-bottom: 10px;
 }
 
-.staff-role {
+.staffmember-role {
     font-size: 18px;
     font-weight: bold;
     color: red;
 }
 
-.staff-info {
+.staffmember-info {
     padding-left: 20px;
     color: black;
     display: flex;
     justify-content: center;
 }
 
-.staff-info h2 {
+.staffmember-info h2 {
     color: red;
     margin-bottom: 15px;
 }
 
-.staff-info p {
+.staffmember-info p {
     margin: 8px 0;
     font-size: 16px;
+}
+
+.staffmember-edit-btn {
+    margin-top: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 30%;
+}
+
+.staffmember-edit-btn:hover {
+    background-color: #0056b3 !important;
+    color: white;
+}
+
+.staffmember-delete-btn {
+    margin-top: 10px;
+    font-weight: bold;
+    width: 30%;
+    transition: 0.3s;
+    margin-left: 5%;
+}
+
+.staffmember-delete-btn:hover {
+    background-color: #b71c1c !important;
+    color: white;
 }

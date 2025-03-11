@@ -9,21 +9,21 @@ function MemberDetail() {
 
     useEffect(() => {
         setMember(location.state);
-    }, [])
+    }, []);
 
     return (
-        <div className="staff-member-container container mb-3 ">
+        <div className="staffmember-container container mb-3">
             {member && (
-                <div className="staff-detail-card row p-4">
-                    <div className="staff-image col-md-4 p-4 d-flex align-items-center flex-column">
+                <div className="staffmember-detail-card row p-4">
+                    <div className="staffmember-image col-md-4 p-4 d-flex align-items-center flex-column">
                         <img
-                            className=""
+                            className="staffmember-photo"
                             src={`http://localhost:3001/staffDoc/${member.photo_url}`}
                             alt={member.name}
                         />
-                        <h4 className="staff-role mt-2">{member.role.toUpperCase()}</h4>
+                        <h4 className="staffmember-role mt-2">{member.role.toUpperCase()}</h4>
                     </div>
-                    <div className="staff-info col-md-8">
+                    <div className="staffmember-info col-md-8">
                         <div className="mt-0">
                             <h2>{member.name}</h2>
                             <p><strong>Email:</strong> {member.email}</p>
@@ -36,10 +36,17 @@ function MemberDetail() {
                             <p><strong>Address:</strong> {member.address}</p>
                         </div>
                     </div>
-                    <button className="rounded p-1 w-50 btn-lg btn-outline-primary" 
-                    onClick={()=>navigate("/edit-staff-member",{state: member})}>Edit</button>
+                    <div className="w-100 p-2 d-flex justify-content-center">
+                        <button className="btn staffmember-edit-btn rounded p-1 btn-outline-primary"
+                            onClick={() => navigate("/edit-staff-member", { state: member })}
+                        >
+                            Edit
+                        </button>
 
-                    <button className="p-1 btn-lg w-50 btn-outline-danger">Delete</button>
+                        <button className="btn staffmember-delete-btn p-1 btn-outline-danger">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             )}
         </div>

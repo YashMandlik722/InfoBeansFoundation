@@ -1,30 +1,63 @@
-.staff-form-container {
+.add-staff-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FFFDEF;
+    padding: 20px;
+}
+
+.add-staff-form-container {
     max-width: 650px;
-    margin: 50px auto;
-    padding: 25px;
+    width: 100%;
+    background: #FFFFFF;
+    padding: 30px;
     border-radius: 15px;
-    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.523);
-    background: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
-.staff-form-label {
+.add-staff-form-container:hover {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.add-staff-header {
+    text-align: center;
+    color: #E70000;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.add-staff-form-label {
     font-weight: 600;
-    color: #d9534f;
+    color: #E70000;
+    font-size: 14px;
 }
 
-.staff-btn-custom {
-    background-color: #d9534f;
+.add-staff-input {
+    border: 1px solid #E70000;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-staff-input:focus {
+    border-color: #C50000;
+    outline: none;
+    box-shadow: 0 0 5px rgba(231, 0, 0, 0.5);
+}
+
+.add-staff-btn-custom {
+    background-color: #E70000;
     color: white;
     font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.staff-btn-custom:hover {
-    background-color: #c9302c;
-}
-
-.staff-header {
-    text-align: center;
-    color: #d9534f;
-    margin-bottom: 20px;
+.add-staff-btn-custom:hover {
+    background-color: #C50000;
 }

@@ -41,80 +41,79 @@ function AddStaff() {
         submitForm(formData);
     };
 
-    const submitForm = async(formData)=>{
-        
+    const submitForm = async (formData) => {
         try {
-            const response = await axios.post("http://localhost:3001/staff/addStaff",formData,{headers: {"Content-Type": "multipart/form-data"}});
+            const response = await axios.post("http://localhost:3001/staff/addStaff", formData, { headers: { "Content-Type": "multipart/form-data" } });
             console.log(response.data);
-            if(response.data.operation) console.log("ADDED");
+            if (response.data.operation) console.log("ADDED");
             else console.log("PROBLEM");
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     return (
-        <div className="container">
-            <form className="staff-form-container" onSubmit={handleSubmit}>
-                <h2 className="staff-header">Staff Registration</h2>
+        <div className="add-staff-container">
+            <form className="add-staff-form-container" onSubmit={handleSubmit}>
+                <h2 className="add-staff-header">Staff Registration</h2>
                 <div className="mb-3">
-                    <label className="staff-form-label">Name</label>
-                    <input onChange={handleChangeData} name="name" type="text" className="form-control" required value={memberData.name} />
+                    <label className="add-staff-form-label">Name</label>
+                    <input onChange={handleChangeData} name="name" type="text" className="form-control add-staff-input" required value={memberData.name} />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Email</label>
-                    <input onChange={handleChangeData} name="email" type="email" className="form-control" required value={memberData.email} />
+                    <label className="add-staff-form-label">Email</label>
+                    <input onChange={handleChangeData} name="email" type="email" className="form-control add-staff-input" required value={memberData.email} />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Date of Birth</label>
-                    <input onChange={handleChangeData} name="DOB" type="date" className="form-control" required value={memberData.DOB} />
+                    <label className="add-staff-form-label">Date of Birth</label>
+                    <input onChange={handleChangeData} name="DOB" type="date" className="form-control add-staff-input" required value={memberData.DOB} />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Address</label>
-                    <textarea onChange={handleChangeData} className="form-control" name="address" rows="2" required value={memberData.address}></textarea>
+                    <label className="add-staff-form-label">Address</label>
+                    <textarea onChange={handleChangeData} className="form-control add-staff-input" name="address" rows="2" required value={memberData.address}></textarea>
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Gender</label>
-                    <select onChange={handleChangeData} className="form-control" name="gender" required value={memberData.gender}>
+                    <label className="add-staff-form-label">Gender</label>
+                    <select onChange={handleChangeData} className="form-control add-staff-input" name="gender" required value={memberData.gender}>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Contact</label>
-                    <input onChange={handleChangeData} name="contact" type="tel" className="form-control" required value={memberData.contact} />
+                    <label className="add-staff-form-label">Contact</label>
+                    <input onChange={handleChangeData} name="contact" type="tel" className="form-control add-staff-input" required value={memberData.contact} />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Marital Status</label>
-                    <select onChange={handleChangeData} className="form-control" name="maritalStatus" required value={memberData.maritalStatus}>
+                    <label className="add-staff-form-label">Marital Status</label>
+                    <select onChange={handleChangeData} className="form-control add-staff-input" name="maritalStatus" required value={memberData.maritalStatus}>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                     </select>
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Qualification</label>
-                    <input onChange={handleChangeData} name="qualification" type="text" className="form-control" required value={memberData.qualification} />
+                    <label className="add-staff-form-label">Qualification</label>
+                    <input onChange={handleChangeData} name="qualification" type="text" className="form-control add-staff-input" required value={memberData.qualification} />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Salary</label>
-                    <input onChange={handleChangeData} name="salary" type="number" className="form-control" required value={memberData.salary} />
+                    <label className="add-staff-form-label">Salary</label>
+                    <input onChange={handleChangeData} name="salary" type="number" className="form-control add-staff-input" required value={memberData.salary} />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Photo</label>
-                    <input type="file" className="form-control" accept="image/*" name="photo" required />
+                    <label className="add-staff-form-label">Photo</label>
+                    <input type="file" className="form-control add-staff-input" accept="image/*" name="photo" required />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Aadhar Card</label>
-                    <input type="file" className="form-control" accept="image/*" name="aadhar" required />
+                    <label className="add-staff-form-label">Aadhar Card</label>
+                    <input type="file" className="form-control add-staff-input" accept="image/*" name="aadhar" required />
                 </div>
                 <div className="mb-3">
-                    <label className="staff-form-label">Role</label>
-                    <select onChange={handleChangeData} name="role" className="form-control">
+                    <label className="add-staff-form-label">Role</label>
+                    <select onChange={handleChangeData} name="role" className="form-control add-staff-input">
                         <option value="Management">Management</option>
                         <option value="Trainer">Trainer</option>
                     </select>
                 </div>
-                <button type="submit" className="btn staff-btn-custom w-100">Submit</button>
+                <button type="submit" className="btn add-staff-btn-custom w-100">Submit</button>
             </form>
         </div>
     );

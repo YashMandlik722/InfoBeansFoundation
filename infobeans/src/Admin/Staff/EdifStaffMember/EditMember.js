@@ -15,7 +15,7 @@ function EditMember() {
         }
     }, [location.state]);
 
-    const handelChange = (event) => {
+    const handleChange = (event) => {
         const { name, value } = event.target;
         console.log(name, value);
         setMember((prev) => ({ ...prev, [name]: value }));
@@ -39,13 +39,13 @@ function EditMember() {
         await axios.patch(`http://localhost:3001/staff/edit-staff/${member._id}`, member);
 
     return (
-        <div className="container">
+        <div className="edit-container">
             {member && Object.keys(member).length > 0 && (
-                <div className="row custom-member-card">
+                <div className="row edit-member-card">
                     {/* IMAGE */}
                     <div className="col-lg-5 p-3">
                         <img
-                            className="custom-member-image"
+                            className="edit-member-image"
                             src={"http://localhost:3001/staffDoc/" + member.photo_url}
                             alt="Member"
                         />
@@ -56,28 +56,28 @@ function EditMember() {
                         <div>
                             <h2>{member.name}</h2>
 
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label htmlFor="email">Email:</label>
-                                <input onChange={handelChange} value={member.email || ""} name="email" />
+                                <input onChange={handleChange} value={member.email || ""} name="email" />
                             </div>
 
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label htmlFor="contact">Contact:</label>
-                                <input onChange={handelChange} value={member.contact || ""} name="contact" />
+                                <input onChange={handleChange} value={member.contact || ""} name="contact" />
                             </div>
 
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label htmlFor="DOB">DOB:</label>
-                                <input readOnly className="custom-readonly-field" value={member.DOB || ""} name="DOB" />
+                                <input readOnly className="edit-readonly-field" value={member.DOB || ""} name="DOB" />
                             </div>
 
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label htmlFor="gender">Gender:</label>
-                                <input onChange={handelChange} value={member.gender || ""} name="gender" />
+                                <input className="edit-readonly-field" readOnly onChange={handleChange} value={member.gender || ""} name="gender" />
                             </div>
 
                             {/* Marital Status - Radio Buttons */}
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label>Marital Status:</label>
                                 <div>
                                     <label className="me-3">
@@ -86,7 +86,7 @@ function EditMember() {
                                             name="maritalStatus"
                                             value="Single"
                                             checked={member.maritalStatus?.toLowerCase() === "single"}
-                                            onChange={handelChange}
+                                            onChange={handleChange}
                                         /> Single
                                     </label>
                                     <label>
@@ -95,25 +95,25 @@ function EditMember() {
                                             name="maritalStatus"
                                             value="Married"
                                             checked={member.maritalStatus?.toLowerCase() === "married"}
-                                            onChange={handelChange}
+                                            onChange={handleChange}
                                         /> Married
                                     </label>
                                 </div>
                             </div>
 
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label htmlFor="salary">Salary: (₹)</label>
-                                <input onChange={handelChange} value={member.salary || ""} name="salary" />
+                                <input onChange={handleChange} value={member.salary || ""} name="salary" />
                             </div>
 
-                            <div className="custom-label-input-box">
+                            <div className="edit-label-input-box">
                                 <label htmlFor="address">Address:</label>
-                                <input onChange={handelChange} value={member.address || ""} name="address" />
+                                <input onChange={handleChange} value={member.address || ""} name="address" />
                             </div>
                         </div>
                     </div>
 
-                    <button onClick={handleSubmit} className="custom-submit-button w-75 m-auto">Done</button>
+                    <button onClick={handleSubmit} className="btn edit-submit-button w-75 m-auto">Done</button>
                 </div>
             )}
         </div>
