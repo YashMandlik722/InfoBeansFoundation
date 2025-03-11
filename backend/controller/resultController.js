@@ -69,15 +69,23 @@ export const getResultList = async (request, response) => {
 //Marking Results (Admin)
 export const resultMarking = async (req, res) => {
     try {
-        const excelData = req.file.buffer;
+        const excelSheetData = req.file.buffer;
         const json = convertExcelToJson({
-            source: excelData,
+            source: excelSheetData,
             header: { rows: 1 },
             columnToKey: {
-                A: 'rollNo',
-                B: 'result'
+                B: 'rollNo',
+                F: 'attendance',
+                G: 'result',
+                H: 'set',
+                I: 'english',
+                J: 'hindi',
+                K: 'gk',
+                L: 'math',
+                M: 'total',
+                N: 'percentage',
             }
-        }).Sheet1;
+        }).Students;
 
         // console.log(json)
         let phase = req.body.phase;
@@ -85,7 +93,7 @@ export const resultMarking = async (req, res) => {
         for (let obj of json) {
             let objResult = await result.findOne({ rollNo: obj.rollNo, phase: req.body.phase });
             if (!objResult)
-                return res.status(400).json({ error: `Bad Request | One of the student does not exist` })
+                return res.status(404).json({ error: `Student with Roll NO - ${obj.rollNo} not found` })
         }
                                     
         let resultType;
@@ -102,11 +110,14 @@ export const resultMarking = async (req, res) => {
         }else{
             return res.status(400).json({ error: `Bad Request | Incorrect Phase` });
         }
+        // console.log(`${[resultType]}.status`);
+        let a = `${[resultType]}.status`;
+        let b = `${[resultType]}.detail`;
 
-        json.map(async (student) => {
-            const updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [resultType]: student.result, phase: phase, isSlotAssigned: false });
+        json.map(async (student) => {    
+            let updatedResult = await result.updateOne({ rollNo: student.rollNo }, { [a]: student.result,[b]: student, phase: phase, isSlotAssigned: false });
             if (!updatedResult) {
-                return res.status(400).send("Error in inserting data")
+                return res.status(404).json({ error: `Error in uploading students` });
             }
         })
 

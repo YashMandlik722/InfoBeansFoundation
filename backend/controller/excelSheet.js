@@ -24,7 +24,7 @@ export const generateExcel = async (req, res) => {
         }
 
 
-        const resultList = await result.find({ phase, courseType, written_result, interview_result, houseVisit_result });
+        const resultList = await result.find({ phase, courseType});
         if (!resultList.length)
             return res.status(404).json({ error: "No result Found(In excelSheet's generateExcel)" });
         let registrationList = [];
