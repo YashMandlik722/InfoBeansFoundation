@@ -22,7 +22,7 @@ const ContentSlider = () => {
     };
   }, []);
 
-  return (
+  return (<>
     <div className="content-slider">
       <div className="slider-container">
         {/* Background image with semi-transparent overlay */}
@@ -45,6 +45,7 @@ const ContentSlider = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

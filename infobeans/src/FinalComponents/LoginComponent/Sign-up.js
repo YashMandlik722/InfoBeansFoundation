@@ -1,6 +1,6 @@
 import { use, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { setUser } from "../reduxConfig/UserSlice";
+import { setUser } from "../../reduxConfig/UserSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios"
 

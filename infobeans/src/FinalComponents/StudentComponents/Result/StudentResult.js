@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"
-import API from "../API/API";
+import API from "../../../API/API";
 import { useSelector } from "react-redux";
 
 function StudentResult() {

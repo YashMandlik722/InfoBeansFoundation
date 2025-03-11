@@ -1,6 +1,6 @@
 import React from "react";
 import { useSpring, animated } from "react-spring"; 
-import "../components/placements.css"; 
+import "./placements.css"; 
 
 function Placements() {
   const riseUpAnimation = useSpring({

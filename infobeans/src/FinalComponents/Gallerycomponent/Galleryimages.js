@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../Gallerycomponent/Galleryimages.css";
+import "./Galleryimages.css";
 import { useDispatch, useSelector } from "react-redux";
 
 const Galleryimages = () => {

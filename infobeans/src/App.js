@@ -1,28 +1,28 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./FinalComponents/HomeComponent/Home"
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "./FinalComponents/FooterComponent/Footer";
+import Navbar from "./FinalComponents/NavbarComponent/Navbar.js";
 import About from "./FinalComponents/AboutComponent/About.js";
-import Gallery from "./Gallery";
-import ContactUs from "./ContactUs";
-import SignIn from "./LoginComponent/Sign-in";
-import SignUp from "./LoginComponent/Sign-up";
-import AddStaff from "./Admin/Staff/AddStaff/AddStaff";
-import RegistrationForm from "./FinalRegForm/RegistrationForm";
-import Slots from "./AdminSlotComponent/Slots.js"
-import MemberDetail from "./Admin/Staff/StaffMemberDetail/StaffMemberDetail.js";
-import ItepRegComponent from "./FinalRegUI/ItepRegComponent";
-import BrepRegComponent from "./FinalRegUI/BrepRegComponent";
-import ViewItepDetail from "./FinalRegUI/ViewItepDetail";
-import ViewBrepDetail from "./FinalRegUI/ViewBrepDetail";
-import EditMember from "./Admin/Staff/EdifStaffMember/EditMember.js";
-import StaffList from "./Admin/Staff/StaffList/StaffList.js";
-import StudentResult from "./ResultComponents/StudentResult.js";
-import AdminResult from "./ResultComponents/AdminResult.js";
-import SlotResult from "./ResultComponents/Slot Result/SlotResult.js";
-import UploadResult from "./ResultComponents/Upload Result/UploadResult.js";
-import DownLoadExcel from "./GetExcelSheet/DownLoadExcel.js";
-import BannerSetting from "./AdminSlotComponent/BannerSetting.js";
+import Gallery from "./FinalComponents/Gallerycomponent/Galleryimages.js";
+import ContactUs from "./FinalComponents/Contactcomponent/Contectform.js";
+import SignIn from "./FinalComponents/LoginComponent/Sign-in.js";
+import SignUp from "./FinalComponents/LoginComponent/Sign-up.js";
+import AddStaff from "./FinalComponents/Admin/Staff/AddStaff/AddStaff.js";
+import RegistrationForm from "./FinalComponents/StudentComponents/FinalRegForm/RegistrationForm.js";
+import Slots from "./FinalComponents/Admin/Slot/Slots.js"
+import MemberDetail from "./FinalComponents/Admin/Staff/StaffMemberDetail/StaffMemberDetail.js";
+import ItepRegComponent from "./FinalComponents/Admin/FinalRegUI/ItepRegComponent.js";
+import BrepRegComponent from "./FinalComponents/Admin/FinalRegUI/BrepRegComponent.js";
+import ViewItepDetail from "./FinalComponents/Admin/FinalRegUI/ViewItepDetail.js";
+import ViewBrepDetail from "./FinalComponents/Admin/FinalRegUI/ViewBrepDetail.js";
+import EditMember from "./FinalComponents/Admin/Staff/EdifStaffMember/EditMember.js";
+import StaffList from "./FinalComponents/Admin/Staff/StaffList/StaffList.js";
+import StudentResult from "./FinalComponents/StudentComponents/Result/StudentResult.js";
+import AdminResult from "./FinalComponents/Admin/ResultComponents/AdminResult.js";
+import SlotResult from "./FinalComponents/Admin/ResultComponents/Slot Result/SlotResult.js";
+import UploadResult from "./FinalComponents/Admin/ResultComponents/Upload Result/UploadResult.js";
+import DownLoadExcel from "./FinalComponents/Admin/GetExcelSheet/DownLoadExcel.js";
+import BannerSetting from "./FinalComponents/Admin/Banner/BannerSetting.js";
 
 function App() {
     return <>

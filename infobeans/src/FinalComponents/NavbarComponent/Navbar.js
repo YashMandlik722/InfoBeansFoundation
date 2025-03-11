@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../components/Navbar.css"
+import "./Navbar.css"
 import { Link, useNavigate } from "react-router-dom";
-import { signOut } from "../reduxConfig/UserSlice";
+import { signOut } from "../../reduxConfig/UserSlice";
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 

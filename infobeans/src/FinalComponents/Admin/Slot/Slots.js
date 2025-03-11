@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios"
 import './styles.css';
-import API from '../API/API';
+import API from '../../../API/API';
 
 const MySlots = () => {
   const [divVisible, setDivVisible] = useState(false);

@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import "./Contactform.css"; // Your custom CSS
+import ContentSlider from "./Contentslide";
 
 const ContactForm = () => {
   useEffect(() => {
     AOS.init(); // Initialize AOS
   }, []);
 
-  return (
+  return (<>
+    <ContentSlider/>
     <div className="container-xxl py-5">
       <div className="container">
         <div className="bg-light rounded">
@@ -120,6 +122,7 @@ const ContactForm = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

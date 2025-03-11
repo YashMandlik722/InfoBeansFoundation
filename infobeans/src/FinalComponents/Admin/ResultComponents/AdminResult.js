@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './AdminResult.css'; 
-import API from "../API/API";
+import API from "../../../API/API";
 
 function AdminResult() {
     const [slots, setSlots] = useState([]);

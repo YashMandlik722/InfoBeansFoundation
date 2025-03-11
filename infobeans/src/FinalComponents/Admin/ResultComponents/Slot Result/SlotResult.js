@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Api from "../../API/API"
+import Api from "../../../../API/API"
 import { useParams } from "react-router-dom";
 
 function SlotResult(){

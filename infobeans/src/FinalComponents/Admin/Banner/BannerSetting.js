@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import API from "../API/API";
+import API from "../../../API/API";
 
 function BannerSetting() {
     const [banner, setBanner] = useState(null);

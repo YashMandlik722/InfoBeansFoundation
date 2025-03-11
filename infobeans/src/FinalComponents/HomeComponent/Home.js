@@ -15,6 +15,7 @@ import Partners from "./Partners";
 import Achivement from "./Achivement";
 import Demo from "../../components/Demo";
 import CourseSection from "./CourseDetail";
+import Placements from "./Placements";
 function Home() {
     return <>
         <div className="div-home container-fluid">
@@ -23,6 +24,7 @@ function Home() {
             <Vid />
             <Founders />
             <Partners />
+            <Placements/>
             <Form />
             <Trainers />
             <Studentdata />

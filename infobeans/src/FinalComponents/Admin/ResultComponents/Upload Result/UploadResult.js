@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import API from "../../API/API";
+import API from "../../../../API/API";
 
 function UploadResult() {
     const location = useLocation();
