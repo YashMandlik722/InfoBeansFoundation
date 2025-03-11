@@ -93,11 +93,11 @@
 
 .itep-reject-btn {
     background-color: white;
-    border: 2px solid red;
-    color: red;
+    border: 2px solid #b30000;
+    color: #b30000;
 }
 
 .itep-reject-btn:hover {
-    background-color: red;
+    background-color: #b30000;
     color: white;
 }

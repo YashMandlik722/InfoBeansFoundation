@@ -22,7 +22,15 @@ function StaffList() {
 
     return (
         <div className="stafflist-container">
-            <h2 className="stafflist-title">Staff Directory</h2>
+            {/* Header Section */}
+            <div className="stafflist-header">
+                <h2 className="stafflist-title">Staff Directory</h2>
+                <button className="stafflist-add-btn" onClick={() => navigate("/addStaff")}>
+                    Add Staff
+                </button>
+            </div>
+
+            {/* Staff List Grid */}
             <div className="stafflist-grid">
                 {staffList.map((staff) => (
                     <div 
@@ -30,15 +38,19 @@ function StaffList() {
                         className="stafflist-card"
                         onClick={() => navigate(`/staff/${staff._id}`, { state: staff })}
                     >
-                        <div className="stafflist-card-header">{staff.name} - {staff.role}</div>
+                        <div className="stafflist-card-header">
+                            {staff.name} - {staff.role}
+                        </div>
                         <div className="stafflist-card-body">
-                            <img 
-                                src={`http://localhost:3001/staffDoc/${staff.photo_url}`} 
-                                className="stafflist-photo" 
-                                alt={staff.name} 
-                            />
-                            <p className="mt-2"><strong>Email:</strong> {staff.email}</p>
-                            <p><strong>Contact:</strong> {staff.contact}</p>
+                            <div className="stafflist-photo-container">
+                                <img 
+                                    src={`http://localhost:3001/staffDoc/${staff.photo_url}`} 
+                                    className="stafflist-photo" 
+                                    alt={staff.name} 
+                                />
+                            </div>
+                            <p className="stafflist-text"><strong>Email:</strong> {staff.email}</p>
+                            <p className="stafflist-text"><strong>Contact:</strong> {staff.contact}</p>
                         </div>
                     </div>
                 ))}

@@ -74,7 +74,7 @@ const loadBanner = async()=>{
         <div className="col-md-6" style={{ flex: 1, padding: "20px" }}>
           <Slider {...sliderSettings}>
           {banner?.filter((data)=>data.status)?.map((data, index) => (<div key={index}>
-              {console.log(data)}
+              {/* {console.log(data)} */}
               <div className="position-relative">
                 <img
                   src={data.image}

@@ -12,13 +12,10 @@ import RegistrationForm from "./FinalComponents/StudentComponents/FinalRegForm/R
 import Slots from "./FinalComponents/Admin/Slot/Slots.js"
 import MemberDetail from "./FinalComponents/Admin/Staff/StaffMemberDetail/StaffMemberDetail.js";
 import ItepRegComponent from "./FinalComponents/Admin/FinalRegUI/ItepRegComponent.js";
-import BrepRegComponent from "./FinalComponents/Admin/FinalRegUI/BrepRegComponent.js";
 import ViewItepDetail from "./FinalComponents/Admin/FinalRegUI/ViewItepDetail.js";
-import ViewBrepDetail from "./FinalComponents/Admin/FinalRegUI/ViewBrepDetail.js";
 import EditMember from "./FinalComponents/Admin/Staff/EdifStaffMember/EditMember.js";
 import StaffList from "./FinalComponents/Admin/Staff/StaffList/StaffList.js";
 import StudentResult from "./FinalComponents/StudentComponents/Result/StudentResult.js";
-import AdminResult from "./FinalComponents/Admin/ResultComponents/AdminResult.js";
 import SlotResult from "./FinalComponents/Admin/ResultComponents/Slot Result/SlotResult.js";
 import UploadResult from "./FinalComponents/Admin/ResultComponents/Upload Result/UploadResult.js";
 import DownLoadExcel from "./FinalComponents/Admin/GetExcelSheet/DownLoadExcel.js";
@@ -33,7 +30,6 @@ function App() {
             <Route path="/About" element={<About />}></Route>
             <Route path="/Gallery" element={<Gallery />}></Route>
             <Route path="/userResult" element={<StudentResult />}></Route>
-            <Route path="/adminResult" element={<AdminResult />}></Route>
             <Route path="/ContactUs" element={<ContactUs />}></Route>
             <Route path="/SignIn" element={<SignIn />}> </Route>
             <Route path="/sign-up" element={<SignUp />}> </Route>
@@ -48,10 +44,7 @@ function App() {
             
             <Route path="/itepReg" element={<ItepRegComponent/>}> </Route>
             <Route path="/viewDetailItep" element={<ViewItepDetail/>}> </Route>
-            <Route path="/viewDetailBrep" element={<ViewBrepDetail/>}> </Route>
-            <Route path="/brepReg" element={<BrepRegComponent/>}> </Route>
             <Route path="/Slots" element={<Slots/>}/>
-            <Route path="/adminResult" element={<AdminResult/>}/>
             <Route path="/adminResult/slot/:slotId" element={<SlotResult/>}/>
             <Route path="/uploadResult" element={<UploadResult/>}/>
             <Route path="/studentResult" element={<StudentResult/>}/>

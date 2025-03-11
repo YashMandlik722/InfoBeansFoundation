@@ -1,29 +1,66 @@
+/* General Page Styles */
 body {
     background-color: #f8f9fa;
     color: #333;
     font-family: Arial, sans-serif;
 }
 
+/* Registration Container */
 .registration-container {
     max-width: 900px;
     margin: 40px auto;
     background: #fff;
     padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Title */
 .registration-title {
     text-align: center;
     color: #b30000;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
+/* Filter Dropdown */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-container label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Custom Dropdown */
+.custom-dropdown {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #b30000;
+    border-radius: 6px;
+    background-color: white;
+    color: #b30000;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* .custom-dropdown:hover {
+    background-color: #b30000;
+    color: white;
+} */
+
+/* Table Container */
 .table-responsive {
     overflow-x: auto;
 }
 
+/* Registration Table */
 .registration-table {
     width: 100%;
     border-collapse: collapse;
@@ -36,17 +73,24 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
+/* Table Header */
 .registration-table th {
     background-color: #b30000;
     color: white;
+}
+
+/* Striped Row Effect */
+.registration-table tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 .registration-table tr:hover {
     background-color: #f1f1f1;
 }
 
+/* View Details Button */
 .itep-view-btn {
-    padding: 8px 16px;
+    padding: 10px 16px;
     font-size: 14px;
     border: 2px solid #b30000;
     background-color: white;
@@ -59,4 +103,5 @@ body {
 .itep-view-btn:hover {
     background-color: #b30000;
     color: white;
+    box-shadow: 0px 4px 8px rgba(179, 0, 0, 0.3);
 }

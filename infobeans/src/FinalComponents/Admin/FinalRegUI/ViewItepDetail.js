@@ -46,6 +46,7 @@ function ViewItepDetail() {
                 </div>
                 <div className="itep-info-section col-md-6">
                     <h2 className="itep-student-name">{regData.name.toUpperCase()}</h2>
+                    <p><strong>Course:</strong> {regData.courseType.toUpperCase()}</p>
                     <p><strong>Father's Name:</strong> {regData.fatherName.toUpperCase()}</p>
                     <p><strong>Date of Birth:</strong> {regData.dob}</p>
                     <p><strong>Gender:</strong> {regData.gender.toUpperCase()}</p>

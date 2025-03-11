@@ -1,160 +1,121 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./Navbar.css"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "../../reduxConfig/UserSlice";
+import "./Navbar.css";
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const { isLoggedIn, user } = useSelector((store) => store.user);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation(); // Track active page
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navigate = useNavigate();
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      <nav
-        className={`navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0 ${scrolled ? "shadow-sm" : ""
-          }`}
-        style={{
-          position: "sticky",
-          top: "0",
-          width: "100%",
-          zIndex: "1000",
-          transition: "all 0.3s ease-in-out",
-          justifyContent: "space-around"
-        }}
-      >
-
-        <div className="m-0 text-danger">
-          <img src="../Images/logo.jpg" style={{ height: "85px", marginLeft: "70px" }} />
-          <h6 style={{ color: "black", marginLeft: "80px" }}>InfoBeans</h6>
-          <h6 style={{ color: "black", marginLeft: "73px" }}>Foundation</h6>
-          {/* <img src="..Images/logo.jpg"/> */}
-          {/* <i className="fa fa-book-reader me-3"></i> */}
-          {/* <span style={{ color: "black" }}>InfoBeans Foundation</span> */}
+      <nav className={`navbar navbar-expand-lg bg-white sticky-top px-4 px-lg-5 py-lg-0 ${scrolled ? "shadow-sm" : ""}`}>
+        <div className="brand-container">
+          <img src="../Images/logo.jpg" alt="Logo" className="brand-logo" />
+          <h6 className="brand-text">InfoBeans</h6>
+          <h6 className="brand-text">Foundation</h6>
         </div>
 
-        {/* <button
-        type="button"
-        className="navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button> */}
         <div className="navbar-collapse collapse" id="navbarCollapse">
           <div className="navbar-nav mx-auto">
+            <Link to="/" className={`nav-item nav-link ${location.pathname === "/" ? "active" : ""}`}>Home</Link>
+            <Link to="/gallery" className={`nav-item nav-link ${location.pathname === "/gallery" ? "active" : ""}`}>Gallery</Link>
 
-            {/* Home Button */}
-            <Link to="/" className="nav-item nav-link " style={{ fontSize: "20px" }}>
-              Home
-            </Link>
+            {isLoggedIn && !user.isAdmin && (
+              <>
+                <Link to="/register" className={`nav-item nav-link ${location.pathname === "/register" ? "active" : ""}`}>Register</Link>
+                <Link to="/studentResult" className={`nav-item nav-link ${location.pathname === "/studentResult" ? "active" : ""}`}>Result</Link>
+              </>
+            )}
 
-            {/* Gallery Button */}
-            <Link to="/gallery" className="nav-item nav-link" style={{ fontSize: "20px" }}>
-              Gallery
-            </Link>
+            <Link to="/about" className={`nav-item nav-link ${location.pathname === "/about" ? "active" : ""}`}>About Us</Link>
 
-            {/* Registration Form */}
-            {isLoggedIn && !user.isAdmin && <Link to="/register" className="nav-item nav-link" style={{ fontSize: "20px" }}>
-              Register
-            </Link>}
-
-            {/* Result Button */}
-            {isLoggedIn && !user.isAdmin && <Link to="/studentResult" className="nav-item nav-link" style={{ fontSize: "20px" }}>
-              Result
-            </Link>}
-            {/* Result Button */}
-
-
-            {/* About Us Button */}
-            <Link to="/about" className="nav-item nav-link" style={{ fontSize: "20px" }}>
-              About Us
-            </Link>
-
-            {/* Admin Options */}
-            {user.isAdmin && <div className="nav-item dropdown">
-              <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ fontSize: "20px" }}>
-                Admin
-              </Link>
-              <div className="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0" >
-                <Link to="/staff-list" className="dropdown-item">
-                  Manage Staff
+            {user.isAdmin && (
+              <div className="nav-item dropdown">
+                <Link to="#" className={`nav-item nav-link dropdown-toggle ${["/staff-list", "/itepReg", "/Slots", "/downloadExcel", "/uploadResult"].includes(location.pathname) ? "active" : ""}`} id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
                 </Link>
-                <Link to="/adminResult" className="dropdown-item">
-                  Manage Result
-                </Link>
-                <Link to="/itepReg" className="dropdown-item">
-                  ITEP Registrations
-                </Link>
-                <Link to="/brepReg" className="dropdown-item">
-                  BREP Registrations
-                </Link>
-                <Link to="/Slots" className="dropdown-item">
-                  Manage Slots
-                </Link>
-                <Link to="/downloadExcel" className="dropdown-item">
-                Download Excel
-                </Link>
-                {/* <Link to="/call-to-action" className="dropdown-item">
-                  Become A Teacher
-                </Link>
-                <Link to="/appointment" className="dropdown-item">
-                  Make Better
-                </Link>
-                <Link to="/banner" className="dropdown-item">
-                  Banner Setting
-                </Link>
-                <Link to="/testimonial" className="dropdown-item">
-                  Testimonial
-                </Link>
-                <Link to="/404" className="dropdown-item">
-                  404 Error
-                </Link> */}
+                <ul className="dropdown-menu" aria-labelledby="adminDropdown">
+                  <li><Link to="/staff-list" className="dropdown-item">Manage Staff</Link></li>
+                  <li><Link to="/itepReg" className="dropdown-item">Registrations</Link></li>
+                  <li><Link to="/Slots" className="dropdown-item">Manage Slots</Link></li>
+                  <li><Link to="/downloadExcel" className="dropdown-item">Download Excel</Link></li>
+                  <li><Link to="/uploadResult" className="dropdown-item">Upload Result</Link></li>
+                </ul>
               </div>
-            </div>}
+            )}
 
-            {/* Contact Us Button*/}
-            <Link to="/contactUs" className="nav-item nav-link" style={{ fontSize: "20px" }}>
-              Contact Us
-            </Link>
-
+            <Link to="/contactUs" className={`nav-item nav-link ${location.pathname === "/contactUs" ? "active" : ""}`}>Contact Us</Link>
           </div>
-          {!isLoggedIn && <button onClick={() => navigate("/signIn")} className="nav-item bg-danger  text-light  rounded-5 roundedx ">
-            Sign In<i className="fa fa-arrow-right ms-3"></i>
-          </button>}
-          {isLoggedIn && <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); navigate("/");}}  className="nav-item nav-link  bg-danger  text-light  rounded-5 roundedx ">
-            Sign Out<i className="fa fa-sign-out-alt ms-3"></i>
-          </button>}
+
+          {!isLoggedIn ? (
+            <button onClick={() => navigate("/signIn")} className="btn btn-danger rounded-5">Sign In</button>
+          ) : (
+            <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); navigate("/"); }} className="btn btn-danger rounded-5">Sign Out</button>
+          )}
         </div>
+
+
+
+        <button className="navbar-toggler" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+
+      {/* Mobile Menu (only shown when toggled) */}
+      <div className={`navbar-links-mobile ${menuOpen ? "open" : ""}`}>
+        <ul className="navbar-nav-mobile">
+          <li className="nav-item">
+            <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/gallery" className="nav-link" onClick={closeMenu}>Gallery</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about" className="nav-link" onClick={closeMenu}>About Us</Link>
+          </li>
+          {user.isAdmin && (
+              <div className="nav-item dropdown">
+                <Link to="#" className={`nav-item nav-link dropdown-toggle ${["/staff-list", "/itepReg", "/Slots", "/downloadExcel", "/uploadResult"].includes(location.pathname) ? "active" : ""}`} id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
+                </Link>
+                <ul className="dropdown-menu" aria-labelledby="adminDropdown">
+                  <li><Link onClick={closeMenu} to="/staff-list" className="dropdown-item">Manage Staff</Link></li>
+                  <li><Link onClick={closeMenu} to="/itepReg" className="dropdown-item">Registrations</Link></li>
+                  <li><Link onClick={closeMenu} to="/Slots" className="dropdown-item">Manage Slots</Link></li>
+                  <li><Link onClick={closeMenu} to="/downloadExcel" className="dropdown-item">Download Excel</Link></li>
+                  <li><Link onClick={closeMenu} to="/uploadResult" className="dropdown-item">Upload Result</Link></li>
+                </ul>
+              </div>
+            )}
+          <li className="nav-item">
+            <Link to="/contactUs" className="nav-link" onClick={closeMenu}>Contact Us</Link>
+          </li>
+          {/* Optionally, add admin dropdown or other links here */}
+          <li className="nav-item">
+            {!isLoggedIn ? (
+            <button onClick={() => {closeMenu();navigate("/signIn")}} className="btn btn-danger rounded-5">Sign In</button>
+          ) : (
+            <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); closeMenu(); navigate("/"); }} className="btn btn-danger rounded-5">Sign Out<i class="fa fa-sign-out-alt"></i></button>
+          )}
+          </li>
+        </ul>
+      </div>
       </nav>
-
-
-      {/* <div>
-  <nav style={{ backgroundColor:"red" }}>
-    <ul  style={{display:"flex" , listStyle:"none", justifyContent:"space-around" , color:"white" }}>
-      <li>Centers</li>
-      <li>Courses</li>
-      <li>Partners</li>
-      <li>Other</li>
-    </ul>
-  </nav>
-</div> */}
     </>
   );
 }
