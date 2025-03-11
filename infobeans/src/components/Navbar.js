@@ -107,6 +107,9 @@ function Navbar() {
                 <Link to="/appointment" className="dropdown-item">
                   Make Better
                 </Link>
+                <Link to="/banner" className="dropdown-item">
+                  Banner Setting
+                </Link>
                 <Link to="/testimonial" className="dropdown-item">
                   Testimonial
                 </Link>

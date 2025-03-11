@@ -15,6 +15,7 @@ import ItepRegComponent from "./FinalRegUI/ItepRegComponent";
 import BrepRegComponent from "./FinalRegUI/BrepRegComponent";
 import ViewItepDetail from "./FinalRegUI/ViewItepDetail";
 import ViewBrepDetail from "./FinalRegUI/ViewBrepDetail";
+import BannerSetting from "./AdminSlotComponent/BannerSetting.js";
 
 function App() {
     return <>
@@ -37,6 +38,7 @@ function App() {
             <Route path="/brepReg" element={<BrepRegComponent/>}> </Route>
             <Route path="/addStaff" element={<AddStaff/>}/>
             <Route path="/Slots" element={<Slots/>}/>
+            <Route path="/banner" element={<BannerSetting/>}/>
         </Routes>
 
 
