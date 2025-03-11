@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
-import '../components/Achivement.css'; // For custom styling
+import './Achivement.css'; // For custom styling
 
 const Achievement = () => {
   const [isVisible, setIsVisible] = useState(false);

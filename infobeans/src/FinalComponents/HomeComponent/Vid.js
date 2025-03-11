@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "aos/dist/aos.css"; // Import the AOS CSS
 import AOS from "aos"; // Import AOS library
-import "../components/Vid.css"; // Your custom CSS for styling
+import "./Vid.css"; // Your custom CSS for styling
 
 const ContainerWithMedia = () => {
   useEffect(() => {

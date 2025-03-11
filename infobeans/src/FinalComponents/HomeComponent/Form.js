@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
-import "../components/Form.css"; // Your custom CSS
+import "./Form.css"; // Your custom CSS
 
 const Form = () => {
   useEffect(() => {

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../components/Slide.css";
+import "./Slide.css";
 import axios from "axios";
-import API from "../API/API";
+import API from "../../API/API";
 
 const Slide = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
