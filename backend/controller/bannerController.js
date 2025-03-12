@@ -1,6 +1,7 @@
 import Banner from "../model/bannerSchema.js"
 export const addBanner = async(req,res)=>{
     try {
+        req.body.image_url = "http://localhost:3001/"+req.files.image[0].filename;
         await Banner.create(req.body);
         res.status(201).json({msg: "Banner added success", status: true})
     } catch (error) {

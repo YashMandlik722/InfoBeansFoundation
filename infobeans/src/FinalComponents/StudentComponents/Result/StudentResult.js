@@ -7,6 +7,7 @@ function StudentResult() {
     const { user } = useSelector((store) => store.user);
     const [resultDetail, setResultDetail] = useState({ written_result: { status: "Pending" } });
     const [regData, setRegDetail] = useState({});
+    const [state, setState] = useState(true);
     const [resultDisplay, setResultDisplay] = useState("Written");
 
     useEffect(() => {
@@ -20,7 +21,7 @@ function StudentResult() {
             const userResponse = await axios.get(API.STUDENT_BY_USERID + user._id);
             setRegDetail(userResponse.data.result);
         } catch (error) {
-            window.alert(error.response.data.error)
+            setState(false)
             console.log(error);
         }
     }
@@ -32,15 +33,15 @@ function StudentResult() {
             setResultDisplay("Interview")
         else
             setResultDisplay("HouseVisit")
-    }
-
-    console.log(resultDetail.written_result);
-    
-
+    }  
 
     return <>
-
-        <div className="container mt-5 mb-3" style={{ boxShadow: "1px 0px 8px red" }}>
+        {!state && <div className="container mt-5 mb-3" style={{ boxShadow: "1px 0px 8px red" }}>
+        <div className="row p-3 pb-0 text-center" >
+            <h2>No Result Found</h2>
+        </div>
+            </div>}
+        {state &&<div className="container mt-5 mb-3" style={{ boxShadow: "1px 0px 8px red" }}>
             <div className="row p-3 pb-0" >
                 <h1 className="registration-title">Student Details</h1>
                 <div className="col-md-6 d-flex justify-content-center bg-light" >
@@ -146,7 +147,7 @@ function StudentResult() {
                                     : <h2 className="text dark">Something Went Wrong</h2>}
                 </div>}
             </div>
-        </div>
+        </div>}
     </>
 }
 

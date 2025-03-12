@@ -29,7 +29,7 @@ function Footer() {
               <div className="d-flex pt-2">
                 <a
                   href="https://www.instagram.com/samarpan181"
-                  className="btn btn-outline-light btn-social rounded-circle"
+                  className="btn btn-outline-danger btn-social rounded-circle"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -37,20 +37,12 @@ function Footer() {
                 </a>
                 <a
                   href="https://www.facebook.com/?sk=welcome"
-                  className="btn btn-outline-light btn-social rounded-circle"
+                  className="btn btn-outline-danger btn-social rounded-circle"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                {/* <a
-                  href="https://www.aedin.com/in/samarpan-foundation-18a0b8349/"
-                  className="btn btn-outline-light btn-social rounded-circle"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-aedin-in"></i>
-                </a> */}
               </div>
             </div>
 
@@ -68,13 +60,13 @@ function Footer() {
             {/* Quick Links Section */}
             <div className="col-lg-3 col-md-6" style={{ paddingBottom: "10px" }}>
               <h5 className="text-light">Quick Links</h5>
-              <Link className="btn btn-a  bg-dark" to="/">
+              <Link className="btn btn-a  bg-dark" to="/about">
                 About Us
               </Link><br/>
-              <Link className="btn btn-a bg-dark" to="/">
+              <Link className="btn btn-a bg-dark" to="/contactUs">
                 Contact Us
               </Link><br/>
-              <Link className="btn btn-a bg-dark" to="/">
+              <Link className="btn btn-a bg-dark" to="/gallery">
                 Collaborations
               </Link>
             </div>

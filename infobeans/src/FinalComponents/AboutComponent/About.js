@@ -5,8 +5,8 @@ import Courses from "./Courses";
 function About(){
     return <>
     <Aboutslide />
-     <AboutNav/>
-     <Courses/>
+     {/* <AboutNav/>
+     <Courses/> */}
     </>
 }
 export default About ;

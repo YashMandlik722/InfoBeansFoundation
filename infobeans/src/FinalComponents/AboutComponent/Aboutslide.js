@@ -17,29 +17,7 @@ function Aboutslide() {
          height: "400px",
         }}
       >
-        <div className="container py-5">
         
-          <nav aria-label="breadcrumb" className="animated slideInDown">
-            <ol className="breadcrumb text-uppercase mb-0">
-              <li className="breadcrumb-item">
-                <Link to="/" className="text-white">
-                  Home
-                </Link>
-              </li>
-              {/* <li className="breadcrumb-item">
-                <Link to="/Pages" className="text-white">
-                  Pages
-                </Link>
-              </li> */}
-              <li
-                className="breadcrumb-item text-primary active"
-                aria-current="page"
-              >
-                About
-              </li>
-            </ol>
-          </nav>
-        </div>
       </div>
 
       {/* About Section */}

@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
 
 const bannerSchema = new mongoose.Schema({
-    image: {
+    image_url: {
         type: String,
         require: true
+    },
+    imageTitle:{
+        type: String,
+        require:true
     },
     imageDescription: {
         type: String,

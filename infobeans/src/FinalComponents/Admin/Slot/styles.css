@@ -22,8 +22,9 @@ body {
   top: 0;
   right: 0;
   height: 600px;
-  width: 40%;
-  background-color: #dfdbdbc1;
+  width: 100%;
+  margin-top: 55px;
+  background-color: white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   padding: 20px;
   overflow-y: auto;

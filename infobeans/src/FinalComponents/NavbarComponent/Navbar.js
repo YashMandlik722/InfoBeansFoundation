@@ -56,6 +56,7 @@ function Navbar() {
                   <li><Link to="/Slots" className="dropdown-item">Manage Slots</Link></li>
                   <li><Link to="/downloadExcel" className="dropdown-item">Download Excel</Link></li>
                   <li><Link to="/uploadResult" className="dropdown-item">Upload Result</Link></li>
+                  <li><Link to="/banner" className="dropdown-item">Edit Banner</Link></li>
                 </ul>
               </div>
             )}
@@ -99,6 +100,7 @@ function Navbar() {
                   <li><Link onClick={closeMenu} to="/Slots" className="dropdown-item">Manage Slots</Link></li>
                   <li><Link onClick={closeMenu} to="/downloadExcel" className="dropdown-item">Download Excel</Link></li>
                   <li><Link onClick={closeMenu} to="/uploadResult" className="dropdown-item">Upload Result</Link></li>
+                  <li><Link onClick={closeMenu} to="/banner" className="dropdown-item">Edit Banner</Link></li>
                 </ul>
               </div>
             )}

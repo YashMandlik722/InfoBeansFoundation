@@ -79,9 +79,12 @@ const MySlots = () => {
       <div className="row" style={{ height: "600px" }}>
         <div className="col-12" style={{ height: "100%", position: "relative" }}>
           <div className={`table-container ${divVisible ? "shrink-table" : ""}`}>
-            <button className="btn btn-success btn-sm mb-3 float-right" onClick={() => handleToggle()}>
+            {!divVisible &&<button className="btn btn-danger btn-sm delete-btn mb-3" onClick={() => handleToggle()}>
               ADD SLOTS
-            </button>
+            </button>}
+            {divVisible &&<button className="btn btn-danger btn-sm delete-btn mb-3" onClick={() => handleToggle()}>
+              SHOW LIST
+            </button>}
             <table className="table table-bordered table-striped table-hover">
               <thead className="thead">
                 <tr>
@@ -156,7 +159,7 @@ const MySlots = () => {
                   </div>
                 )}
 
-                <button type="submit" className="btn btn-primary w-100">
+                <button type="submit" className="btn btn-primary w-100 mt-3">
                   {formData._id ? "Update" : "Submit"}
                 </button>
               </form>

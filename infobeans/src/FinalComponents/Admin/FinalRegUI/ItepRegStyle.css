@@ -1,25 +1,27 @@
 /* General Page Styles */
 body {
-    background-color: #f8f9fa;
+    background-color: #f4f7fc;
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Registration Container */
 .registration-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 40px auto;
-    background: #fff;
-    padding: 25px;
+    background: white;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
 .registration-title {
     text-align: center;
-    color: #b30000;
-    font-size: 24px;
+    color: #d63031;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -29,31 +31,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 .filter-container label {
     font-weight: bold;
-    color: #333;
+    color: #444;
 }
 
-/* Custom Dropdown */
 .custom-dropdown {
-    padding: 8px 12px;
+    padding: 10px 14px;
     font-size: 16px;
-    border: 2px solid #b30000;
+    border: 2px solid #d63031;
     border-radius: 6px;
     background-color: white;
-    color: #b30000;
+    color: #d63031;
     cursor: pointer;
     transition: 0.3s;
 }
 
-/* .custom-dropdown:hover {
-    background-color: #b30000;
+.custom-dropdown:hover {
+    background-color: #d63031;
     color: white;
-} */
+}
 
 /* Table Container */
 .table-responsive {
@@ -75,7 +76,7 @@ body {
 
 /* Table Header */
 .registration-table th {
-    background-color: #b30000;
+    background-color: #d63031;
     color: white;
 }
 
@@ -92,16 +93,37 @@ body {
 .itep-view-btn {
     padding: 10px 16px;
     font-size: 14px;
-    border: 2px solid #b30000;
+    border: 2px solid #d63031;
     background-color: white;
-    color: #b30000;
+    color: #d63031;
     border-radius: 6px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .itep-view-btn:hover {
-    background-color: #b30000;
+    background-color: #d63031;
     color: white;
-    box-shadow: 0px 4px 8px rgba(179, 0, 0, 0.3);
+    box-shadow: 0px 4px 8px rgba(214, 48, 49, 0.3);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .registration-container {
+        padding: 20px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+    }
+
+    .custom-dropdown {
+        width: 100%;
+    }
+
+    .registration-table th, 
+    .registration-table td {
+        font-size: 14px;
+        padding: 8px;
+    }
 }

@@ -59,3 +59,76 @@
     }
   }
   
+
+  /* Ensure proper spacing and alignment */
+.footer .container {
+  width: 85%;
+  margin: auto;
+}
+
+/* Make columns stack on smaller screens */
+@media (max-width: 1024px) {
+  .footer .row {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .footer .col-lg-3 {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .footer .btn-a {
+      display: block;
+      width: 100%;
+      text-align: center;
+  }
+
+  .footer .d-flex {
+      justify-content: center;
+  }
+}
+
+/* Adjust social icons for smaller screens */
+@media (max-width: 768px) {
+  .footer .d-flex {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+  }
+
+  .footer .btn-social {
+      font-size: 16px;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+}
+
+/* Ensure content fits on small devices */
+@media (max-width: 576px) {
+  .footer .container {
+      width: 95%;
+  }
+
+  .footer .col-md-6 {
+      width: 100%;
+      text-align: center;
+  }
+
+  .footer .btn-a {
+      width: auto;
+      padding: 8px 15px;
+      font-size: 14px;
+  }
+
+  .footer h5 {
+      font-size: 18px;
+  }
+
+  .footer p {
+      font-size: 14px;
+  }
+}
