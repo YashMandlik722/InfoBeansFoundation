@@ -41,7 +41,7 @@ function MemberDetail() {
                     <div className="staffmember-image col-md-4 p-4 d-flex align-items-center flex-column">
                         <img
                             className="staffmember-photo"
-                            src={member.photo_url ? `http://localhost:3001/staffDoc/${member.photo_url}` : "/default-avatar.png"}
+                            src={member.photo_url ? `${member.photo_url}` : "/default-avatar.png"}
                             alt={member.name || "Staff Member"}
                         />
                         <h4 className="staffmember-role mt-2">{member.role.toUpperCase()}</h4>

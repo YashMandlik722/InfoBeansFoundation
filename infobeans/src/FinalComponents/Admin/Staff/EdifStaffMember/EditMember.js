@@ -46,7 +46,7 @@ function EditMember() {
                     <div className="col-lg-5 p-3">
                         <img
                             className="edit-member-image"
-                            src={"http://localhost:3001/staffDoc/" + member.photo_url}
+                            src={ member.photo_url}
                             alt="Member"
                         />
                     </div>

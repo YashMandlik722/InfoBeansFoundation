@@ -16,8 +16,12 @@ const upload = multer({storage})
 const router = exp.Router();
 
 router.get("/getAll", allBanner);
-router.post("/addBanner",upload.fields([{name: "image"}]), addBanner);
+//For Multer
+// router.post("/addBanner",upload.fields([{name: "image_url"}]), addBanner);
+
+//For Cloudinary
+router.post("/addBanner",addBanner);
 router.patch("/updateStatus",activeUnactive);
-router.delete("/deleteBanner", deleteBanner);
+router.post("/deleteBanner", deleteBanner);
 
 export default router;

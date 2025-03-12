@@ -46,24 +46,23 @@ export const registerForExam = async (request, response) => {
         const { courseType } = request.body;
         const rollNo = await generateRollNumber(courseType);
 
-        const baseURL = "http://localhost:3001/";
-        // console.log(request);
+        //For Multer
+        // const baseURL = "http://localhost:3001/";
         
-        Object.values(request.files).forEach(fileArray => {
-            fileArray.forEach(file => {
-                file.fullPath = `${baseURL}${file.destination.split("/")[1]+ "/"+file.destination.split("/")[2]}/${file.filename}`;
-            });
-        });
+        // Object.values(request.files).forEach(fileArray => {
+        //     fileArray.forEach(file => {
+        //         file.fullPath = `${baseURL}${file.destination.split("/")[1]+ "/"+file.destination.split("/")[2]}/${file.filename}`;
+        //     });
+        // });
 
-
-        request.body.aadhar = request.files.aadhar[0].fullPath;
-        request.body.fatherAadhar = request.files.fatherAadhar[0].fullPath;
-        request.body.marksheet12 = request.files.marksheet12[0].fullPath;
-        request.body.latestMarksheet = request.files.latestMarksheet[0].fullPath;
-        request.body.passportPhoto = request.files.passportPhoto[0].fullPath;
-        request.body.incomeCertificate = request.files.incomeCertificate[0].fullPath;
-        request.body.samagraId = request.files.samagraId[0].fullPath;
-        request.body.rollNo = rollNo;
+        // request.body.aadhar = request.files.aadhar[0].fullPath;
+        // request.body.fatherAadhar = request.files.fatherAadhar[0].fullPath;
+        // request.body.marksheet12 = request.files.marksheet12[0].fullPath;
+        // request.body.latestMarksheet = request.files.latestMarksheet[0].fullPath;
+        // request.body.passportPhoto = request.files.passportPhoto[0].fullPath;
+        // request.body.incomeCertificate = request.files.incomeCertificate[0].fullPath;
+        // request.body.samagraId = request.files.samagraId[0].fullPath;
+        // request.body.rollNo = rollNo;
 
 
         const reg = await registration.create(request.body);

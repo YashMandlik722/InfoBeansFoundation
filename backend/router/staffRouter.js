@@ -17,7 +17,11 @@ const router = express.Router()
 router.get("/:id", getStaffById);
 router.get("/listOfStaff", listOfStaff);
 router.get("/staffByName", getStaffByName);
-router.post("/addStaff",upload.fields([{name: "photo"},{name: "aadhar"}]),addStaff);
+//For Multer
+// router.post("/addStaff",upload.fields([{name: "photo"},{name: "aadhar"}]),addStaff);
+
+//For Cloudinary
+router.post("/addStaff",addStaff);
 router.patch("/edit-staff/:staffId", editStaff);
 
 export default router;

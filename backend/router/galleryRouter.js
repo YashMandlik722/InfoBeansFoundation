@@ -16,8 +16,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+//For Multer
+// router.post("/imagepost", upload.single("file"), imagepost);
 
-router.post("/imagepost", upload.single("file"), imagepost);
+//For Cloudinary
+router.post("/imagepost", imagepost);
 
 
 router.get("/getimage", getimage);

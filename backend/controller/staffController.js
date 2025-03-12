@@ -57,8 +57,9 @@ export const getStaffByName = async (req, res) => {
 // Add staff
 export const addStaff = async (req, res) => {
     try {
-        req.body.photo_url = req.files.photo[0].filename
-        req.body.aadhar_url = req.files.aadhar[0].filename
+        //For Multer
+        // req.body.photo_url = req.files.photo[0].filename
+        // req.body.aadhar_url = req.files.aadhar[0].filename
 
         const data = await staff.create(req.body);
 

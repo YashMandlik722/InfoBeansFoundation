@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./AddStaff.css";
 import axios from "axios";
+import { UploadToCloudinary } from "../../../../hooks/cloudinaryConfig";
 
 function AddStaff() {
     const [memberData, setMemberData] = useState({
@@ -23,27 +24,25 @@ function AddStaff() {
             [name]: value,
         }));
     };
-
-    const handleSubmit = (event) => {
+    
+    const handleSubmit =async (event) => {
         event.preventDefault();
-
-        const formData = new FormData();
-        for (const key in memberData) {
-            formData.append(key, memberData[key]);
-        }
-
         const photo = event.target.photo.files[0];
         const aadhar = event.target.aadhar.files[0];
+        const photoUrl = await UploadToCloudinary(photo);
+        const aadharUrl = await UploadToCloudinary(aadhar);
+        let obj = {...memberData}
+        obj.photo_url = photoUrl;
+        obj.aadhar_url = aadharUrl;
+        
+        // console.log(photoUrl , aadharUrl);
 
-        formData.append("photo", photo);
-        formData.append("aadhar", aadhar);
-
-        submitForm(formData);
+        submitForm(obj);
     };
 
-    const submitForm = async (formData) => {
+    const submitForm = async (obj) => {
         try {
-            const response = await axios.post("http://localhost:3001/staff/addStaff", formData, { headers: { "Content-Type": "multipart/form-data" } });
+            const response = await axios.post("http://localhost:3001/staff/addStaff", obj);
             console.log(response.data);
             if (response.data.operation) console.log("ADDED");
             else console.log("PROBLEM");

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Galleryimages.css";
 import { useDispatch, useSelector } from "react-redux";
+import { UploadToCloudinary } from "../../hooks/cloudinaryConfig";
 
 const Galleryimages = () => {
 
@@ -13,7 +14,7 @@ const Galleryimages = () => {
 
   const handler = (event) => {
     const selectedFile = event.target.files[0];
-    console.log(selectedFile);
+    // console.log(selectedFile);
     if (selectedFile)
       setfile(selectedFile);
 
@@ -25,14 +26,13 @@ const Galleryimages = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
+    // const formData = new FormData();
+    // formData.append("file", file);
+    const fileUrl = await UploadToCloudinary(file);
       const result = await axios.post(
         "http://localhost:3001/gallery/imagepost",
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {picture:fileUrl}
       );
 
       fetchImages();

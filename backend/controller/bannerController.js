@@ -1,7 +1,9 @@
 import Banner from "../model/bannerSchema.js"
 export const addBanner = async(req,res)=>{
     try {
-        req.body.image_url = "http://localhost:3001/"+req.files.image[0].filename;
+        //For Multer
+        // req.body.image_url = "http://localhost:3001/"+req.files.image[0].filename;
+
         await Banner.create(req.body);
         res.status(201).json({msg: "Banner added success", status: true})
     } catch (error) {
@@ -33,9 +35,12 @@ export const activeUnactive = async(req,res)=>{
 }
 export const deleteBanner = async (req,res)=>{
     try {
-        if(await Banner.findByIdAndDelete(req.body.id))
-            return res.status(500).json({msg: "deleted success"})
-        res.status(200).json({msg: "no banner found"});
+        const id = req.body.id;
+        delete req.body.id;
+        const obj = await Banner.findByIdAndDelete(id);
+        if(!obj)
+            return res.status(404).json({msg: "no banner found"});
+        return res.status(200).json({msg: "deleted success"})
     } catch (error) {
         console.log(error);
         res.status(500).json({msg: "Internal server error"});

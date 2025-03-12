@@ -1,5 +1,6 @@
 import React, { use, useReducer, useRef, useState } from "react";
 import axios from "axios"
+import API from "../../../API/API"
 
 import {
     Stepper,
@@ -22,6 +23,7 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { UploadToCloudinary } from "../../../hooks/cloudinaryConfig";
 
 const steps = ["Basic Details", "Address & Qualification", "Document Uploads", "Payment & Submission"];
 
@@ -78,7 +80,7 @@ const RegistrationForm = () => {
 
     const hand = (type, event) => {
         const file = event.target.files[0];
-        console.log(file);
+        // console.log(file);
         dispatch({ type, payload: file });
       };
 
@@ -138,52 +140,85 @@ const RegistrationForm = () => {
     const handleBack = () => setActiveStep((prevStep) => prevStep - 1);
 
     // Handle final submission
-    const handleSubmit = (e) => {
-        sendData();
+    const handleSubmit = async (e) => {
+        //For Multer
+        // sendData();
+
+        try {
+            let aadhar_url = await UploadToCloudinary(myFiles.aadhar);
+            let fatherAadhar_url = await UploadToCloudinary(myFiles.fatherAadhar);
+            let passportPhoto_url = await UploadToCloudinary(myFiles.passportPhoto);
+            let marksheet12_url = await UploadToCloudinary(myFiles.marksheet12);
+            let latestMarksheet_url = await UploadToCloudinary(myFiles.latestMarksheet);
+            let samagraId_url = await UploadToCloudinary(myFiles.samagraId);
+            let incomeCertificate_url = await UploadToCloudinary(myFiles.incomeCertificate);
+
+            const obj = {...formData,aadhar:aadhar_url,fatherAadhar:fatherAadhar_url,passportPhoto:passportPhoto_url,marksheet12:marksheet12_url,latestMarksheet:latestMarksheet_url,samagraId:samagraId_url,incomeCertificate:incomeCertificate_url} 
+            
+            let response = await axios.post(API.REGISTER_FOR_COURSE,obj)
+            // console.log(response.data);
+            if(response.data.message == "Registration working"){
+                window.alert("Registration Successful");
+                navigate("/")
+            }else{
+                window.alert("Registration Failed");
+                navigate("/register")
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
+
+    // const sendData = async ()=>{
+    //     try {
+    //     const f = new FormData();
+    //     f.append("name",formData.name)
+    //     f.append("fatherName",formData.fatherName)
+    //     f.append("email",formData.email)
+    //     f.append("contact",formData.contact)
+    //     f.append("dob",formData.dob)
+    //     f.append("gender",formData.gender)
+    //     f.append("maritalStatus",formData.maritalStatus)
+    //     f.append("localAddress",formData.localAddress)
+    //     f.append("permanentAddress",formData.permanentAddress)
+    //     f.append("qualification",formData.qualification)
+    //     f.append("annualIncome",formData.annualIncome)
+    //     f.append("reference",formData.reference)
+    //     f.append("courseType",formData.courseType)
+    //     f.append("preferredCity",formData.preferredCity)
+    //     f.append("userID",formData.userID)
+    //     f.append("aadhar",myFiles.aadhar)
+    //     f.append("fatherAadhar",myFiles.fatherAadhar)
+    //     f.append("passportPhoto",myFiles.passportPhoto)
+    //     f.append("marksheet12",myFiles.marksheet12)
+    //     f.append("latestMarksheet",myFiles.latestMarksheet)
+    //     f.append("samagraId",myFiles.samagraId)
+    //     f.append("incomeCertificate",myFiles.incomeCertificate)
+    //     const obj = {...formData,...myFiles} 
+    //     console.log(obj)
+    //     // let response = await axios.post(url, f)
+    //     let response = await axios.post(API.REGISTER_FOR_COURSE,obj,{
+    //         headers: {
+    //           "Content-Type": "multipart/form-data",
+    //         },
+    //       })
+    //     console.log(response.data);
+    //     if(response.data.message == "Registration working"){
+    //         window.alert("Registration Successful");
+    //         navigate("/")
+    //     }else{
+    //         window.alert("Registration Failed");
+    //         navigate("/register")
+    //     }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     const sendData = async ()=>{
         try {
-        let url = "http://localhost:3001/course/register";
-        const f = new FormData();
-        f.append("name",formData.name)
-        f.append("fatherName",formData.fatherName)
-        f.append("email",formData.email)
-        f.append("contact",formData.contact)
-        f.append("dob",formData.dob)
-        f.append("gender",formData.gender)
-        f.append("maritalStatus",formData.maritalStatus)
-        f.append("localAddress",formData.localAddress)
-        f.append("permanentAddress",formData.permanentAddress)
-        f.append("qualification",formData.qualification)
-        f.append("annualIncome",formData.annualIncome)
-        f.append("reference",formData.reference)
-        f.append("courseType",formData.courseType)
-        f.append("preferredCity",formData.preferredCity)
-        f.append("userID",formData.userID)
-        f.append("aadhar",myFiles.aadhar)
-        f.append("fatherAadhar",myFiles.fatherAadhar)
-        f.append("passportPhoto",myFiles.passportPhoto)
-        f.append("marksheet12",myFiles.marksheet12)
-        f.append("latestMarksheet",myFiles.latestMarksheet)
-        f.append("samagraId",myFiles.samagraId)
-        f.append("incomeCertificate",myFiles.incomeCertificate)
-        const obj = {...formData,...myFiles} 
-        console.log(obj)
-        // let response = await axios.post(url, f)
-        let response = await axios.post("http://localhost:3001/course/register",obj,{
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
-        console.log(response.data);
-        if(response.data.message == "Registration working"){
-            window.alert("Registration Successful");
-            navigate("/")
-        }else{
-            window.alert("Registration Failed");
-            navigate("/register")
-        }
+            const obj = {...formData,...myFiles} 
+            console.log(obj)
         } catch (error) {
             console.log(error);
         }

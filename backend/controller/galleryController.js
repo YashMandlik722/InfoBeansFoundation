@@ -3,11 +3,13 @@ import Image from "../model/galleryModel.js";
 
 export const imagepost = async (req, res, next) => {
   try {
-    if (req.file) {
-      const picture = `http://localhost:3001/galleryImg/${req.file.filename}`; 
-      const newImage = new Image({ picture }); 
-      await newImage.save();
-      res.status(201).json({ message: "Image inserted successfully", picture });
+    if (req.body.picture) {
+      //For Multer
+      // const picture = `http://localhost:3001/galleryImg/${req.file.filename}`; 
+      // const newImage = new Image({ picture }); 
+      // await newImage.save();
+      const data = await Image.create(req.body);
+      res.status(201).json({ message: "Image inserted successfully" });
     } else {
       res.status(400).json({ message: "Bad request: No file uploaded" });
     }

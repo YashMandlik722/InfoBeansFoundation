@@ -15,6 +15,7 @@ function StaffList() {
         try {
             const response = await axios.get("http://localhost:3001/staff/listOfStaff");
             setStaffList(response.data.staff_Data);
+            console.log(response.data.staff_Data);
         } catch (error) {
             console.error("Error fetching staff data:", error);
         }
@@ -44,7 +45,7 @@ function StaffList() {
                         <div className="stafflist-card-body">
                             <div className="stafflist-photo-container">
                                 <img 
-                                    src={`http://localhost:3001/staffDoc/${staff.photo_url}`} 
+                                    src={staff.photo_url} 
                                     className="stafflist-photo" 
                                     alt={staff.name} 
                                 />

@@ -65,9 +65,9 @@ function Navbar() {
           </div>
 
           {!isLoggedIn ? (
-            <button onClick={() => navigate("/signIn")} className="btn btn-danger rounded-5">Sign In</button>
+            <button onClick={() => navigate("/signIn")} className="btn btn-danger rounded-5">Sign In  <i className="fa fa-sign-in-alt"></i></button>
           ) : (
-            <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); navigate("/"); }} className="btn btn-danger rounded-5">Sign Out</button>
+            <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); navigate("/"); }} className="btn btn-danger rounded-5">Sign Out <i className="fa fa-sign-out-alt"></i></button>
           )}
         </div>
 
@@ -112,7 +112,7 @@ function Navbar() {
             {!isLoggedIn ? (
             <button onClick={() => {closeMenu();navigate("/signIn")}} className="btn btn-danger rounded-5">Sign In</button>
           ) : (
-            <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); closeMenu(); navigate("/"); }} className="btn btn-danger rounded-5">Sign Out<i class="fa fa-sign-out-alt"></i></button>
+            <button onClick={() => { window.alert("Logging you out"); dispatch(signOut()); closeMenu(); navigate("/"); }} className="btn btn-danger rounded-5">Sign Out<i className="fa fa-sign-out-alt"></i></button>
           )}
           </li>
         </ul>

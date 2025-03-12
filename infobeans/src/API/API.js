@@ -1,4 +1,5 @@
 export default {
+    REGISTER_FOR_COURSE :"http://localhost:3001/course/register",
     GET_ALL_SLOTS : "http://localhost:3001/slot/getAllSlots",
     GET_ALL_ACTIVE_SLOTS : "http://localhost:3001/slot/getActiveSlots",
     DELETE_SLOTS: "http://localhost:3001/slot/deletSlots",
