@@ -1,7 +1,9 @@
 import { validationResult } from "express-validator";
 import { user } from "../model/userModel.js"
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken"
 import sendMail from "../helper/sendMail.js";
+const jwtKey = "sdfghjkyutrfdcvbnhjuytrfgvbhjutfg";
 
 //For User Sign Up
 export const signUp = async (req, res) => {
@@ -29,7 +31,8 @@ export const signUp = async (req, res) => {
         //     `Dear ${User.name},\n\nThank you for logging into InfoBeans Foundation! \nWe're delighted to have you back.\nStay tuned for updates and ways to get involved. Together, we can make a positive impact!\n\nBest Regards\nInfoBeans Foundation`
         // );
 
-        return res.status(201).json({ message: "User Sign-Up Success", User });
+        const token = jwt.sign({email:email},jwtKey)
+        return res.status(201).json({ message: "User Sign-Up Success", User , token });
 
     } catch (err) {
         console.log("Error In usercontroller's signUp");
@@ -51,7 +54,8 @@ export const signIn = async (request, response) => {
                 //     "Welcome Back to InfoBeans Foundation!",
                 //     `Dear ${User.name},\n\nThank you for logging into InfoBeans Foundation! \nWe're delighted to have you back.\nStay tuned for updates and ways to get involved. Together, we can make a positive impact!\n\nBest Regards\nInfoBeans Foundation`
                 // );
-                return response.status(200).json({ message: "Sign in success..", User });
+                const token = jwt.sign({email:email},jwtKey)
+                return response.status(200).json({ message: "Sign in success..", User, token });
             } else {
                 return response.status(401).json({ error: "Bad request | invalid password" })
             }
