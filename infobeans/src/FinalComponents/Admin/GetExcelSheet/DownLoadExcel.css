@@ -1,0 +1,117 @@
+/* Container Styling */
+.excel-container {
+    background-color: #fffdef;
+    padding: 30px 15px;
+}
+
+/* Card Styling */
+.excel-card {
+    max-width: 500px;
+    width: 100%;
+    background-color: #ecdbbf;
+    border-radius: 12px;
+}
+
+.excel-title {
+    color: #d84040;
+    font-weight: bold;
+}
+
+/* Form Elements */
+.excel-label {
+    color: #a31d1d;
+    font-weight: bold;
+}
+
+.excel-select {
+    border: 2px solid #d84040;
+    padding: 10px;
+}
+
+/* Button Styling */
+.excel-button {
+    background-color: #d84040;
+    color: #f8f2de;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.excel-button:hover {
+    background-color: #c50000;
+}
+
+/* Student List Section */
+.students-section {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.students-title {
+    color: #d84040;
+    font-weight: bold;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    background-color: #d84040;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+    background-color: #c50000;
+}
+
+/* Table */
+.student-table {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.student-table th {
+    background-color: #d84040;
+    color: white;
+    text-align: center;
+}
+
+.student-table td {
+    text-align: center;
+}
+
+/* No Data Message */
+.no-data-message {
+    color: #d84040;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .excel-card {
+        width: 90%;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        flex: 1 1 48%;
+    }
+}
+
+@media (max-width: 576px) {
+    .filter-btn {
+        flex: 1 1 100%;
+    }
+}

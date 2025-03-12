@@ -11,5 +11,6 @@ export default {
     GET_ALL_BANNER: "http://localhost:3001/banner/getAll",
     UPDATE_BANNER_STATUS: "http://localhost:3001/banner/updateStatus",
     ADD_BANNER: "http://localhost:3001/banner/addBanner",
-    DELETE_BANNER: "http://localhost:3001/banner/deleteBanner"
+    DELETE_BANNER: "http://localhost:3001/banner/deleteBanner",
+    GET_USER_LIST: "http://localhost:3001/course/getRegList"
 }
