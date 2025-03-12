@@ -1,7 +1,26 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import API from "../../../API/API";
+import "./DownLoadExcel.css";
 
-function DownLoadExcel() {
+function DownloadExcel() {
+    const [registrations, setRegistrations] = useState([]);
+    const phaseRef = useRef();
+    const courseRef = useRef();
+
+    useEffect(() => {
+        fetchStudents();
+    }, []);
+
+    const fetchStudents = async () => {
+        try {
+            const response = await axios.get(API.GET_USER_LIST);
+            setRegistrations(response.data.list);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const getDate = () => {
         const today = new Date();
         const month = today.toLocaleString("en-US", { month: "short" });
@@ -9,29 +28,31 @@ function DownLoadExcel() {
         return `${month.toUpperCase()}${year}`;
     };
 
-    let phaseRef = useRef();
-    let courseRef = useRef();
-    let phase = "";
-    
     const downloadExcel = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/excel/getExcel",
-                { phase: phaseRef.current.value, courseType: courseRef.current.value },
+            const phase = phaseRef.current.value;
+            const course = courseRef.current.value;
+
+            if (phase === "Select Phase" || course === "Select Course Type") {
+                alert("Please select both phase and course type.");
+                return;
+            }
+
+            const response = await axios.post(
+                "http://localhost:3001/excel/getExcel",
+                { phase, courseType: course },
                 { responseType: "blob" }
             );
+
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement("a");
             link.href = url;
-            
-            if (phaseRef.current.value === "Applied") {
-                phase = "Written-Result";
-            } else if (phaseRef.current.value === "Written Done") {
-                phase = "Interview-Result";
-            } else if (phaseRef.current.value === "Interview Done") {
-                phase = "House-Visit-Result";
-            }
-            
-            link.setAttribute("download", `${courseRef.current.value}-${phase}-${getDate()}.xlsx`);
+
+            let phaseLabel = phase === "Applied" ? "Written-Result" :
+                phase === "Written Done" ? "Interview-Result" :
+                    "House-Visit-Result";
+
+            link.setAttribute("download", `${course}-${phaseLabel}-${getDate()}.xlsx`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -42,35 +63,63 @@ function DownLoadExcel() {
     };
 
     return (
-        <div className="container d-flex flex-column align-items-center justify-content-center min-vh-75 px-3">
-            <div className="card shadow-lg p-4 border-0 w-100" style={{ maxWidth: "500px", backgroundColor: "#ECDCBF" }}>
-                <h2 className="text-center mb-4" style={{ color: "#D84040" }}>Download Excel</h2>
-                
-                <div className="mb-3">
-                    <label className="form-label fw-bold" style={{ color: "#A31D1D" }}>Select Phase</label>
-                    <select ref={phaseRef} className="form-select">
-                        <option>Select Phase</option>
-                        <option value="Applied">Written</option>
-                        <option value="Written Done">Interview</option>
-                        <option value="Interview Done">House Visit</option>
-                    </select>
+        <div className="excel-container container d-flex flex-column align-items-center min-vh-100">
+            <div className="students-section container">
+                <h1 className="students-title text-center">Student List</h1>
+                <div className="row d-flex justify-content-around">
+                    <div className="col-lg-5">
+                        <select ref={phaseRef} className="form-select">
+                            <option>Select Phase</option>
+                            <option value="Applied">Written</option>
+                            <option value="Written Done">Interview</option>
+                            <option value="Interview Done">House Visit</option>
+                        </select>
+                    </div>
+                    <div className="col-md-5">
+                        <select ref={courseRef} className="form-select filter-select">
+                            <option>Select Course Type</option>
+                            <option value="ITEP">ITEP</option>
+                            <option value="BREP">BREP</option>
+                        </select>
+                    </div>
+                    <div className="col-lg-2">
+                        <button className="btn w-100 btn-danger" onClick={downloadExcel}>Download</button>
+                    </div>
                 </div>
 
-                <div className="mb-3">
-                    <label className="form-label fw-bold" style={{ color: "#A31D1D" }}>Select Course Type</label>
-                    <select ref={courseRef} className="form-select">
-                        <option>Select Course Type</option>
-                        <option value="ITEP">ITEP</option>
-                        <option value="BREP">BREP</option>
-                    </select>
-                </div>
-
-                <button className="btn w-100" style={{ backgroundColor: "#D84040", color: "#F8F2DE" }} onClick={downloadExcel}>
-                    Download Excel
-                </button>
+                {registrations.length !== 0 ? (
+                    <div className="table-responsive">
+                        <table className="table table-striped student-table">
+                            <thead>
+                                <tr>
+                                    <th>S.no</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Inspect</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {registrations
+                                    .filter(item => item.isVerified === "Verified")
+                                    .map((item, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td>{item.name}</td>
+                                            <td>{item.email}</td>
+                                            <td>
+                                                <button className="btn btn-outline-info">View More</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <h2 className="text-center no-data-message">No Registrations to Show</h2>
+                )}
             </div>
         </div>
     );
 }
 
-export default DownLoadExcel;
+export default DownloadExcel;
